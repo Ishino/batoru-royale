@@ -1,4 +1,5 @@
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy import func
 
 from interfaces.db import Engine
 from ningyo.models.ningyo import Fighter as StoredFighter
@@ -16,6 +17,10 @@ class Tournament:
         self.session = sessionmaker(bind=self.db_engine.get_engine())
         self.player_session = self.session()
 
+    def select_player(self, name):
+        player_details = self.player_session.query(StoredFighter).filter(StoredFighter.name == name).first()
+        return player_details
+
     def load_player(self, name):
 
         player = Fighter(Attributes())
@@ -24,7 +29,8 @@ class Tournament:
         player.set_power_calculator(Power())
 
         # load player
-        player_details = self.player_session.query(StoredFighter).filter(StoredFighter.name == name).first()
+        player_details = self.select_player(name)
+
         if player_details is not None:
             player.create(player_details.name, int(player_details.level), 0, 0, 0)
 
@@ -43,7 +49,8 @@ class Tournament:
 
     def save_player(self, player):
 
-        player_details = self.player_session.query(StoredFighter).filter(StoredFighter.name == player.name).first()
+        player_details = self.select_player(player.name)
+
         if player_details is not None:
             player_details.type=player.type
             player_details.level=player.level
@@ -65,3 +72,8 @@ class Tournament:
             )
         self.player_session.add(player_details)
         self.player_session.commit()
+
+    def generate_tournament_table(self):
+        # Select X random players from the DB
+        rows = self.player_session.query(func.count(StoredFighter.id)).scalar()
+        # print(rows)

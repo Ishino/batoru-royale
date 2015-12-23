@@ -40,6 +40,8 @@ class Battle:
 
         stats = CombatStats()
 
+        tournament.generate_tournament_table()
+
         player_one = tournament.load_player('Ishino_' + str(tournament_round))
 
         player_two = Monster(self.attributes)
