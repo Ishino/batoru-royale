@@ -1,9 +1,6 @@
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy import func
-
 from interfaces.db import Engine
 from ningyo.models.ningyo import Fighter as StoredFighter
-
 from ningyo.fighter import Fighter
 from ningyo.modifiers import Accuracy, Power
 from ningyo.attributes import Attributes
@@ -11,7 +8,6 @@ from ningyo.experience import Experience
 
 
 class Player:
-
     def __init__(self):
         self.db_engine = Engine()
         self.session = sessionmaker(bind=self.db_engine.get_engine())
@@ -52,13 +48,13 @@ class Player:
         player_details = self.select_player(player.name)
 
         if player_details is not None:
-            player_details.type=player.type
-            player_details.level=player.level
-            player_details.skill=player.skill
-            player_details.strength=player.strength
-            player_details.stamina=player.stamina
-            player_details.hitpoints=player.hitPoints
-            player_details.experience=player.experience
+            player_details.type = player.type
+            player_details.level = player.level
+            player_details.skill = player.skill
+            player_details.strength = player.strength
+            player_details.stamina = player.stamina
+            player_details.hitpoints = player.hitPoints
+            player_details.experience = player.experience
         else:
             player_details = StoredFighter(
                 name=player.name,
