@@ -4,7 +4,6 @@ from batoru.ningyo.attributes import Attributes
 
 
 class TestAttributes(unittest.TestCase):
-
     def setUp(self):
         self.attributes_calc = Attributes()
 
@@ -39,7 +38,8 @@ class TestAttributes(unittest.TestCase):
                     self.assertGreater(random_attributes_values[i], 0)
                     self.assertGreaterEqual(random_attributes_values[i], math.floor(attributes_modifier * level))
                     if i == 0:
-                        self.assertGreaterEqual(random_attributes_values[i], math.floor(attributes_modifier * level) * 2)
+                        self.assertGreaterEqual(random_attributes_values[i],
+                                                math.floor(attributes_modifier * level) * 2)
                     i += 1
 
                 total = attributes_modifier * level * number_of_attributes * (number_of_attributes + 1)

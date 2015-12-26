@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String
-from install.models.base import Base
+from interfaces.models.base import Base
 
 
 class Fighter(Base):

@@ -16,7 +16,7 @@ def hello():
 
 
 @celery.task(bind=True)
-def run_battle(self):
+def run_battle():
     Battle()
 
 if __name__ == "__main__":

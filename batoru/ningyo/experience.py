@@ -1,12 +1,11 @@
 class Experience:
-
     @staticmethod
     def calculate_experience_need(level, experience_modifier):
 
         calculate_experience_need = 0
 
         for i in range(int(level)):
-            calculate_experience_need += ((int(i+1) + int(experience_modifier)) * (int(i+1) ** 2))
+            calculate_experience_need += ((int(i + 1) + int(experience_modifier)) * (int(i + 1) ** 2))
 
         return calculate_experience_need
 

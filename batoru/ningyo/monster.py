@@ -1,4 +1,3 @@
-import math
 import random
 from . import Ningyo
 
@@ -79,8 +78,8 @@ class Monster(Ningyo):
             self.typeStat = secondary_stat
             self.type = secondary_type
 
-    def empower(self, skill_modifier, round):
+    def empower(self, skill_modifier, round_id):
         Ningyo.empower(self, skill_modifier, 1)
 
-    def weaken(self, damage, skill_modifier, round):
+    def weaken(self, damage, skill_modifier, round_id):
         Ningyo.weaken(self, damage, skill_modifier, 1)

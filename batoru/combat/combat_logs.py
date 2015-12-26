@@ -3,7 +3,6 @@ from interfaces.logger import Logger
 
 
 class CombatLogs:
-
     def __init__(self):
         self.enabledScroll = True
         self.verboseEvent = True
@@ -23,18 +22,19 @@ class CombatLogs:
 
         if gain > 0:
             if damage > 0:
-                self.print_event("Fight", winner.name + " has knocked " + str(damage) + " hit points from " + loser.name + "!", 0)
+                self.print_event(winner.name + " has knocked " + str(damage) + " hit points from " + loser.name + "!",
+                                 0)
             else:
-                self.print_event("Fight", winner.name + " checked " + loser.name + " for weaknesses!", 0)
+                self.print_event(winner.name + " checked " + loser.name + " for weaknesses!", 0)
 
-            self.print_event("Fight", winner.name + " gained " + str(gain) + " attack points!", 0)
+            self.print_event(winner.name + " gained " + str(gain) + " attack points!", 0)
         else:
-            self.print_event("Fight", "Both fighters miss their swings! Pathetic!", 0)
+            self.print_event("Both fighters miss their swings! Pathetic!", 0)
 
-        self.print_event("Fight", "After this round " + winner.name + " has < " + str(winner.fightSkill) + " ap | "
-                       + str(winner.hitPoints) + " hp >", 0)
-        self.print_event("Fight", "After this round " + loser.name + " has < " + str(loser.fightSkill) + " ap | "
-                       + str(loser.hitPoints) + " hp >", 0)
+        self.print_event("After this round " + winner.name + " has < " + str(winner.fightSkill) + " ap | " + str(
+            winner.hitPoints) + " hp >", 0)
+        self.print_event("After this round " + loser.name + " has < " + str(loser.fightSkill) + " ap | " + str(
+            loser.hitPoints) + " hp >", 0)
         self.print_event("\n", 0)
 
         time.sleep(self.scrollSpeed)

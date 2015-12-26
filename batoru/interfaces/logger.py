@@ -42,20 +42,7 @@ class ElasticSearchLogger(Logger):
         self.elasticsearch.index(index=self.index, doc_type=self.doc_type, id=str(key), body=value)
 
     def load_sequence(self):
-        document = self.elasticsearch.search(index=self.index, body=
-        {
-            "query": {
-                "match_all": {}
-            },
-            "size": 1,
-            "sort": [
-                {
-                    "_timestamp": {
-                        "order": "desc"
-                    }
-                }
-            ],
-            "fields": ["_id"]
-        })
-
+        value = self.elasticsearch.search(index=self.index, body={"query": {"match_all": {}}, "size": 1,
+                                                                  "sort": [{"_timestamp": {"order": "desc"}}],
+                                                                  "fields": ["_id"]})
         return value
