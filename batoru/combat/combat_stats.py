@@ -28,6 +28,7 @@ class CombatStats:
         elastic_search_logger = ElasticSearchLogger('fights', 'fight')
         elastic_search_logger.write(fight_id, win_doc)
 
+
     @staticmethod
     def register_creation(player):
 
@@ -42,4 +43,4 @@ class CombatStats:
         }
 
         elastic_search_logger = ElasticSearchLogger('creation', 'character')
-        elastic_search_logger.write(character_id, character_doc)
+        elastic_search_logger.write(player.name + str(character_id), character_doc)

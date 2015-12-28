@@ -1,7 +1,7 @@
 import unittest
 from batoru.ningyo.ningyo import Ningyo
 from batoru.ningyo.attributes import Attributes
-from batoru.ningyo.modifiers import Power
+from batoru.ningyo.modifiers import Accuracy, Power
 
 
 class TestNingyo(unittest.TestCase):
@@ -10,6 +10,7 @@ class TestNingyo(unittest.TestCase):
         attributes = Attributes()
         self.player = Ningyo(attributes)
         self.player.name = 'name'
+        self.player.set_accuracy_calculator(Accuracy())
         self.player.set_power_calculator(Power())
 
     def test_is_dead(self):

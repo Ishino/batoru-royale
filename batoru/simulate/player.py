@@ -1,3 +1,5 @@
+import random
+
 from sqlalchemy.orm import sessionmaker
 from interfaces.db import Engine
 from ningyo.models.ningyo import Fighter as StoredFighter
@@ -8,6 +10,7 @@ from ningyo.experience import Experience
 
 
 class Player:
+
     def __init__(self):
         self.db_engine = Engine()
         self.session = sessionmaker(bind=self.db_engine.get_engine())
@@ -68,3 +71,23 @@ class Player:
             )
         self.player_session.add(player_details)
         self.player_session.commit()
+
+    @staticmethod
+    def generate_player_name():
+
+        pre = ['Sir', 'Dame', 'Super', 'Doctor', 'Dark']
+
+        middle = [
+            ['A', 'E', 'I', 'O', 'U', 'Y', 'Qa', 'Be', 'Xi', 'Mo', 'Zu'],
+            ['na', 'de', 'vi', 'co', 'su', 'ty'],
+            ['las', 'tef', 'vic', 'rot', 'pun', 'wyn'],
+            ['ca', 're', 'bi', 'no', 'lu', 'y']
+        ]
+
+        names_random = []
+        parts = random.randint(2, 4)
+        for i in range(int(parts)):
+            parts = middle[i]
+            names_random.append(random.choice(parts))
+
+        return random.choice(pre) + ' ' + ''.join(names_random)
