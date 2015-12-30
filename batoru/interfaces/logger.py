@@ -22,7 +22,10 @@ class RedisLogger(Logger):
         self.r = redis.StrictRedis(host='localhost', port=6379, db=0)
 
     def write(self, key, value):
-        self.r.lpush(key, value)
+        self.r.set(key, value, None, None, True, True)
+
+    def load(self, key):
+        return self.r.get(key)
 
     def load_sequence(self, key):
         self.r.setnx(key, 0)

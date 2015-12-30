@@ -6,14 +6,14 @@ from ningyo.attributes import Attributes
 from combat.combat_logs import CombatLogs
 from combat.combat_stats import CombatStats
 from combat.combat_calculations import CombatCalculations
-from simulate.tournament import Tournament
+from simulate.tournament import Tournament, TournamentExperience
 from simulate.player import Player
 
 
 class Battle:
     def __init__(self):
         self.attributes = Attributes()
-        self.player_factory = Player()
+        self.player_engine = Player()
         self.stats = CombatStats()
         self.fight = CombatLogs()
         self.logger = RedisLogger()
@@ -25,19 +25,19 @@ class Battle:
 
     def main(self):
 
-        name = self.player_factory.generate_player_name()
-        self.leveling(name, self.levelCap)
+        # name = self.player_factory.generate_player_name()
+        # self.leveling(name, self.levelCap)
 
-        # tournament_round = 1
-        #
-        # while tournament_round <= self.tournament_rounds:
-        #     tournament_id = self.logger.load_sequence("tournament_id")
-        #
-        #     self.tournament(self.levelCap, tournament_id, tournament_round)
-        #     tournament_round += 1
+        self.tournament()
+
+        tournament_round = 1
+
+        while tournament_round <= self.tournament_rounds:
+            self.tournament()
+            tournament_round += 1
 
     def create_player(self, name):
-        player = self.player_factory.load_player(name)
+        player = self.player_engine.load_player(name)
 
         event_text = "******************************************\nPlayer " + player.name + " created: < " + str(
             player.skill) + " ap | " + str(
@@ -82,7 +82,7 @@ class Battle:
                          + str(player_two.skill) + " ap | " + str(player_two.strength) + " str | " \
                          + str(player_two.stamina) + " sta | " + str(player_two.hitPoints) + " hp >"
             self.fight.print_event(event_text, 1)
-            self.compete(str(int(player_fight_id)), player_one, player_two)
+            self.battle(player_one.name + "." + str(player_fight_id), player_one, player_two)
 
             self.fight.print_newline = False
             self.fight.print_event(".", 0)
@@ -93,21 +93,88 @@ class Battle:
 
         self.fight.print_event("\n", 0)
 
-        self.player_factory.save_player(player_one)
+        self.player_engine.save_player(player_one)
 
-    def tournament(self, level_goal, tournament_id, tournament_round):
-        # tournament = Tournament()
-        # players = tournament.generate_tournament_table()
-        return
+    def tournament(self):
 
-    @staticmethod
-    def compete(fight_id, hero: Fighter, mob: Monster):
+        players = self.player_engine.generate_player_list(32)
 
-        fight = CombatLogs()
-        fight.enabledScroll = False
-        fight.logLevel = 0
+        tournament = Tournament()
+        tournament.set_player_list(players)
+        table = tournament.generate_tournament_table()
 
-        stats = CombatStats()
+        for tournament_round in table:
+            for match in tournament_round:
+                player_fight_id = self.logger.load_sequence(match[0] + '_fight_count')
+                player_one = self.create_player(match[0])
+                player_one.set_experience_calculator(TournamentExperience())
+                player_two = self.create_player(match[1])
+                player_one.set_experience_calculator(TournamentExperience())
+                winner = self.compete(match[0] + "." + str(player_fight_id), player_one, player_two)
+                tournament.register_win(winner.name)
+
+    def compete(self, fight_id, player_one: Fighter, player_two: Fighter):
+
+        self.fight.enabledScroll = False
+        self.fight.logLevel = 1
+
+        swing = 1
+
+        while True:
+            skill_modifier = CombatCalculations.calc_modifier(player_one.typeStat, player_two.typeStat, 0.2)
+
+            result = CombatCalculations.get_highest(int(player_one.accuracy()), int(player_two.accuracy()))
+            if result == 1:
+
+                damage = player_one.offence() - player_two.defence()
+                if damage < 1:
+                    damage = 0
+
+                player_one.empower(skill_modifier, swing)
+                player_two.weaken(damage, skill_modifier, swing)
+
+                self.fight.scroll(player_one, player_two, damage, skill_modifier)
+
+            elif result == 2:
+
+                damage = player_two.offence() - player_one.defence()
+                if damage < 1:
+                    damage = 0
+
+                player_two.empower(skill_modifier, swing)
+                player_one.weaken(damage, skill_modifier, swing)
+
+                self.fight.scroll(player_two, player_one, damage, skill_modifier)
+
+            else:
+                self.fight.scroll(player_two, player_one, 0, 0)
+
+            if player_two.is_dead():
+                event_text = "After " + str(swing) + " swings, " + player_one.name + " won!"
+                self.fight.print_event(event_text, 0)
+                self.fight.print_event("******************************************", 0)
+                self.stats.register_fight(player_one, player_two, swing, fight_id, 'win')
+                player_one.gain_experience(player_two.level)
+                player_one.calculate_stats()
+                player_two.calculate_stats()
+                return player_one
+
+            if player_one.is_dead():
+                event_text = "After " + str(swing) + " swings, " + player_two.name + " won!"
+                self.fight.print_event(event_text, 0)
+                self.fight.print_event("******************************************", 0)
+                self.stats.register_fight(player_one, player_two, swing, fight_id, 'loss')
+                player_two.gain_experience(player_one.level)
+                player_two.calculate_stats()
+                player_one.calculate_stats()
+                return player_two
+
+            swing += 1
+
+    def battle(self, fight_id, hero: Fighter, mob: Monster):
+
+        self.fight.enabledScroll = False
+        self.fight.logLevel = 0
 
         swing = 1
 
@@ -124,7 +191,7 @@ class Battle:
                 hero.empower(skill_modifier, swing)
                 mob.weaken(damage, skill_modifier, swing)
 
-                fight.scroll(hero, mob, damage, skill_modifier)
+                self.fight.scroll(hero, mob, damage, skill_modifier)
 
             elif result == 2:
 
@@ -135,25 +202,25 @@ class Battle:
                 mob.empower(skill_modifier, swing)
                 hero.weaken(damage, skill_modifier, swing)
 
-                fight.scroll(mob, hero, damage, skill_modifier)
+                self.fight.scroll(mob, hero, damage, skill_modifier)
 
             else:
-                fight.scroll(mob, hero, 0, 0)
+                self.fight.scroll(mob, hero, 0, 0)
 
             if mob.is_dead():
                 event_text = "After " + str(swing) + " swings, " + hero.name + " won!"
-                fight.log_event("tournament", event_text, 0)
-                fight.log_event("tournament", "******************************************", 0)
-                stats.register_fight(hero, mob, swing, fight_id, 'win')
+                self.fight.print_event(event_text, 0)
+                self.fight.print_event("******************************************", 0)
+                self.stats.register_fight(hero, mob, swing, fight_id, 'win')
                 hero.gain_experience(mob.level)
                 hero.calculate_stats()
                 return
 
             if hero.is_dead():
                 event_text = "After " + str(swing) + " swings, " + mob.name + " won!"
-                fight.log_event("tournament", event_text, 0)
-                fight.log_event("tournament", "******************************************", 0)
-                stats.register_fight(hero, mob, swing, fight_id, 'loss')
+                self.fight.print_event(event_text, 0)
+                self.fight.print_event("******************************************", 0)
+                self.stats.register_fight(hero, mob, swing, fight_id, 'loss')
                 hero.calculate_stats()
                 return
 

@@ -24,11 +24,13 @@ class Ningyo:
 
         self.number_attributes = 1
 
-        self.attributeCalc = attribute_calc
-
         self.abilityPointRefresh = 3
-
         self.ability = 1
+
+        self.attributeCalc = attribute_calc
+        self.experienceCalc = None
+        self.powerCalc = None
+        self.accuracyCalc = None
 
     def set_experience_calculator(self, experience_calc):
         self.experienceCalc = experience_calc

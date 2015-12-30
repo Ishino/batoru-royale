@@ -91,3 +91,10 @@ class Player:
             names_random.append(random.choice(parts))
 
         return random.choice(pre) + ' ' + ''.join(names_random)
+
+    def generate_player_list(self, x):
+        players = []
+        for i in range(x):
+            players.append(self.generate_player_name())
+
+        return players
