@@ -27,9 +27,8 @@ class Tournament:
 
     def generate_tournament_table(self):
         n = len(self.players)
+        mid = n / 2
         for i in range(n - 1):
-
-            mid = n / 2
             l1 = self.players[:int(mid)]
             l2 = self.players[int(mid):]
             l2.reverse()
@@ -44,7 +43,9 @@ class Tournament:
         return self.tournament_table
 
     def register_win(self, name):
-        tournament = self.redis_logger.load('tournament_' + str(self.tournament_id))
+        key = 'tournament_table_' + str(int(self.tournament_id))
+
+        tournament = self.redis_logger.load(key)
 
         stored_tournament = {}
         if tournament is not None:
@@ -54,9 +55,9 @@ class Tournament:
             stored_tournament[name] += 1
         else:
             stored_tournament[name] = 1
-        stored_tournament = json.dumps(stored_tournament)
-        print(stored_tournament)
-        self.redis_logger.write('tournament_' + str(self.tournament_id), stored_tournament)
+
+        tournament = json.dumps(stored_tournament)
+        self.redis_logger.write(key, tournament)
 
 
 class TournamentExperience(Experience):

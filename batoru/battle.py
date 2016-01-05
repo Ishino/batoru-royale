@@ -28,8 +28,6 @@ class Battle:
         # name = self.player_factory.generate_player_name()
         # self.leveling(name, self.levelCap)
 
-        self.tournament()
-
         tournament_round = 1
 
         while tournament_round <= self.tournament_rounds:
@@ -37,6 +35,7 @@ class Battle:
             tournament_round += 1
 
     def create_player(self, name):
+        self.fight.logLevel = 0
         player = self.player_engine.load_player(name)
 
         event_text = "******************************************\nPlayer " + player.name + " created: < " + str(
@@ -105,18 +104,28 @@ class Battle:
 
         for tournament_round in table:
             for match in tournament_round:
-                player_fight_id = self.logger.load_sequence(match[0] + '_fight_count')
+                tournament_fight_id = self.logger.load_sequence(
+                    'tournament_' + str(tournament.tournament_id) + '_fight_count')
                 player_one = self.create_player(match[0])
                 player_one.set_experience_calculator(TournamentExperience())
                 player_two = self.create_player(match[1])
                 player_one.set_experience_calculator(TournamentExperience())
-                winner = self.compete(match[0] + "." + str(player_fight_id), player_one, player_two)
+                winner = self.compete(str(tournament.tournament_id) + "." + str(tournament_fight_id), player_one, player_two)
                 tournament.register_win(winner.name)
+
+                self.fight.logLevel = 1
+                self.fight.print_newline = False
+                self.fight.print_event(".", 0)
+                mod10 = int(tournament_fight_id) % 100
+                if mod10 == 0:
+                    self.fight.print_newline = True
+                    self.fight.print_event(" ( " + str(int(tournament_fight_id)) + " )", 0)
+
+        self.fight.print_event("\n", 0)
 
     def compete(self, fight_id, player_one: Fighter, player_two: Fighter):
 
         self.fight.enabledScroll = False
-        self.fight.logLevel = 1
 
         swing = 1
 
@@ -150,26 +159,29 @@ class Battle:
                 self.fight.scroll(player_two, player_one, 0, 0)
 
             if player_two.is_dead():
-                event_text = "After " + str(swing) + " swings, " + player_one.name + " won!"
-                self.fight.print_event(event_text, 0)
-                self.fight.print_event("******************************************", 0)
-                self.stats.register_fight(player_one, player_two, swing, fight_id, 'win')
-                player_one.gain_experience(player_two.level)
-                player_one.calculate_stats()
-                player_two.calculate_stats()
-                return player_one
+                return self.save_result(fight_id, player_one, player_two, swing)
 
             if player_one.is_dead():
-                event_text = "After " + str(swing) + " swings, " + player_two.name + " won!"
-                self.fight.print_event(event_text, 0)
-                self.fight.print_event("******************************************", 0)
-                self.stats.register_fight(player_one, player_two, swing, fight_id, 'loss')
-                player_two.gain_experience(player_one.level)
-                player_two.calculate_stats()
-                player_one.calculate_stats()
-                return player_two
+                return self.save_result(fight_id, player_two, player_one, swing)
 
             swing += 1
+
+    def save_result(self, fight_id, winner, loser, swings):
+        self.fight.logLevel = 0
+
+        event_text = "After " + str(swings) + " swings, " + winner.name + " won " + str(fight_id) \
+                     + "!\n******************************************"
+        self.fight.print_event(event_text, 0)
+
+        self.stats.register_fight(winner, loser, swings, fight_id, 'win')
+        self.stats.register_fight(loser, winner, swings, fight_id, 'loss')
+
+        winner.gain_experience(loser.level)
+
+        winner.calculate_stats()
+        loser.calculate_stats()
+
+        return winner
 
     def battle(self, fight_id, hero: Fighter, mob: Monster):
 

@@ -22,16 +22,19 @@ class RedisLogger(Logger):
         self.r = redis.StrictRedis(host='localhost', port=6379, db=0)
 
     def write(self, key, value):
-        self.r.set(key, value, None, None, True, True)
+        self.r.set(key, value.encode('utf-8'))
 
     def load(self, key):
-        return self.r.get(key)
+        value = self.r.get(key)
+        if value is not None:
+            return value.decode('utf-8')
+
+        return value
 
     def load_sequence(self, key):
         self.r.setnx(key, 0)
         self.r.incr(key, 1)
-        value = self.r.get(key)
-        return value
+        return self.r.get(key).decode('utf-8')
 
 
 class ElasticSearchLogger(Logger):
