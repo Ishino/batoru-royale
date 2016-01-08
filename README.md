@@ -29,10 +29,3 @@ To the fights filter, add a scripted field
 
 name: level_difference
 script: doc['fighter_level'].value - doc['opponent_level'].value
-
-
-## Notes ##
-
-Use Evolus Pencil to read the diagrams.
-
-http://pencil.evolus.vn/
