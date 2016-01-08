@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
 from interfaces.models.base import Base
 
 
@@ -14,3 +15,4 @@ class Fighter(Base):
     stamina = Column(Integer)
     hitpoints = Column(Integer)
     experience = Column(Integer)
+    tournament_table = relationship("TournamentTable")
