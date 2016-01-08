@@ -14,6 +14,23 @@ Learning Python the fun way.
 
 - Python 3.x
 
+
+## Kibana ##
+
+You can use Kibana to visualize the charater creation and fight statistics. In the kibana folder are JSON exports
+to use in Kibana 4.3
+
+To use all the saved objects add the following indices:
+
+- creation
+- fights
+
+To the fights filter, add a scripted field
+
+name: level_difference
+script: doc['fighter_level'].value - doc['opponent_level'].value
+
+
 ## Notes ##
 
 Use Evolus Pencil to read the diagrams.

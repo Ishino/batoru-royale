@@ -20,26 +20,6 @@
     }
   },
   {
-    "_id": "Characters",
-    "_type": "search",
-    "_source": {
-      "title": "Characters",
-      "description": "",
-      "hits": 0,
-      "columns": [
-        "_source"
-      ],
-      "sort": [
-        "timestamp",
-        "desc"
-      ],
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"stats\",\"query\":{\"query_string\":{\"query\":\"_type: character\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
-      }
-    }
-  },
-  {
     "_id": "Fights-Wins-No-level-difference",
     "_type": "search",
     "_source": {
