@@ -1,0 +1,82 @@
+[
+  {
+    "_id": "No-level-difference",
+    "_type": "search",
+    "_source": {
+      "title": "No level difference",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "_source"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"fights\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}},\"filter\":[{\"meta\":{\"negate\":false,\"index\":\"fights\",\"field\":\"level_difference\",\"key\":\"level_difference\",\"value\":\"0\",\"disabled\":false,\"alias\":null},\"script\":{\"script\":\"(doc['fighter_level'].value - doc['opponent_level'].value) == value\",\"lang\":\"expression\",\"params\":{\"value\":0}},\"$state\":{\"store\":\"appState\"}}],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "Characters",
+    "_type": "search",
+    "_source": {
+      "title": "Characters",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "_source"
+      ],
+      "sort": [
+        "timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"stats\",\"query\":{\"query_string\":{\"query\":\"_type: character\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "Fights-Wins-No-level-difference",
+    "_type": "search",
+    "_source": {
+      "title": "Fights - Wins - No level difference",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "_source"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"fights\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}},\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"field\":\"level_difference\",\"index\":\"fights\",\"key\":\"level_difference\",\"negate\":false,\"value\":\"0\"},\"script\":{\"lang\":\"expression\",\"params\":{\"value\":0},\"script\":\"(doc['fighter_level'].value - doc['opponent_level'].value) == value\"}},{\"meta\":{\"negate\":false,\"index\":\"fights\",\"key\":\"outcome\",\"value\":\"win\",\"disabled\":false,\"alias\":null},\"query\":{\"match\":{\"outcome\":{\"query\":\"win\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}}],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  },
+  {
+    "_id": "Fights-Wins,-Loss-above-level-1",
+    "_type": "search",
+    "_source": {
+      "title": "Fights - Wins, Loss above level 1",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "_source"
+      ],
+      "sort": [
+        "timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"fights\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}},\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":\"fighter_level_gt_1\",\"disabled\":false,\"index\":\"fights\",\"key\":\"query\",\"negate\":false,\"value\":\"{\\\"range\\\":{\\\"fighter_level\\\":{\\\"gt\\\":1}}}\"},\"query\":{\"range\":{\"fighter_level\":{\"gt\":1}}}}],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  }
+]
