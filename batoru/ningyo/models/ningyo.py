@@ -15,4 +15,3 @@ class Fighter(Base):
     stamina = Column(Integer)
     hitpoints = Column(Integer)
     experience = Column(Integer)
-    tournament_table = relationship("TournamentTable")

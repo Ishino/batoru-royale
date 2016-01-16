@@ -116,12 +116,12 @@ class Battle:
                 self.fight.logLevel = 1
                 self.fight.print_newline = False
                 self.fight.print_event(".", 0)
-                mod10 = int(tournament_fight_id) % 100
+                mod10 = int(tournament_fight_id) % 50
                 if mod10 == 0:
                     self.fight.print_newline = True
                     self.fight.print_event(" ( " + str(int(tournament_fight_id)) + " )", 0)
 
-        self.fight.print_event("\n", 0)
+        self.fight.print_event(" ( " + str(int(tournament_fight_id)) + " )\n", 0)
 
     def compete(self, fight_id, player_one: Fighter, player_two: Fighter):
 

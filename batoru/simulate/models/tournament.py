@@ -8,7 +8,6 @@ class Tournament(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
-    tournament_table = relationship("TournamentTable")
 
 class TournamentTable(Base):
     __tablename__ = 'tournament_table'
@@ -16,3 +15,5 @@ class TournamentTable(Base):
     id = Column(Integer, primary_key=True)
     tournament_id = Column(Integer, ForeignKey('tournament.id'))
     fighter_id = Column(Integer, ForeignKey('fighter.id'))
+    tournament = relationship("Tournament")
+    fighter = relationship("Fighter")
