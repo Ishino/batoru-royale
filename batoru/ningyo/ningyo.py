@@ -24,9 +24,6 @@ class Ningyo:
 
         self.number_attributes = 1
 
-        self.abilityPointRefresh = 3
-        self.ability = 1
-
         self.attributeCalc = attribute_calc
         self.experienceCalc = None
         self.powerCalc = None
@@ -53,12 +50,10 @@ class Ningyo:
             return True
         return False
 
-    def empower(self, skill_modifier, round_id):
+    def empower(self, skill_modifier):
         self.fightSkill = int(self.fightSkill) + int(skill_modifier)
-        if round_id % self.abilityPointRefresh == 0:
-            self.ability += 1
 
-    def weaken(self, damage, skill_modifier, round_id):
+    def weaken(self, damage, skill_modifier):
         self.hitPoints = int(self.hitPoints) - int(damage)
         self.fightSkill = int(self.fightSkill) - int(skill_modifier)
         if int(self.fightSkill) < 0:
@@ -75,14 +70,8 @@ class Ningyo:
 
     def offence(self):
         offence = self.powerCalc.get_power(self.skill, self.fightSkill)
-        if self.ability > 0:
-            offence += offence
-            self.ability -= 1
         return offence
 
     def defence(self):
         defence = self.powerCalc.get_power(self.skill, self.fightSkill)
-        if self.ability > 0:
-            defence += defence
-            self.ability -= 1
         return defence

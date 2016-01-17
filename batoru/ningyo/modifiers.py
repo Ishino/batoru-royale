@@ -32,3 +32,21 @@ class Power:
         power_modifier = (power * self.powerModifier) / self.powerReduction
         power = math.floor(math.fabs(energy * power_modifier))
         return power
+
+class PowerAbility(Power):
+
+    def __init__(self):
+        self.ability = 0
+        self.abilityPointRefresh = 3
+        self.ticker = 0
+        Power.__init__(self)
+
+    def get_power(self, power, energy):
+        power = Power.get_power(self, power, energy)
+
+        if self.ticker % self.abilityPointRefresh == 0:
+            self.ability += 1
+
+        if self.ability > 0:
+            power += power
+        return power

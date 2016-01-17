@@ -102,6 +102,8 @@ class Battle:
         tournament.set_player_list(players)
         table = tournament.generate_tournament_table()
 
+        tournament_fight_id = 0
+
         for tournament_round in table:
             for match in tournament_round:
                 tournament_fight_id = self.logger.load_sequence(
@@ -139,8 +141,8 @@ class Battle:
                 if damage < 1:
                     damage = 0
 
-                player_one.empower(skill_modifier, swing)
-                player_two.weaken(damage, skill_modifier, swing)
+                player_one.empower(skill_modifier)
+                player_two.weaken(damage, skill_modifier)
 
                 self.fight.scroll(player_one, player_two, damage, skill_modifier)
 
@@ -150,8 +152,8 @@ class Battle:
                 if damage < 1:
                     damage = 0
 
-                player_two.empower(skill_modifier, swing)
-                player_one.weaken(damage, skill_modifier, swing)
+                player_two.empower(skill_modifier)
+                player_one.weaken(damage, skill_modifier)
 
                 self.fight.scroll(player_two, player_one, damage, skill_modifier)
 
@@ -200,7 +202,7 @@ class Battle:
                 if damage < 1:
                     damage = 0
 
-                hero.empower(skill_modifier, swing)
+                hero.empower(skill_modifier)
                 mob.weaken(damage, skill_modifier, swing)
 
                 self.fight.scroll(hero, mob, damage, skill_modifier)
@@ -212,7 +214,7 @@ class Battle:
                     damage = 0
 
                 mob.empower(skill_modifier, swing)
-                hero.weaken(damage, skill_modifier, swing)
+                hero.weaken(damage, skill_modifier)
 
                 self.fight.scroll(mob, hero, damage, skill_modifier)
 
