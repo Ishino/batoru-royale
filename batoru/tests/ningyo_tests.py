@@ -25,22 +25,22 @@ class TestNingyo(unittest.TestCase):
 
     def test_empower(self):
         self.player.fightSkill = 1
-        self.player.empower(1, 1)
+        self.player.empower(1)
         self.assertEqual(self.player.fightSkill, 2)
 
     def test_weaken(self):
         self.player.fightSkill = 2
         self.player.hitPoints = 2
 
-        self.player.weaken(1, 1, 1)
+        self.player.weaken(1, 1)
         self.assertEqual(self.player.fightSkill, 1)
         self.assertEqual(self.player.hitPoints, 1)
 
-        self.player.weaken(1, 1, 1)
+        self.player.weaken(1, 1)
         self.assertEqual(self.player.fightSkill, 0)
         self.assertEqual(self.player.hitPoints, 0)
 
-        self.player.weaken(1, 1, 1)
+        self.player.weaken(1, 1)
         self.assertEqual(self.player.fightSkill, 0)
         self.assertEqual(self.player.hitPoints, -1)
 
