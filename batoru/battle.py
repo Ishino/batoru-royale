@@ -19,7 +19,7 @@ class Battle:
         self.logger = RedisLogger()
 
         self.levelCap = 2
-        self.tournament_rounds = 10
+        self.tournament_rounds = 20
 
         self.main()
 
@@ -96,9 +96,10 @@ class Battle:
 
     def tournament(self):
 
-        players = self.player_engine.generate_player_list(32)
+        competition_id = 1
 
         tournament = Tournament()
+        players = self.player_engine.use_player_list(competition_id, 32)
         tournament.set_player_list(players)
         table = tournament.generate_tournament_table()
 
@@ -111,8 +112,9 @@ class Battle:
                 player_one = self.create_player(match[0])
                 player_one.set_experience_calculator(TournamentExperience())
                 player_two = self.create_player(match[1])
-                player_one.set_experience_calculator(TournamentExperience())
-                winner = self.compete(str(tournament.tournament_id) + "." + str(tournament_fight_id), player_one, player_two)
+                player_two.set_experience_calculator(TournamentExperience())
+                winner = self.compete(str(tournament.tournament_id) + "."
+                                      + str(tournament_fight_id), player_one, player_two)
                 tournament.register_win(winner.name)
 
                 self.fight.logLevel = 1
@@ -124,6 +126,14 @@ class Battle:
                     self.fight.print_event(" ( " + str(int(tournament_fight_id)) + " )", 0)
 
         self.fight.print_event(" ( " + str(int(tournament_fight_id)) + " )\n", 0)
+
+        for player in players:
+            fighter = self.player_engine.load_player(player)
+            self.fight.print_event(" [ " + str(fighter.name) + " ] level: " + str(fighter.level) + " exp: "
+                                   + str(fighter.experience) + "/"
+                                   + str(
+                TournamentExperience().calculate_experience_need(fighter.level, fighter.experience_modifier))
+                                   + " type: " + str(fighter.type) + "\n", 0)
 
     def compete(self, fight_id, player_one: Fighter, player_two: Fighter):
 
@@ -182,6 +192,9 @@ class Battle:
 
         winner.calculate_stats()
         loser.calculate_stats()
+
+        self.player_engine.save_player(winner)
+        self.player_engine.save_player(loser)
 
         return winner
 

@@ -1,8 +1,10 @@
 import random
 
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.sql import select
 from interfaces.db import Engine
 from ningyo.models.ningyo import Fighter as StoredFighter
+from simulate.models.player import PlayerList
 from ningyo.fighter import Fighter
 from ningyo.modifiers import Accuracy, Power
 from ningyo.attributes import Attributes
@@ -98,3 +100,19 @@ class Player:
             players.append(self.generate_player_name())
 
         return players
+
+    def use_player_list(self, list_id, x):
+
+        player_list = []
+        for player in self.player_session.query(PlayerList).filter(PlayerList.list_id == list_id).all():
+            player_list.append(player.name)
+        if len(player_list) == 0:
+            player_list = self.generate_player_list(x)
+            for player in player_list:
+                player_details = PlayerList(
+                    list_id=list_id,
+                    name=player
+                )
+                self.player_session.add(player_details)
+                self.player_session.commit()
+        return player_list
