@@ -10,8 +10,10 @@ branches:
   - master
 install:
 - pip install -r requirements.txt
+- pip install pep8
 script:
 - nosetests -v --with-coverage --cover-html
+- pep8 batoru --ignore=E501
 after_success:
 - ./update-gh-pages.sh
 env:
