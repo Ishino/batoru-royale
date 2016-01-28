@@ -9,6 +9,7 @@ class Tournament(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
 
+
 class TournamentTable(Base):
     __tablename__ = 'tournament_table'
 

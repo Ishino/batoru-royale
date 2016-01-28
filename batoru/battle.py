@@ -113,8 +113,8 @@ class Battle:
                 player_one.set_experience_calculator(TournamentExperience())
                 player_two = self.create_player(match[1])
                 player_two.set_experience_calculator(TournamentExperience())
-                winner = self.compete(str(tournament.tournament_id) + "."
-                                      + str(tournament_fight_id), player_one, player_two)
+                winner = self.compete(str(tournament.tournament_id) + "." +
+                                      str(tournament_fight_id), player_one, player_two)
                 tournament.register_win(winner.name)
 
                 self.fight.logLevel = 1
@@ -129,11 +129,11 @@ class Battle:
 
         for player in players:
             fighter = self.player_engine.load_player(player)
-            self.fight.print_event(" [ " + str(fighter.name) + " ] level: " + str(fighter.level) + " exp: "
-                                   + str(fighter.experience) + "/"
-                                   + str(
-                TournamentExperience().calculate_experience_need(fighter.level, fighter.experience_modifier))
-                                   + " type: " + str(fighter.type) + "\n", 0)
+            self.fight.print_event(" [ " + str(fighter.name) + " ] level: " + str(fighter.level) + " exp: " +
+                                   str(fighter.experience) + "/" +
+                                   str(TournamentExperience().calculate_experience_need(
+                                       fighter.level, fighter.experience_modifier)) +
+                                   " type: " + str(fighter.type) + "\n", 0)
 
     def compete(self, fight_id, player_one: Fighter, player_two: Fighter):
 

@@ -33,6 +33,7 @@ class Power:
         power = math.floor(math.fabs(energy * power_modifier))
         return power
 
+
 class PowerAbility(Power):
 
     def __init__(self):
