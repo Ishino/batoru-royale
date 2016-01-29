@@ -25,7 +25,7 @@ class Battle:
 
     def main(self):
 
-        # name = self.player_factory.generate_player_name()
+        # name = self.player_engine.generate_player_name()
         # self.leveling(name, self.levelCap)
 
         tournament_round = 1
