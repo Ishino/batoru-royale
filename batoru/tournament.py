@@ -1,3 +1,3 @@
-from simulate.tournament import Tournament
+from simulator.tournament import Tournament
 
 this_tournament = Tournament()

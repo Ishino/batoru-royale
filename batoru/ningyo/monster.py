@@ -78,8 +78,8 @@ class Monster(Ningyo):
             self.typeStat = secondary_stat
             self.type = secondary_type
 
-    def empower(self, skill_modifier, round_id):
-        Ningyo.empower(self, skill_modifier, 1)
+    def empower(self, skill_modifier):
+        Ningyo.empower(self, skill_modifier)
 
-    def weaken(self, damage, skill_modifier, round_id):
-        Ningyo.weaken(self, damage, skill_modifier, 1)
+    def weaken(self, damage, skill_modifier):
+        Ningyo.weaken(self, damage, skill_modifier)
