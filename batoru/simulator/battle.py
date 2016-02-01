@@ -118,10 +118,10 @@ class Battle:
     @staticmethod
     def get_player_status(player):
         player_status_text = "At level " + str(player.level) + " " + player.name + " has < " \
-                         + str(player.skill) + " ap | " + str(player.strength) + " str | " \
-                         + str(player.stamina) + " sta | " + str(player.hitPoints) + " hp | " \
-                         + str(player.experience) + " XP | needed: " \
-                         + str(player.experienceCalc.calculate_experience_need(player.level,
+                             + str(player.skill) + " ap | " + str(player.strength) + " str | " \
+                             + str(player.stamina) + " sta | " + str(player.hitPoints) + " hp | " \
+                             + str(player.experience) + " XP | needed: " \
+                             + str(player.experienceCalc.calculate_experience_need(player.level,
                                                                                    player.experience_modifier
                                                                                    )) + " >"
         return player_status_text
