@@ -25,22 +25,23 @@ class CombatLogs:
         if not self.enabledScroll:
             return
 
+        self.publish_event("\n", 0, 'fight log', '/fight')
+
         if gain > 0:
             if damage > 0:
                 self.publish_event(winner.name + " has knocked " + str(damage) + " hit points from " + loser.name + "!",
-                                   0)
+                                   0, 'fight log', '/fight')
             else:
-                self.publish_event(winner.name + " checked " + loser.name + " for weaknesses!", 0)
+                self.publish_event(winner.name + " checked " + loser.name + " for weaknesses!", 0, 'fight log', '/fight')
 
-            self.publish_event(winner.name + " gained " + str(gain) + " attack points!", 0)
+            self.publish_event(winner.name + " gained " + str(gain) + " attack points!", 0, 'fight log', '/fight')
         else:
-            self.publish_event("Both fighters miss their swings! Pathetic!", 0)
+            self.publish_event("Both fighters miss their swings! Pathetic!", 0, 'fight log', '/fight')
 
         self.publish_event("After this round " + winner.name + " has < " + str(winner.fightSkill) + " ap | " + str(
-            winner.hitPoints) + " hp >", 0)
+            winner.hitPoints) + " hp >", 0, 'fight log', '/fight')
         self.publish_event("After this round " + loser.name + " has < " + str(loser.fightSkill) + " ap | " + str(
-            loser.hitPoints) + " hp >", 0)
-        self.publish_event("\n", 0)
+            loser.hitPoints) + " hp >", 0, 'fight log', '/fight')
 
         time.sleep(self.scrollSpeed)
 
@@ -55,6 +56,6 @@ class CombatLogs:
             if self.print_newline:
                 print("\n", end="")
 
-    def publish_event(self, text, level):
+    def publish_event(self, text, level, stream='stream', namespace=''):
         if level < self.logLevel:
-            self.socketio.emit('my response', {'data': text}, namespace='/fight')
+            self.socketio.emit(stream, {'data': text}, namespace=namespace)

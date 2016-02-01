@@ -10,5 +10,5 @@ def index():
 
 
 @app.route('/<path:filename>')
-def send_js(filename):
+def send_static(filename):
     return send_from_directory(app.static_folder, filename)

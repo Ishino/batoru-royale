@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Batoru Royale</title>
+    <link rel="stylesheet" href="/css/style.css">
     <script type="text/javascript" src="js/socket.io.min.js"></script>
     <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
     <script type="text/javascript" charset="utf-8">
@@ -13,18 +14,41 @@
 
         // event handler for server sent data
         // the data is displayed in the "Received" section of the page
-        socket.on('my response', function(msg) {
+        socket.on('fight status', function(msg) {
+            $('#status').prepend($('<div/>').text(msg.data).html() + '<br>');
+        });
+
+        socket.on('fight log', function(msg) {
             $('#log').prepend($('<div/>').text(msg.data).html() + '<br>');
         });
 
         // event handler for new connections
         socket.on('connect', function() {
-            socket.emit('my event', {data: 'I\'m connected!'});
+            socket.emit('my message', {data: 'I\'m connected!'});
+        });
+
+        $( document ).ready(function() {
+            $( "#fight" ).click(function() {
+                $('#log').empty();
+                socket.emit('fight', {data: 'single'});
+            });
+
+            $( "#level" ).click(function() {
+                $('#log').empty();
+                socket.emit('fight', {data: 'level'});
+            });
         });
     </script>
 </head>
 <body>
 <h1>Batoru Royale</h1>
-<div id="log"></div>
+<div>
+    <input type="button" value="Fight!" id="fight" />
+    <input type="button" value="Level Up!" id="level" />
+</div>
+<h2>Status</h2>
+<div id="status" class="info"></div>
+<h2>Log</h2>
+<div id="log" class="info"></div>
 </body>
 </html>

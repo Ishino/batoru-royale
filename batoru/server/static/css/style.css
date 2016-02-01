@@ -1,0 +1,18 @@
+#status {
+  height: 200px;
+}
+
+#log {
+  height: 400px;
+}
+
+.info {
+  width: 790px;
+  background: #fff;
+  font: 15px Georgia;
+  color: #666;
+  display: block;
+  overflow: scroll;
+  border: 1px #666 solid;
+  padding: 4px;
+}

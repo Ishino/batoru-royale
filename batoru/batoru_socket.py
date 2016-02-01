@@ -1,3 +1,5 @@
+import pika
+
 from flask import session
 from flask_socketio import SocketIO, emit
 from server.batoru_front import app
@@ -12,9 +14,24 @@ def test_message(message):
          {'data': message['data'], 'count': session['receive_count']})
 
 
-@socketio.on('message')
+@socketio.on('fight', namespace='/fight')
+def start_fight(message):
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    channel = connection.channel()
+
+    channel.queue_declare(queue='fight')
+
+    channel.basic_publish(exchange='',
+                          routing_key='fight',
+                          body=message['data'])
+
+    connection.close()
+    print('received message: ' + message['data'])
+
+
+@socketio.on('my message', namespace='/fight')
 def handle_message(message):
-    print('received message: ' + message)
+    print('received message: ' + message['data'])
 
 
 @socketio.on('my broadcast event', namespace='/fight')
@@ -25,7 +42,7 @@ def test_message(message):
 @socketio.on('connect', namespace='/fight')
 def test_connect():
     session['receive_count'] = session.get('receive_count', 0) + 1
-    emit('my response', {'data': 'Connected', 'count': session['receive_count']})
+    emit('fight status', {'data': 'Connected', 'count': session['receive_count']})
 
 
 @socketio.on('disconnect', namespace='/fight')
