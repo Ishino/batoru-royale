@@ -1,4 +1,5 @@
 import pika
+import json
 
 from simulator.battle import Battle
 
@@ -9,14 +10,16 @@ channel.queue_declare(queue='fight')
 
 
 def callback(ch, method, properties, body):
-    print(" [x] Received %r" % body.decode('utf-8'))
+    message = json.loads(body.decode('utf-8'))
+    print(" [x] Received %r" % message['data'])
     fight = Battle()
-    fight.simulate('Ishino', body.decode('utf-8'))
-    print(" [x] finished %r" % body.decode('utf-8'))
+    fight.simulate('Ishino', message['data'], message['room'])
+    print(" [x] finished %r" % message['data'])
+    ch.basic_ack(delivery_tag=method.delivery_tag)
 
+channel.basic_qos(prefetch_count=1)
 channel.basic_consume(callback,
-                      queue='fight',
-                      no_ack=True)
+                      queue='fight')
 
 print(' [*] Waiting for messages. To exit press CTRL+C')
 channel.start_consuming()

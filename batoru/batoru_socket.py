@@ -1,6 +1,7 @@
 import pika
+import json
 
-from flask import session
+from flask import session, request
 from flask_socketio import SocketIO, emit
 from server.batoru_front import app
 
@@ -23,10 +24,10 @@ def start_fight(message):
 
     channel.basic_publish(exchange='',
                           routing_key='fight',
-                          body=message['data'])
+                          body=json.dumps(message))
 
     connection.close()
-    print('received message: ' + message['data'])
+    print(message['room'] + 'received message: ' + message['data'])
 
 
 @socketio.on('my message', namespace='/fight')
@@ -51,4 +52,4 @@ def test_disconnect():
 
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    socketio.run(app, debug=True, host='0.0.0.0')

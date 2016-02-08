@@ -20,28 +20,28 @@ class CombatLogs:
     def set_logger(self, logger: Logger):
         self.logger = logger
 
-    def scroll(self, winner, loser, damage, gain):
+    def scroll(self, winner, loser, damage, gain, room=''):
 
         if not self.enabledScroll:
             return
 
-        self.publish_event("\n", 0, 'fight log', '/fight')
+        self.publish_event("\n", 0, 'fight log', '/fight', room)
 
         if gain > 0:
             if damage > 0:
                 self.publish_event(winner.name + " has knocked " + str(damage) + " hit points from " + loser.name + "!",
-                                   0, 'fight log', '/fight')
+                                   0, 'fight log', '/fight', room)
             else:
-                self.publish_event(winner.name + " checked " + loser.name + " for weaknesses!", 0, 'fight log', '/fight')
+                self.publish_event(winner.name + " checked " + loser.name + " for weaknesses!", 0, 'fight log', '/fight', room)
 
-            self.publish_event(winner.name + " gained " + str(gain) + " attack points!", 0, 'fight log', '/fight')
+            self.publish_event(winner.name + " gained " + str(gain) + " attack points!", 0, 'fight log', '/fight', room)
         else:
-            self.publish_event("Both fighters miss their swings! Pathetic!", 0, 'fight log', '/fight')
+            self.publish_event("Both fighters miss their swings! Pathetic!", 0, 'fight log', '/fight', room)
 
         self.publish_event("After this round " + winner.name + " has < " + str(winner.fightSkill) + " ap | " + str(
-            winner.hitPoints) + " hp >", 0, 'fight log', '/fight')
+            winner.hitPoints) + " hp >", 0, 'fight log', '/fight', room)
         self.publish_event("After this round " + loser.name + " has < " + str(loser.fightSkill) + " ap | " + str(
-            loser.hitPoints) + " hp >", 0, 'fight log', '/fight')
+            loser.hitPoints) + " hp >", 0, 'fight log', '/fight', room)
 
         time.sleep(self.scrollSpeed)
 
@@ -56,6 +56,6 @@ class CombatLogs:
             if self.print_newline:
                 print("\n", end="")
 
-    def publish_event(self, text, level, stream='stream', namespace=''):
+    def publish_event(self, text, level, stream='stream', namespace='', room=''):
         if level < self.logLevel:
-            self.socketio.emit(stream, {'data': text}, namespace=namespace)
+            self.socketio.emit(stream, {'data': text}, namespace=namespace, room=room)
