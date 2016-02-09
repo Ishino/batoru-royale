@@ -23,7 +23,7 @@ class Battle:
 
         self.room = ''
 
-    def simulate(self, name='', battle_type='single', room = ''):
+    def simulate(self, name='', battle_type='single', room=''):
         self.room = room
         if battle_type == 'single':
             # Single fight with scroll
