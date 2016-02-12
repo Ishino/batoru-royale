@@ -1,7 +1,7 @@
 import pika
 import json
 
-from flask import session, request
+from flask import session
 from flask_socketio import SocketIO, emit
 from server.batoru_front import app
 
@@ -27,7 +27,7 @@ def start_fight(message):
                           body=json.dumps(message))
 
     connection.close()
-    print(message['room'] + 'received message: ' + message['data'])
+    print(message['player'] + ' started: ' + message['data'] + ' in room ' + message['room'])
 
 
 @socketio.on('my message', namespace='/fight')

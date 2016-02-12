@@ -32,12 +32,12 @@
         $( document ).ready(function() {
             $( "#fight" ).click(function() {
                 $('#log').empty();
-                socket.emit('fight', {room: id, data: 'single'});
+                socket.emit('fight', {room: id, data: 'single', player: $( "#player" ).val()});
             });
 
             $( "#level" ).click(function() {
                 $('#log').empty();
-                socket.emit('fight', {room: id, data: 'level'});
+                socket.emit('fight', {room: id, data: 'level', player: $( "#player" ).val()});
             });
         });
     </script>
@@ -45,6 +45,7 @@
 <body>
 <h1>Batoru Royale</h1>
 <div>
+    <input type="text" id="player" placeholder="player name" />
     <input type="button" value="Fight!" id="fight" />
     <input type="button" value="Level Up!" id="level" />
 </div>
