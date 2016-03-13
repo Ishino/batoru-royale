@@ -2,7 +2,7 @@ amqp==1.4.9
 coverage==4.0.3
 elasticsearch==2.2.0
 Flask==0.10.1
-Flask-SocketIO==2.0
+Flask-SocketIO==2.2
 gevent==1.1.0
 greenlet==0.4.9
 gunicorn==19.4.5
