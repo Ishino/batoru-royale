@@ -1,6 +1,6 @@
 amqp==1.4.9
 coverage==4.0.3
-elasticsearch==2.2.0
+elasticsearch==2.3.0
 Flask==0.10.1
 Flask-SocketIO==2.2
 gevent==1.1.0
@@ -16,6 +16,6 @@ python-engineio==0.9.0
 python-socketio==1.1
 redis==2.10.5
 six==1.10.0
-SQLAlchemy==1.0.11
+SQLAlchemy==1.0.12
 urllib3==1.14
 Werkzeug==0.11.4
