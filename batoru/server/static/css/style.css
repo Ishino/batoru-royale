@@ -6,6 +6,10 @@
   height: 400px;
 }
 
+#players {
+  height: 200px;
+}
+
 .info {
   width: 790px;
   background: #fff;

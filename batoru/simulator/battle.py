@@ -233,7 +233,7 @@ class Battle:
 
     def battle(self, fight_id, hero: Fighter, mob: Monster, scroll=False):
 
-        self.fight.enabledScroll = scroll
+        self.fight.enabledScroll = False
 
         swing = 1
 

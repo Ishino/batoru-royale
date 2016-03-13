@@ -1,7 +1,6 @@
 import time
 from interfaces.logger import Logger
 from flask_socketio import SocketIO
-from server.batoru_front import app
 
 
 class CombatLogs:
@@ -15,7 +14,7 @@ class CombatLogs:
         self.logLevel = 1
         self.logger = Logger()
 
-        self.socketio = SocketIO(app, message_queue='redis://localhost:6379/0')
+        self.socketio = SocketIO(message_queue='redis://localhost:6379/0')
 
     def set_logger(self, logger: Logger):
         self.logger = logger
