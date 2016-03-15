@@ -11,9 +11,7 @@
 }
 
 .info {
-  width: 790px;
   background: #fff;
-  font: 0.8em Georgia;
   color: #666;
   display: block;
   overflow: scroll;
