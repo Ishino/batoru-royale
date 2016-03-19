@@ -34,11 +34,15 @@
         });
 
         socket.on('fight players', function(msg) {
-             $('#playerlist')
-                 .append($("<option></option>")
-                 .attr("value",msg.player)
-                 .text(msg.player));
-
+            $('#playerlist').empty()
+            $('#playerlist').append($("<option></option>")
+                 .attr('value','monster')
+                 .text('monster'));
+            $.each( msg.player, function( key, value ) {
+              $('#playerlist').append($("<option></option>")
+                 .attr("value",value)
+                 .text(key));
+            });
         });
 
         // event handler for new connections
@@ -58,13 +62,14 @@
                 $('#status').empty();
                 $('#fightbox').prepend('<h2>' + $('<div/>').text($( "#player" ).val()).html() + '</h2>');
 
-                socket.emit('join', {room: 'players', player: $( "#player" ).val()});
+                socket.emit('join', {room: 'players', player: $( "#player" ).val(), player_room: id});
                 return false;
             });
 
             $( "#fight" ).click(function() {
                 // $('#log_text').empty();
-                socket.emit('fight', {room: id, data: 'single', player: $( "#player" ).val()});
+                $opponent = $('#playerlist').find(":selected").text();
+                socket.emit('fight', {room: id, data: $opponent, player: $( "#player" ).val()});
             });
 
             $( "#level" ).click(function() {
@@ -86,21 +91,34 @@
             </div>
             <div id="fightbox" class="form-group">
                 <div class="row">
-                    <div class="col-lg-12 form-inline">
-                        <select id="playerlist" class="form-control">
-                            <option value="">Random</option>
-                        </select>
-                        <button type="button" class="btn btn-danger" id="fight">Fight!</button>
+                    <div class="col-lg-12">
+                        <div class="form-inline">
+                           <select id="playerlist" class="form-control">
+                                <option value="">Random</option>
+                            </select>
+                            <button type="button" class="btn btn-danger" id="fight">Fight!</button>
+                        </div>
                     </div>
+                    <div class="clearfix"></div>
                 </div>
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-8">
-                        <h3>Status</h3>
-                        <div id="status" class="info"></div>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> Status</h3>
+                            </div>
+                            <div id="status" class="info panel-body"></div>
+                        </div>
                     </div>
-                    <div class="col-xs-6 col-md-4">
-                        <h3>Log</h3>
-                        <div id="log" class="info"><small id="log_text"></small></div>
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Log</h3>
+                            </div>
+                            <div id="log" class="info panel-body">
+                                <small id="log_text"></small>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,20 +1,4 @@
-#status {
-  height: 400px;
-}
-
-#log {
-  height: 400px;
-}
-
-#players {
-  height: 200px;
-}
-
 .info {
-  background: #fff;
-  color: #666;
-  display: block;
-  overflow: scroll;
-  border: 1px #666 solid;
-  padding: 4px;
+  overflow: auto;
+  height: 400px;
 }

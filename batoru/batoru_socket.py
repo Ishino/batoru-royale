@@ -4,6 +4,7 @@ import json
 from flask import session
 from flask_socketio import SocketIO, emit, join_room, rooms, disconnect
 from server.batoru_front import app
+from battlefront.battlefront import Battlefront
 
 socketio = SocketIO(app, message_queue='redis://localhost:6379/0')
 
@@ -41,8 +42,12 @@ def join(message):
     emit('fight status',
          {'data': message['player'] + ' joined the battlefield.', 'player': message['player']},
          room=message['room'])
-    emit('fight players', {'player': message['player']}, room=message['room'], broadcast=True)
 
+    front = Battlefront()
+    front.add_player(message['player'], message['player_room'])
+    player_list = front.get_player_list()
+
+    emit('fight players', {'player': player_list}, room=message['room'], broadcast=True)
 
 if __name__ == '__main__':
     socketio.run(app, debug=True, host='0.0.0.0')

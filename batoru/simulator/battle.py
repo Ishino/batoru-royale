@@ -7,7 +7,8 @@ from combat.combat_logs import CombatLogs
 from combat.combat_stats import CombatStats
 from combat.combat_calculations import CombatCalculations
 from simulator.tournament import Tournament, TournamentExperience
-from simulator.player import Player
+from battlefront.player import Player
+from battlefront.battlefront import Battlefront
 
 
 class Battle:
@@ -23,25 +24,43 @@ class Battle:
 
         self.room = ''
 
-    def simulate(self, name='', battle_type='single', room=''):
+    def simulate(self, name='', battle_type='monster', room=''):
         self.room = room
-        if battle_type == 'single':
+        pvp = True
+        if battle_type == 'monster':
+            pvp = False
             # Single fight with scroll
             if name == '':
                 name = self.player_engine.generate_player_name()
             self.kill_monster(name)
 
         if battle_type == 'level':
+            pvp = False
             if name == '':
                 name = self.player_engine.generate_player_name()
             self.leveling(name, self.level_gain)
 
         if battle_type == 'tournament':
+            pvp = False
             tournament_round = 1
 
             while tournament_round <= self.tournament_rounds:
                 self.tournament()
                 tournament_round += 1
+
+        if pvp:
+            self.kill_player(name, battle_type)
+
+    def kill_player(self, name, opponent):
+        self.fight.logLevel = 2
+
+        player_one = self.create_player(name)
+        player_two = self.create_player(opponent)
+
+        player_fight_id = self.logger.load_sequence(name + '_fight_count')
+        self.compete(player_one.name + "." + str(player_fight_id), player_one, player_two, False)
+        self.player_engine.save_player(player_one)
+        self.player_engine.save_player(player_two)
 
     def kill_monster(self, name):
         self.fight.logLevel = 2
@@ -61,7 +80,7 @@ class Battle:
         self.fight.publish_event(event_text, 0, 'fight status', '/fight', self.room)
 
         player_fight_id = self.logger.load_sequence(name + '_fight_count')
-        self.battle(player_one.name + "." + str(player_fight_id), player_one, player_two, True)
+        self.battle(player_one.name + "." + str(player_fight_id), player_one, player_two, False)
         self.player_engine.save_player(player_one)
 
     def create_player(self, name):
@@ -170,9 +189,9 @@ class Battle:
                                          fighter.level, fighter.experience_modifier)) +
                                      " type: " + str(fighter.type), 0, 'fight log', '/fight', self.room)
 
-    def compete(self, fight_id, player_one: Fighter, player_two: Fighter):
+    def compete(self, fight_id, player_one: Fighter, player_two: Fighter, scroll=False):
 
-        self.fight.enabledScroll = False
+        self.fight.enabledScroll = scroll
 
         swing = 1
 
@@ -215,8 +234,16 @@ class Battle:
 
     def save_result(self, fight_id, winner, loser, swings):
 
-        event_text = "After " + str(swings) + " swings, " + winner.name + " won " + str(fight_id) + "!"
-        self.fight.publish_event(event_text, 0, 'fight status', '/fight', self.room)
+        front = Battlefront()
+        player_list = front.get_player_list()
+
+        winner_room = player_list[winner.name]
+        loser_room = player_list[loser.name]
+
+        event_text = "After " + str(swings) + " swings, " + winner.name + " won!"
+
+        self.fight.publish_event(event_text, 0, 'fight log', '/fight', winner_room)
+        self.fight.publish_event(event_text, 0, 'fight log', '/fight', loser_room)
 
         self.stats.register_fight(winner, loser, swings, fight_id, 'win')
         self.stats.register_fight(loser, winner, swings, fight_id, 'loss')
@@ -233,7 +260,7 @@ class Battle:
 
     def battle(self, fight_id, hero: Fighter, mob: Monster, scroll=False):
 
-        self.fight.enabledScroll = False
+        self.fight.enabledScroll = scroll
 
         swing = 1
 
