@@ -32,13 +32,9 @@ class Battlefront:
         if battlefront is not None:
             stored_battlefront = json.loads(battlefront)
 
-        while True:
-            try:
-                stored_battlefront.remove(player)
-            except ValueError:
-                break
-            except AttributeError:
-                break
+        for key, value in stored_battlefront.items():
+            if key == player or value == player:
+                stored_battlefront.remove(key)
 
         battlefront = json.dumps(stored_battlefront)
         self.redis_logger.write(self.battlefront_key, battlefront)

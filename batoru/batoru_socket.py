@@ -1,8 +1,8 @@
 import pika
 import json
 
-from flask import session
-from flask_socketio import SocketIO, emit, join_room, rooms, disconnect
+from flask import session, request
+from flask_socketio import SocketIO, emit, join_room, rooms
 from server.batoru_front import app
 from battlefront.battlefront import Battlefront
 
@@ -28,6 +28,11 @@ def start_fight(message):
 def connect():
     session['receive_count'] = session.get('receive_count', 0) + 1
     emit('fight status', {'data': 'Connected', 'count': session['receive_count']})
+
+    front = Battlefront()
+    player_list = front.get_player_list()
+
+    emit('fight players', {'player': player_list}, broadcast=True)
 
 
 @socketio.on('disconnect', namespace='/fight')

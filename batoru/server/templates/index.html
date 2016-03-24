@@ -39,9 +39,11 @@
                  .attr('value','monster')
                  .text('monster'));
             $.each( msg.player, function( key, value ) {
-              $('#playerlist').append($("<option></option>")
-                 .attr("value",value)
-                 .text(key));
+              if(key != $( "#player" ).val()) {
+                  $('#playerlist').append($("<option></option>")
+                     .attr("value",value)
+                     .text(key));
+              }
             });
         });
 
