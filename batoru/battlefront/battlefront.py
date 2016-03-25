@@ -25,7 +25,19 @@ class Battlefront:
         battlefront = json.dumps(stored_battlefront)
         self.redis_logger.write(self.battlefront_key, battlefront)
 
-    def remove_player(self, player):
+    def remove_player(self, name):
+        battlefront = self.redis_logger.load(self.battlefront_key)
+
+        stored_battlefront = {}
+        if battlefront is not None:
+            stored_battlefront = json.loads(battlefront)
+
+        stored_battlefront.pop(name, None)
+
+        battlefront = json.dumps(stored_battlefront)
+        self.redis_logger.write(self.battlefront_key, battlefront)
+
+    def get_player_by_room(self, room):
         battlefront = self.redis_logger.load(self.battlefront_key)
 
         stored_battlefront = {}
@@ -33,11 +45,10 @@ class Battlefront:
             stored_battlefront = json.loads(battlefront)
 
         for key, value in stored_battlefront.items():
-            if key == player or value == player:
-                stored_battlefront.remove(key)
+            if value == room:
+                return str(key)
 
-        battlefront = json.dumps(stored_battlefront)
-        self.redis_logger.write(self.battlefront_key, battlefront)
+        return None
 
     def get_player_list(self):
         battlefront = self.redis_logger.load(self.battlefront_key)

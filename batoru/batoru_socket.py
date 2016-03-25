@@ -37,7 +37,16 @@ def connect():
 
 @socketio.on('disconnect', namespace='/fight')
 def disconnect():
-    print('Client disconnected')
+    print('Client disconnected', request.sid)
+    front = Battlefront()
+    name = front.get_player_by_room(request.sid)
+    front.remove_player(name)
+    player_list = front.get_player_list()
+
+    emit('fight status',
+         {'data': str(name) + ' left the battlefield.', 'player': str(name)}, broadcast=True)
+
+    emit('fight players', {'player': player_list}, broadcast=True)
 
 
 @socketio.on('join', namespace='/fight')
