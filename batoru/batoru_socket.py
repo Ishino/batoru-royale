@@ -63,6 +63,7 @@ def join(message):
 
     emit('fight players', {'player': player_list}, room=message['room'], broadcast=True)
 
+
 @socketio.on('leave', namespace='/fight')
 def leave(message):
     leave_room(message['room'])
@@ -75,6 +76,7 @@ def leave(message):
     player_list = front.get_player_list()
 
     emit('fight players', {'player': player_list}, room=message['room'], broadcast=True)
+
 
 if __name__ == '__main__':
     socketio.run(app, debug=True, host='0.0.0.0')
