@@ -84,11 +84,12 @@
         $(document).idle({
             onIdle: function(){
               socket.emit('leave', {room: 'players', player: $( "#player" ).val(), player_room: id});
+              $('#status').prepend($('<div/>').text('You are now marked as idle.').html() + '<br>');
             },
             onActive: function(){
               socket.emit('join', {room: 'players', player: $( "#player" ).val(), player_room: id});
             },
-            idle: 10000
+            idle: 60000
         })
     </script>
 </head>
