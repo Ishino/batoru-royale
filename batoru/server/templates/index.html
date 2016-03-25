@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="js/socket.io.min.js"></script>
     <script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.idle.min.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -79,6 +80,16 @@
                 socket.emit('fight', {room: id, data: 'level', player: $( "#player" ).val()});
             });
         });
+
+        $(document).idle({
+            onIdle: function(){
+              socket.emit('leave', {room: 'players', player: $( "#player" ).val(), player_room: id});
+            },
+            onActive: function(){
+              socket.emit('join', {room: 'players', player: $( "#player" ).val(), player_room: id});
+            },
+            idle: 10000
+        })
     </script>
 </head>
 <body>
