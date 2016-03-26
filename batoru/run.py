@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import sys
-from simulator.battle import Battle
+from combat.battle import Battle
 
 
 fight = Battle()
