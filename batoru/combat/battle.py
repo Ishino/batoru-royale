@@ -18,6 +18,8 @@ class Battle:
         self.fight = CombatLogs()
         self.logger = RedisLogger()
         self.room = ''
+        self.opponent_room = ''
+        self.front = Battlefront()
 
     def engage(self, name, opponent='monster', room=''):
         self.room = room
@@ -30,6 +32,10 @@ class Battle:
             self.kill_monster(name)
 
         if pvp:
+
+            player_list = self.front.get_player_list()
+
+            self.opponent_room = player_list[opponent]
             self.kill_player(name, opponent)
 
     def kill_player(self, name, opponent):
@@ -72,7 +78,7 @@ class Battle:
             action = 'created'
 
         event_text = ">> Player " + player.name + " " + action + ": " + self.get_player_status(player)
-        self.fight.publish_event(event_text, 0, 'fight status', '/fight', self.room)
+        self.fight.publish_event(event_text, 0, 'fight status', '/fight', {0: self.room, 1: self.opponent_room})
 
         self.stats.register_creation(player)
         return player
@@ -113,7 +119,7 @@ class Battle:
                 player_one.empower(skill_modifier)
                 player_two.weaken(damage, skill_modifier)
 
-                self.fight.scroll(player_one, player_two, damage, skill_modifier, self.room)
+                self.fight.scroll(player_one, player_two, damage, skill_modifier, {0: self.room, 1: self.opponent_room})
 
             elif result == 2:
 
@@ -124,10 +130,10 @@ class Battle:
                 player_two.empower(skill_modifier)
                 player_one.weaken(damage, skill_modifier)
 
-                self.fight.scroll(player_two, player_one, damage, skill_modifier, self.room)
+                self.fight.scroll(player_two, player_one, damage, skill_modifier, {0: self.room, 1: self.opponent_room})
 
             else:
-                self.fight.scroll(player_two, player_one, 0, 0, self.room)
+                self.fight.scroll(player_two, player_one, 0, 0, {0: self.room, 1: self.opponent_room})
 
             if player_two.is_dead():
                 return self.save_result(fight_id, player_one, player_two, swing)
@@ -139,16 +145,9 @@ class Battle:
 
     def save_result(self, fight_id, winner, loser, swings):
 
-        front = Battlefront()
-        player_list = front.get_player_list()
-
-        winner_room = player_list[winner.name]
-        loser_room = player_list[loser.name]
-
         event_text = "After " + str(swings) + " swings, " + winner.name + " won!"
 
-        self.fight.publish_event(event_text, 0, 'fight log', '/fight', winner_room)
-        self.fight.publish_event(event_text, 0, 'fight log', '/fight', loser_room)
+        self.fight.publish_event(event_text, 0, 'fight log', '/fight', {0: self.room, 1: self.opponent_room})
 
         self.stats.register_fight(winner, loser, swings, fight_id, 'win')
         self.stats.register_fight(loser, winner, swings, fight_id, 'loss')

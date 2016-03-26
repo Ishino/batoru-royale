@@ -19,7 +19,7 @@ class CombatLogs:
     def set_logger(self, logger: Logger):
         self.logger = logger
 
-    def scroll(self, winner, loser, damage, gain, room=''):
+    def scroll(self, winner, loser, damage, gain, room=None):
 
         if not self.enabledScroll:
             return
@@ -55,6 +55,13 @@ class CombatLogs:
             if self.print_newline:
                 print("\n", end="")
 
-    def publish_event(self, text, level, stream='stream', namespace='', room=''):
+    def publish_event(self, text, level, stream='stream', namespace='', room=None):
         if level < self.logLevel:
-            self.socketio.emit(stream, {'data': text}, namespace=namespace, room=room)
+            if not room:
+                self.socketio.emit(stream, {'data': text}, namespace=namespace, broadcast=True)
+            else:
+                if type(room) is dict:
+                    for key, value in room.items():
+                        self.socketio.emit(stream, {'data': text}, namespace=namespace, room=value)
+                else:
+                    self.socketio.emit(stream, {'data': text}, namespace=namespace, room=room)
