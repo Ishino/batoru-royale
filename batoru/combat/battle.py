@@ -19,7 +19,7 @@ class Battle:
         self.logger = RedisLogger()
         self.room = ''
 
-    def simulate(self, name='', opponent='monster', room=''):
+    def engage(self, name, opponent='monster', room=''):
         self.room = room
         pvp = True
         if opponent == 'monster':
@@ -39,7 +39,7 @@ class Battle:
         player_two = self.create_player(opponent)
 
         player_fight_id = self.logger.load_sequence(name + '_fight_count')
-        self.compete(player_one.name + "." + str(player_fight_id), player_one, player_two, False)
+        self.compete(player_one.name + "." + str(player_fight_id), player_one, player_two, True)
         self.player_engine.save_player(player_one)
         self.player_engine.save_player(player_two)
 
