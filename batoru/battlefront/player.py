@@ -4,11 +4,11 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql import select
 from interfaces.db import Engine
 from ningyo.models.ningyo import Fighter as StoredFighter
-from simulator.models.player import PlayerList
 from ningyo.fighter import Fighter
 from ningyo.modifiers import Accuracy, Power
 from ningyo.attributes import Attributes
 from ningyo.experience import Experience
+from battlefront.models.player import PlayerList
 
 
 class Player:
