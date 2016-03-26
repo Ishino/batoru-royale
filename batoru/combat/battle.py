@@ -113,7 +113,7 @@ class Battle:
                 player_one.empower(skill_modifier)
                 player_two.weaken(damage, skill_modifier)
 
-                self.fight.scroll(player_one, player_two, damage, skill_modifier)
+                self.fight.scroll(player_one, player_two, damage, skill_modifier, self.room)
 
             elif result == 2:
 
@@ -124,10 +124,10 @@ class Battle:
                 player_two.empower(skill_modifier)
                 player_one.weaken(damage, skill_modifier)
 
-                self.fight.scroll(player_two, player_one, damage, skill_modifier)
+                self.fight.scroll(player_two, player_one, damage, skill_modifier, self.room)
 
             else:
-                self.fight.scroll(player_two, player_one, 0, 0)
+                self.fight.scroll(player_two, player_one, 0, 0, self.room)
 
             if player_two.is_dead():
                 return self.save_result(fight_id, player_one, player_two, swing)
