@@ -35,8 +35,7 @@
         });
 
         socket.on('fight front', function(json) {
-            console.log(json);
-            var player_window = json;
+            var player_window = JSON.parse(json.data);
             if ($( "#player" ).val() == player_window.name) {
                 $('#player_window').prepend($('<div/>').text(player_window.name).html() + '<br>');
             } else {
@@ -45,7 +44,7 @@
         });
 
         socket.on('fight scroll', function(json) {
-            console.log(json);
+            var fight_scroll = JSON.parse(json.data);
         });
 
         socket.on('fight players', function(msg) {
