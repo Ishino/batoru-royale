@@ -34,6 +34,15 @@
             $('#log_text').prepend($('<small/>').text(msg.data).html() + '<br>');
         });
 
+        socket.on('fight front', function(json) {
+            var player_window = json;
+            if ($( "#player" ).val() == player_window.name) {
+                $('#player_window').prepend($('<div/>').text(player_window.name).html() + '<br>');
+            } else {
+                $('#opponent_window').prepend($('<div/>').text(player_window.name).html() + '<br>');
+            }
+        });
+
         socket.on('fight scroll', function(json) {
             console.log(json);
         });
@@ -44,7 +53,7 @@
                  .attr('value','monster')
                  .text('monster'));
             $.each( msg.player, function( key, value ) {
-              if(key != $( "#player" ).val()) {
+              if (key != $( "#player" ).val()) {
                   $('#playerlist').append($("<option></option>")
                      .attr("value",value)
                      .text(key));
@@ -117,8 +126,17 @@
                             <button type="button" class="btn btn-danger" id="fight">Fight!</button>
                         </div>
                     </div>
-                    <div class="clearfix"></div>
                 </div>
+                <div class="row"></div>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div id="player_window" class="info"></div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div id="opponent_window" class="info"></div>
+                    </div>
+                </div>
+                <div class="row"></div>
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-8">
                         <div class="panel panel-primary">

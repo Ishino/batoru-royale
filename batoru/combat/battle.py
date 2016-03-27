@@ -1,3 +1,5 @@
+import json
+
 from interfaces.logger import RedisLogger
 from ningyo.fighter import Fighter
 from ningyo.monster import Monster
@@ -72,6 +74,20 @@ class Battle:
 
     def create_player(self, name):
         player = self.player_engine.load_player(name)
+
+        player_obj = {'name': player.name,
+                      'level': player.level,
+                      'hit_points': player.hitPoints,
+                      'skill_points': player.skill,
+                      'strength': player.strength,
+                      'stamina': player.stamina,
+                      'experience': player.experience,
+                      'experience_needed': player.experienceCalc.calculate_experience_need(player.level,
+                                                                                           player.experience_modifier
+                                                                                           )
+                      }
+
+        self.fight.publish_event(json.dumps(player_obj), 0, 'fight front', '/fight', {0: self.room, 1: self.opponent_room})
 
         action = 'loaded'
         if player.experience == 0:
