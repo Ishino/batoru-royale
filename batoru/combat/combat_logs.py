@@ -27,8 +27,8 @@ class CombatLogs:
             return
 
         event = {}
-        event['winner'] = {'name':winner.name, 'hit_points': winner.hitPoints, 'skill_points': winner.fightSkill}
-        event['loser'] = {'name':loser.name, 'hit_points': loser.hitPoints, 'skill_points': loser.fightSkill}
+        event['winner'] = {'name': winner.name, 'hit_points': winner.hitPoints, 'skill_points': winner.fightSkill}
+        event['loser'] = {'name': loser.name, 'hit_points': loser.hitPoints, 'skill_points': loser.fightSkill}
         event['damage'] = damage
         event['gain'] = gain
 
