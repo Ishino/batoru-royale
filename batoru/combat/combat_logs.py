@@ -1,4 +1,6 @@
 import time
+import json
+
 from interfaces.logger import Logger
 from flask_socketio import SocketIO
 
@@ -30,6 +32,12 @@ class CombatLogs:
             if damage > 0:
                 self.publish_event(winner.name + " has knocked " + str(damage) + " hit points from " + loser.name + "!",
                                    0, 'fight log', '/fight', room)
+                event = {}
+                event['name'] = winner.name
+                event['damage'] = damage
+                json.dumps(event)
+
+                self.publish_event(json.dumps(event), 0, 'fight scroll', '/fight', room)
             else:
                 self.publish_event(winner.name + " checked " + loser.name + " for weaknesses!", 0, 'fight log', '/fight', room)
 

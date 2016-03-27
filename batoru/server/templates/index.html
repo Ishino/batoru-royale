@@ -34,6 +34,10 @@
             $('#log_text').prepend($('<small/>').text(msg.data).html() + '<br>');
         });
 
+        socket.on('fight scroll', function(json) {
+            console.log(json);
+        });
+
         socket.on('fight players', function(msg) {
             $('#playerlist').empty()
             $('#playerlist').append($("<option></option>")
