@@ -35,6 +35,7 @@
         });
 
         socket.on('fight front', function(json) {
+            console.log(json);
             var player_window = json;
             if ($( "#player" ).val() == player_window.name) {
                 $('#player_window').prepend($('<div/>').text(player_window.name).html() + '<br>');

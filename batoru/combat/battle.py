@@ -19,8 +19,8 @@ class Battle:
         self.stats = CombatStats()
         self.fight = CombatLogs()
         self.logger = RedisLogger()
-        self.room = ''
-        self.opponent_room = ''
+        self.room = None
+        self.opponent_room = None
         self.front = Battlefront()
 
     def engage(self, name, opponent='monster', room=''):
