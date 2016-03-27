@@ -54,6 +54,7 @@ class CombatLogs:
             else:
                 if type(room) is dict:
                     for key, value in room.items():
-                        self.socketio.emit(stream, {'data': text}, namespace=namespace, room=value)
+                        if value is not None:
+                            self.socketio.emit(stream, {'data': text}, namespace=namespace, room=value)
                 else:
                     self.socketio.emit(stream, {'data': text}, namespace=namespace, room=room)

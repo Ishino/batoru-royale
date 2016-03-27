@@ -68,7 +68,7 @@ class Battle:
                           'stamina': player_two.stamina
                           }
 
-        self.fight.publish_event(json.dumps(player_two_obj), 0, 'fight front', '/fight', {0: self.room, 1: self.opponent_room})
+        self.fight.publish_event(json.dumps(player_two_obj), 0, 'fight front', '/fight', self.room)
 
         event_text = ">> Player " + player_two.name + " created: < level " + str(
             player_two.level) + " | " + str(
