@@ -60,6 +60,16 @@ class Battle:
         player_two.levelUp = 0
         player_two.generate('Ogre', player_one.level)
 
+        player_two_obj = {'name': player_two.name,
+                          'level': player_two.level,
+                          'hit_points': player_two.hitPoints,
+                          'skill_points': player_two.skill,
+                          'strength': player_two.strength,
+                          'stamina': player_two.stamina
+                          }
+
+        self.fight.publish_event(json.dumps(player_two_obj), 0, 'fight front', '/fight', {0: self.room, 1: self.opponent_room})
+
         event_text = ">> Player " + player_two.name + " created: < level " + str(
             player_two.level) + " | " + str(
             player_two.skill) + " ap | " + str(
