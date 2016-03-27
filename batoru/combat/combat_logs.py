@@ -1,4 +1,6 @@
 import time
+import json
+
 from interfaces.logger import Logger
 from flask_socketio import SocketIO
 
@@ -19,28 +21,18 @@ class CombatLogs:
     def set_logger(self, logger: Logger):
         self.logger = logger
 
-    def scroll(self, winner, loser, damage, gain, room=''):
+    def scroll(self, winner, loser, damage, gain, room=None):
 
         if not self.enabledScroll:
             return
 
-        self.publish_event("\n", 0, 'fight log', '/fight', room)
+        event = {}
+        event['winner'] = {'name': winner.name, 'hit_points': winner.hitPoints, 'skill_points': winner.fightSkill}
+        event['loser'] = {'name': loser.name, 'hit_points': loser.hitPoints, 'skill_points': loser.fightSkill}
+        event['damage'] = damage
+        event['gain'] = gain
 
-        if gain > 0:
-            if damage > 0:
-                self.publish_event(winner.name + " has knocked " + str(damage) + " hit points from " + loser.name + "!",
-                                   0, 'fight log', '/fight', room)
-            else:
-                self.publish_event(winner.name + " checked " + loser.name + " for weaknesses!", 0, 'fight log', '/fight', room)
-
-            self.publish_event(winner.name + " gained " + str(gain) + " attack points!", 0, 'fight log', '/fight', room)
-        else:
-            self.publish_event("Both fighters miss their swings! Pathetic!", 0, 'fight log', '/fight', room)
-
-        self.publish_event("After this round " + winner.name + " has < " + str(winner.fightSkill) + " ap | " + str(
-            winner.hitPoints) + " hp >", 0, 'fight log', '/fight', room)
-        self.publish_event("After this round " + loser.name + " has < " + str(loser.fightSkill) + " ap | " + str(
-            loser.hitPoints) + " hp >", 0, 'fight log', '/fight', room)
+        self.publish_event(json.dumps(event), 0, 'fight scroll', '/fight', room)
 
         time.sleep(self.scrollSpeed)
 
@@ -55,6 +47,14 @@ class CombatLogs:
             if self.print_newline:
                 print("\n", end="")
 
-    def publish_event(self, text, level, stream='stream', namespace='', room=''):
+    def publish_event(self, text, level, stream='stream', namespace='', room=None):
         if level < self.logLevel:
-            self.socketio.emit(stream, {'data': text}, namespace=namespace, room=room)
+            if not room:
+                self.socketio.emit(stream, {'data': text}, namespace=namespace, broadcast=True)
+            else:
+                if type(room) is dict:
+                    for key, value in room.items():
+                        if value is not None:
+                            self.socketio.emit(stream, {'data': text}, namespace=namespace, room=value)
+                else:
+                    self.socketio.emit(stream, {'data': text}, namespace=namespace, room=room)
