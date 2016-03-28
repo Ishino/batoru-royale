@@ -73,17 +73,17 @@
             percent = 0;
             if (fight_scroll.winner.name == $( "#player" ).val()) {
                 max = $('#opponent_window .progress-bar').attr('aria-valuemax');
-                divider = math.round(max / 100);
+                divider = Math.round(max / 100);
                 if ( loser_hitpoints > 0 ) {
-                    percent = math.round(loser_hitpoints / divider);
+                    percent = Math.round(loser_hitpoints / divider);
                 }
                 $('#opponent_window .progress-bar').attr('aria-valuenow', loser_hitpoints);
                 $('#opponent_window .progress-bar').width(percent + '%');
             } else {
                 max = $('#player_window .progress-bar').attr('aria-valuemax');
-                divider = math.round(max / 100);
+                divider = Math.round(max / 100);
                 if ( loser_hitpoints > 0 ) {
-                    percent = math.round(loser_hitpoints / divider);
+                    percent = Math.round(loser_hitpoints / divider);
                 }
                 $('#player_window .progress-bar').attr('aria-valuenow', loser_hitpoints);
                 $('#player_window .progress-bar').width(percent + '%');
