@@ -37,14 +37,57 @@
         socket.on('fight front', function(json) {
             var player_window = JSON.parse(json.data);
             if ($( "#player" ).val() == player_window.name) {
-                $('#player_window').prepend($('<div/>').text(player_window.name).html() + '<br>');
+                $('#player_window').empty();
+                $('#player_window').prepend(
+                    $('<div/>').text(player_window.name).html()
+                    + '<br>'
+                    + '<div class="progress">'
+                    + '<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="'
+                    + player_window.hit_points
+                    + '" aria-valuemin="0" aria-valuemax="'
+                    + player_window.hit_points
+                    + '" style="width: 100%">'
+                    + '</div>'
+                    + '</div>'
+                );
             } else {
-                $('#opponent_window').prepend($('<div/>').text(player_window.name).html() + '<br>');
+                $('#opponent_window').empty();
+                $('#opponent_window').prepend(
+                    $('<div/>').text(player_window.name).html()
+                    + '<br>'
+                    + '<div class="progress">'
+                    + '<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="'
+                    + player_window.hit_points
+                    + '" aria-valuemin="0" aria-valuemax="'
+                    + player_window.hit_points
+                    + '" style="width: 100%">'
+                    + '</div>'
+                    + '</div>'
+                );
             }
         });
 
         socket.on('fight scroll', function(json) {
             var fight_scroll = JSON.parse(json.data);
+            loser_hitpoints = fight_scroll.loser.hit_points;
+            percent = 0;
+            if (fight_scroll.winner.name == $( "#player" ).val()) {
+                max = $('#opponent_window .progress-bar').attr('aria-valuemax');
+                divider = math.round(max / 100);
+                if ( loser_hitpoints > 0 ) {
+                    percent = math.round(loser_hitpoints / divider);
+                }
+                $('#opponent_window .progress-bar').attr('aria-valuenow', loser_hitpoints);
+                $('#opponent_window .progress-bar').width(percent + '%');
+            } else {
+                max = $('#player_window .progress-bar').attr('aria-valuemax');
+                divider = math.round(max / 100);
+                if ( loser_hitpoints > 0 ) {
+                    percent = math.round(loser_hitpoints / divider);
+                }
+                $('#player_window .progress-bar').attr('aria-valuenow', loser_hitpoints);
+                $('#player_window .progress-bar').width(percent + '%');
+            }
         });
 
         socket.on('fight players', function(msg) {
