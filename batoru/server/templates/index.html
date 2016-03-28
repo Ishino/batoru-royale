@@ -71,7 +71,7 @@
             var fight_scroll = JSON.parse(json.data);
             loser_hitpoints = fight_scroll.loser.hit_points;
             percent = 0;
-            class = '';
+            bar_class = '';
             old_class = '';
             if (fight_scroll.winner.name == $( "#player" ).val()) {
                 max = $('#opponent_window .progress-bar').attr('aria-valuemax');
@@ -80,13 +80,13 @@
                     percent = Math.round(loser_hitpoints / divider);
                 }
                 if ( percent < 60 ) {
-                    class = 'progress-bar-warning';
+                    bar_class = 'progress-bar-warning';
                 }
                 if ( percent < 40 ) {
-                    class = 'progress-bar-danger';
+                    bar_class = 'progress-bar-danger';
                     old_class = 'progress-bar-warning';
                 }
-                $('#opponent_window .progress-bar').addClass(class).removeClass(old_class);
+                $('#opponent_window .progress-bar').addClass(bar_class).removeClass(old_class);
                 $('#opponent_window .progress-bar').attr('aria-valuenow', loser_hitpoints);
                 $('#opponent_window .progress-bar').width(percent + '%');
             } else {
@@ -96,13 +96,13 @@
                     percent = Math.round(loser_hitpoints / divider);
                 }
                 if ( percent < 60 ) {
-                    class = 'progress-bar-warning';
+                    bar_class = 'progress-bar-warning';
                 }
                 if ( percent < 40 ) {
-                    class = 'progress-bar-danger';
+                    bar_class = 'progress-bar-danger';
                     old_class = 'progress-bar-warning';
                 }
-                $('#opponent_window .progress-bar').addClass(class).removeClass(old_class);
+                $('#opponent_window .progress-bar').addClass(bar_class).removeClass(old_class);
                 $('#player_window .progress-bar').attr('aria-valuenow', loser_hitpoints);
                 $('#player_window .progress-bar').width(percent + '%');
             }
