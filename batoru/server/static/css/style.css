@@ -2,3 +2,7 @@
   overflow: auto;
   height: 400px;
 }
+
+.progress {
+  height: 40px;
+}

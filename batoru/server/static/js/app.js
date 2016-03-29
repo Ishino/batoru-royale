@@ -19,8 +19,8 @@ socket.on('fight log', function(msg) {
 socket.on('fight front', function(json) {
     var player_window = JSON.parse(json.data);
     if ($( "#player" ).val() == player_window.name) {
-        $('#player_window div.info').empty();
-        $('#player_window div.info').prepend(
+        $('#player_window div.progress').empty();
+        $('#player_window div.progress').prepend(
             $('<div/>').text(player_window.name).html()
             + '<br>'
             + '<div class="progress">'
@@ -33,8 +33,8 @@ socket.on('fight front', function(json) {
             + '</div>'
         );
     } else {
-        $('#opponent_window div.info').empty();
-        $('#opponent_window div.info').prepend(
+        $('#opponent_window div.progress').empty();
+        $('#opponent_window div.progress').prepend(
             $('<div/>').text(player_window.name).html()
             + '<br>'
             + '<div class="progress">'
@@ -59,6 +59,7 @@ socket.on('fight scroll', function(json) {
 
     count = Math.floor((Math.random() * 3));
 
+    var images = [];
     images[0] = "bam";
     images[1] = "puff";
     images[2] = "splash";
