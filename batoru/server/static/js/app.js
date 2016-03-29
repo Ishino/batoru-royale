@@ -19,8 +19,8 @@ socket.on('fight log', function(msg) {
 socket.on('fight front', function(json) {
     var player_window = JSON.parse(json.data);
     if ($( "#player" ).val() == player_window.name) {
-        $('#player_window').empty();
-        $('#player_window').prepend(
+        $('#player_window div.info').empty();
+        $('#player_window div.info').prepend(
             $('<div/>').text(player_window.name).html()
             + '<br>'
             + '<div class="progress">'
@@ -33,8 +33,8 @@ socket.on('fight front', function(json) {
             + '</div>'
         );
     } else {
-        $('#opponent_window').empty();
-        $('#opponent_window').prepend(
+        $('#opponent_window div.info').empty();
+        $('#opponent_window div.info').prepend(
             $('<div/>').text(player_window.name).html()
             + '<br>'
             + '<div class="progress">'
