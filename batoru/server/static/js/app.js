@@ -56,6 +56,22 @@ socket.on('fight scroll', function(json) {
     percent = 0;
     bar_class = '';
     old_class = '';
+
+    count = Math.floor((Math.random() * 3));
+
+    images[0] = "bam";
+    images[1] = "puff";
+    images[2] = "splash";
+    images[3] = "swooosh";
+
+    $('#player_window img').each(function(){
+        $(this).hide();
+    });
+
+    $('#opponent_window img').each(function(){
+        $(this).hide();
+    });
+
     if (fight_scroll.winner.name == $( "#player" ).val()) {
         max = $('#opponent_window .progress-bar').attr('aria-valuemax');
         divider = Math.round(max / 100);
@@ -72,6 +88,8 @@ socket.on('fight scroll', function(json) {
         $('#opponent_window .progress-bar').addClass(bar_class).removeClass(old_class);
         $('#opponent_window .progress-bar').attr('aria-valuenow', loser_hitpoints);
         $('#opponent_window .progress-bar').width(percent + '%');
+
+        $('#opponent_window img.'+images[count]).show();
     } else {
         max = $('#player_window .progress-bar').attr('aria-valuemax');
         divider = Math.round(max / 100);
@@ -88,6 +106,8 @@ socket.on('fight scroll', function(json) {
         $('#player_window .progress-bar').addClass(bar_class).removeClass(old_class);
         $('#player_window .progress-bar').attr('aria-valuenow', loser_hitpoints);
         $('#player_window .progress-bar').width(percent + '%');
+
+        $('#player_window img.'+images[count]).show();
     }
 });
 
