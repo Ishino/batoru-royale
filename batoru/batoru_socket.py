@@ -24,6 +24,21 @@ def start_fight(message):
     print(message['player'] + ' started: ' + message['data'] + ' in room ' + message['room'])
 
 
+@socketio.on('command', namespace='/fight')
+def send_command(message):
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    channel = connection.channel()
+
+    channel.queue_declare(queue=message['room'])
+
+    channel.basic_publish(exchange='',
+                          routing_key=message['room'],
+                          body=json.dumps(message))
+
+    connection.close()
+    print(message['player'] + ' sent: ' + message['command'] + ' on queue ' + message['room'])
+
+
 @socketio.on('connect', namespace='/fight')
 def connect():
     session['receive_count'] = session.get('receive_count', 0) + 1

@@ -1,3 +1,4 @@
+import pika
 import json
 
 from interfaces.logger import RedisLogger
@@ -23,22 +24,60 @@ class Battle:
         self.opponent_room = None
         self.front = Battlefront()
 
-    def engage(self, name, opponent='monster', room=''):
+        self.connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+        self.channel = self.connection.channel()
+
+        self.player_one = None
+        self.player_two = None
+
+    def engage(self, name, opponent='monster', room=None):
+
         self.room = room
+        self.channel.queue_declare(queue=self.room)
+
         pvp = True
+
+        if name == '':
+            name = self.player_engine.generate_player_name()
+
         if opponent == 'monster':
             pvp = False
             # Single fight with scroll
-            if name == '':
-                name = self.player_engine.generate_player_name()
             self.kill_monster(name)
 
         if pvp:
 
             player_list = self.front.get_player_list()
-
             self.opponent_room = player_list[opponent]
+
+            self.channel.queue_declare(queue=self.opponent_room)
             self.kill_player(name, opponent)
+
+    def command(self, message):
+
+        print(message)
+
+        player = None
+
+        if message['player'] == self.player_one.name:
+            player = self.player_one
+
+        if message['player'] == self.player_two.name:
+            player = self.player_two
+
+        if message['command'] == 'heal':
+            if player is not None:
+                player.hitPoints = player.hitPointsBase * player.stamina
+
+        if message['command'] == 'boost':
+            if player is not None:
+                player.fightSkill = player.fightSkill * player.chanceMultiplier
+
+        if message['player'] == self.player_one.name:
+            self.player_one = player
+
+        if message['player'] == self.player_two.name:
+            self.player_two = player
 
     def kill_player(self, name, opponent):
         self.fight.logLevel = 2
@@ -128,44 +167,68 @@ class Battle:
 
     def compete(self, fight_id, player_one: Fighter, player_two: Fighter, scroll=False):
 
+        self.player_one = player_one
+        self.player_two = player_two
+
         self.fight.enabledScroll = scroll
+        self.fight.scrollSpeed = 2
 
         swing = 1
 
         while True:
-            skill_modifier = CombatCalculations.calc_modifier(player_one.typeStat, player_two.typeStat, 0.2)
+            method_frame, header_frame, body = self.channel.basic_get(self.room)
 
-            result = CombatCalculations.get_highest(int(player_one.accuracy()), int(player_two.accuracy()))
+            if method_frame:
+                message = json.loads(body.decode('utf-8'))
+                self.command(message)
+                self.channel.basic_ack(method_frame.delivery_tag)
+            else:
+                print('No message returned')
+
+            method_frame, header_frame, body = self.channel.basic_get(self.opponent_room)
+
+            if method_frame:
+                message = json.loads(body.decode('utf-8'))
+                self.command(message)
+                self.channel.basic_ack(method_frame.delivery_tag)
+            else:
+                print('No message returned')
+
+            skill_modifier = CombatCalculations.calc_modifier(self.player_one.typeStat, self.player_two.typeStat, 0.2)
+
+            result = CombatCalculations.get_highest(int(self.player_one.accuracy()), int(self.player_two.accuracy()))
             if result == 1:
 
-                damage = player_one.offence() - player_two.defence()
+                damage = self.player_one.offence() - self.player_two.defence()
                 if damage < 1:
                     damage = 0
 
-                player_one.empower(skill_modifier)
-                player_two.weaken(damage, skill_modifier)
+                self.player_one.empower(skill_modifier)
+                self.player_two.weaken(damage, skill_modifier)
 
-                self.fight.scroll(player_one, player_two, damage, skill_modifier, {0: self.room, 1: self.opponent_room})
+                self.fight.scroll(self.player_one, self.player_two, damage, skill_modifier,
+                                  {0: self.room, 1: self.opponent_room})
 
             elif result == 2:
 
-                damage = player_two.offence() - player_one.defence()
+                damage = self.player_two.offence() - self.player_one.defence()
                 if damage < 1:
                     damage = 0
 
-                player_two.empower(skill_modifier)
-                player_one.weaken(damage, skill_modifier)
+                self.player_two.empower(skill_modifier)
+                self.player_one.weaken(damage, skill_modifier)
 
-                self.fight.scroll(player_two, player_one, damage, skill_modifier, {0: self.room, 1: self.opponent_room})
+                self.fight.scroll(self.player_two, self.player_one, damage, skill_modifier,
+                                  {0: self.room, 1: self.opponent_room})
 
             else:
-                self.fight.scroll(player_two, player_one, 0, 0, {0: self.room, 1: self.opponent_room})
+                self.fight.scroll(self.player_two, self.player_one, 0, 0, {0: self.room, 1: self.opponent_room})
 
             if player_two.is_dead():
-                return self.save_result(fight_id, player_one, player_two, swing)
+                return self.save_result(fight_id, self.player_one, self.player_two, swing)
 
             if player_one.is_dead():
-                return self.save_result(fight_id, player_two, player_one, swing)
+                return self.save_result(fight_id, self.player_two, self.player_one, swing)
 
             swing += 1
 
@@ -190,55 +253,70 @@ class Battle:
 
     def battle(self, fight_id, hero: Fighter, mob: Monster, scroll=False):
 
+        self.player_one = hero
+        self.player_two = mob
+
         self.fight.enabledScroll = scroll
+        self.fight.scrollSpeed = 2
 
         swing = 1
 
         while True:
-            skill_modifier = CombatCalculations.calc_modifier(hero.typeStat, mob.typeStat, 0.2)
+            method_frame, header_frame, body = self.channel.basic_get(self.room)
 
-            result = CombatCalculations.get_highest(int(hero.accuracy()), int(mob.accuracy()))
+            if method_frame:
+                message = json.loads(body.decode('utf-8'))
+                self.command(message)
+                self.channel.basic_ack(method_frame.delivery_tag)
+            else:
+                print('No message returned')
+
+            skill_modifier = CombatCalculations.calc_modifier(self.player_one.typeStat, mob.typeStat, 0.2)
+
+            result = CombatCalculations.get_highest(int(self.player_one.accuracy()), int(mob.accuracy()))
             if result == 1:
 
-                damage = hero.offence() - mob.defence()
+                damage = self.player_one.offence() - mob.defence()
                 if damage < 1:
                     damage = 0
 
-                hero.empower(skill_modifier)
+                self.player_one.empower(skill_modifier)
                 mob.weaken(damage, skill_modifier)
 
-                self.fight.scroll(hero, mob, damage, skill_modifier, self.room)
+                self.fight.scroll(self.player_one, mob, damage, skill_modifier, self.room)
 
             elif result == 2:
 
-                damage = mob.offence() - hero.defence()
+                damage = mob.offence() - self.player_one.defence()
                 if damage < 1:
                     damage = 0
 
                 mob.empower(skill_modifier)
                 hero.weaken(damage, skill_modifier)
 
-                self.fight.scroll(mob, hero, damage, skill_modifier, self.room)
+                self.fight.scroll(mob, self.player_one, damage, skill_modifier, self.room)
 
             else:
-                self.fight.scroll(mob, hero, 0, 0, self.room)
+                self.fight.scroll(mob, self.player_one, 0, 0, self.room)
 
             if mob.is_dead():
-                event_text = "After " + str(swing) + " swings, " + hero.name + " won!"
+                event_text = "After " + str(swing) + " swings, " + self.player_one.name + " won!"
                 self.fight.publish_event(event_text, 1, 'fight log', '/fight', self.room)
-                self.stats.register_fight(hero, mob, swing, fight_id, 'win')
+                self.stats.register_fight(self.player_one, mob, swing, fight_id, 'win')
                 hero.gain_experience(mob.level)
                 hero.calculate_stats()
                 return
 
-            if hero.is_dead():
+            if self.player_one.is_dead():
                 event_text = "After " + str(swing) + " swings, " + mob.name + " won!"
                 self.fight.publish_event(event_text, 1, 'fight log', '/fight', self.room)
-                self.stats.register_fight(hero, mob, swing, fight_id, 'loss')
-                hero.calculate_stats()
+                self.stats.register_fight(self.player_one, mob, swing, fight_id, 'loss')
+                self.player_one.calculate_stats()
                 return
 
             swing += 1
+
+        self.channel.stop_consuming()
 
 
 if __name__ == "__main__":

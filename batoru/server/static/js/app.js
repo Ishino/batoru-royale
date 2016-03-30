@@ -51,11 +51,25 @@ socket.on('fight front', function(json) {
 
 // Battle events
 socket.on('fight scroll', function(json) {
+
     var fight_scroll = JSON.parse(json.data);
-    loser_hitpoints = fight_scroll.loser.hit_points;
-    percent = 0;
-    bar_class = '';
-    old_class = '';
+
+    var player = fight_scroll.winner
+    var opponent = fight_scroll.loser
+    var loser_hitpoints = opponent.hit_points;
+
+    if (fight_scroll.loser.name == $( "#player" ).val()) {
+        player = fight_scroll.loser
+        loser_hitpoints = player.hit_points;
+        opponent = fight_scroll.winner
+    }
+
+    player_percent = 0;
+    opponent_percent = 0;
+    player_bar_class = '';
+    player_bar_class = '';
+    opponent_bar_class = '';
+    opponent_bar_class = '';
 
     count = Math.floor((Math.random() * 3));
 
@@ -73,41 +87,49 @@ socket.on('fight scroll', function(json) {
         $(this).hide();
     });
 
-    if (fight_scroll.winner.name == $( "#player" ).val()) {
-        max = $('#opponent_window .progress-bar').attr('aria-valuemax');
-        divider = Math.round(max / 100);
-        if ( loser_hitpoints > 0 ) {
-            percent = Math.round(loser_hitpoints / divider);
-        }
-        if ( percent < 60 ) {
-            bar_class = 'progress-bar-warning';
-        }
-        if ( percent < 30 ) {
-            bar_class = 'progress-bar-danger';
-            old_class = 'progress-bar-warning';
-        }
-        $('#opponent_window .progress-bar').addClass(bar_class).removeClass(old_class);
-        $('#opponent_window .progress-bar').attr('aria-valuenow', loser_hitpoints);
-        $('#opponent_window .progress-bar').width(percent + '%');
+    opponent_max = $('#opponent_window .progress-bar').attr('aria-valuemax');
+    opponent_divider = Math.round(opponent_max / 100);
+    if (opponent.hit_points > 0) {
+        opponent_percent = Math.round(opponent.hit_points / opponent_divider);
+    }
+    if ( opponent_percent > 60 ) {
+        opponent_old_class = 'progress-bar-warning';
+    }
+    if ( opponent_percent < 60 ) {
+        opponent_bar_class = 'progress-bar-warning';
+    }
+    if ( opponent_percent < 30 ) {
+        opponent_bar_class = 'progress-bar-danger';
+        opponent_old_class = 'progress-bar-warning';
+    }
 
+    $('#opponent_window .progress-bar').addClass(opponent_bar_class).removeClass(opponent_old_class);
+    $('#opponent_window .progress-bar').attr('aria-valuenow', opponent.hit_points);
+    $('#opponent_window .progress-bar').width(opponent_percent + '%');
+
+    player_max = $('#player_window .progress-bar').attr('aria-valuemax');
+    player_divider = Math.round(player_max / 100);
+    if (player.hit_points > 0) {
+        player_percent = Math.round(player.hit_points / player_divider);
+    }
+    if ( player_percent > 60 ) {
+        player_old_class = 'progress-bar-warning';
+    }
+    if ( player_percent < 60 ) {
+        player_bar_class = 'progress-bar-warning';
+    }
+    if ( player_percent < 30 ) {
+        player_bar_class = 'progress-bar-danger';
+        player_old_class = 'progress-bar-warning';
+    }
+
+    $('#player_window .progress-bar').addClass(player_bar_class).removeClass(player_old_class);
+    $('#player_window .progress-bar').attr('aria-valuenow', player.hit_points);
+    $('#player_window .progress-bar').width(player_percent + '%');
+
+    if (fight_scroll.winner.name == $( "#player" ).val()) {
         $('#opponent_window img.'+images[count]).show();
     } else {
-        max = $('#player_window .progress-bar').attr('aria-valuemax');
-        divider = Math.round(max / 100);
-        if ( loser_hitpoints > 0 ) {
-            percent = Math.round(loser_hitpoints / divider);
-        }
-        if ( percent < 60 ) {
-            bar_class = 'progress-bar-warning';
-        }
-        if ( percent < 30 ) {
-            bar_class = 'progress-bar-danger';
-            old_class = 'progress-bar-warning';
-        }
-        $('#player_window .progress-bar').addClass(bar_class).removeClass(old_class);
-        $('#player_window .progress-bar').attr('aria-valuenow', loser_hitpoints);
-        $('#player_window .progress-bar').width(percent + '%');
-
         $('#player_window img.'+images[count]).show();
     }
 });
@@ -152,6 +174,16 @@ $( document ).ready(function() {
         // $('#log_text').empty();
         $opponent = $('#playerlist').find(":selected").text();
         socket.emit('fight', {room: id, data: $opponent, player: $( "#player" ).val()});
+    });
+
+    $( "#heal" ).click(function() {
+        $opponent = $('#playerlist').find(":selected").text();
+        socket.emit('command', {room: id, command: 'heal', player: $( "#player" ).val()});
+    });
+
+    $( "#boost" ).click(function() {
+        $opponent = $('#playerlist').find(":selected").text();
+        socket.emit('command', {room: id, command: 'boost', player: $( "#player" ).val()});
     });
 
     $( "#level" ).click(function() {
