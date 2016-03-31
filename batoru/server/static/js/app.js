@@ -21,8 +21,9 @@ socket.on('fight front', function(json) {
     if ($( "#player" ).val() == player_window.name) {
         $('#player_window div.progress_holder').empty();
         $('#player_window div.progress_holder').prepend(
-            $('<div/>').text(player_window.name).html()
-            + '<br>'
+            '<div class="margin-bottom">'
+            + '<span class="badge">' + player_window.level + '</span> ' + $('<div/>').text(player_window.name).html()
+            + '</div>'
             + '<div class="progress">'
             + '<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="'
             + player_window.hit_points
@@ -31,12 +32,14 @@ socket.on('fight front', function(json) {
             + '" style="width: 100%">'
             + '</div>'
             + '</div>'
+            + '<div id="skill_points">Skill points: <span class="label label-info">' + player_window.skill_points + '</span></div>'
         );
     } else {
         $('#opponent_window div.progress_holder').empty();
         $('#opponent_window div.progress_holder').prepend(
-            $('<div/>').text(player_window.name).html()
-            + '<br>'
+            '<div class="margin-bottom">'
+            + '<span class="badge">' + player_window.level + '</span> ' + $('<div/>').text(player_window.name).html()
+            + '</div>'
             + '<div class="progress">'
             + '<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="'
             + player_window.hit_points
@@ -45,6 +48,7 @@ socket.on('fight front', function(json) {
             + '" style="width: 100%">'
             + '</div>'
             + '</div>'
+            + '<div id="skill_points">Skill points: <span class="label label-info">' + player_window.skill_points + '</span></div>'
         );
     }
 });
@@ -56,11 +60,9 @@ socket.on('fight scroll', function(json) {
 
     var player = fight_scroll.winner
     var opponent = fight_scroll.loser
-    var loser_hitpoints = opponent.hit_points;
 
     if (fight_scroll.loser.name == $( "#player" ).val()) {
         player = fight_scroll.loser
-        loser_hitpoints = player.hit_points;
         opponent = fight_scroll.winner
     }
 
@@ -102,9 +104,10 @@ socket.on('fight scroll', function(json) {
         opponent_bar_class = 'progress-bar-danger';
     }
 
-    $('#opponent_window .progress-bar').attr('class', "progress-bar progress-bar-striped active " + player_bar_class );
+    $('#opponent_window .progress-bar').attr('class', "progress-bar progress-bar-striped active " + opponent_bar_class );
     $('#opponent_window .progress-bar').attr('aria-valuenow', opponent.hit_points);
     $('#opponent_window .progress-bar').width(opponent_percent + '%');
+    $('#opponent_window #skill_points span').empty().prepend($('<div/>').text(opponent.skill_points).html());
 
     player_max = $('#player_window .progress-bar').attr('aria-valuemax');
     player_divider = Math.round(player_max / 100);
@@ -124,6 +127,7 @@ socket.on('fight scroll', function(json) {
     $('#player_window .progress-bar').attr('class', "progress-bar progress-bar-striped active " + player_bar_class );
     $('#player_window .progress-bar').attr('aria-valuenow', player.hit_points);
     $('#player_window .progress-bar').width(player_percent + '%');
+    $('#player_window #skill_points span').empty().prepend($('<div/>').text(player.skill_points).html());
 
     if (fight_scroll.winner.name == $( "#player" ).val()) {
         $('#opponent_window img.'+images[count]).show();

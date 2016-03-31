@@ -30,6 +30,8 @@ class Battle:
         self.player_one = None
         self.player_two = None
 
+        self.skill_modifier = 0
+
     def engage(self, name, opponent='monster', room=None):
 
         self.room = room
@@ -71,7 +73,7 @@ class Battle:
 
         if message['command'] == 'boost':
             if player is not None:
-                player.fightSkill = player.fightSkill * player.chanceMultiplier
+                player.fightSkill += self.skill_modifier
 
         if message['player'] == self.player_one.name:
             self.player_one = player
@@ -102,7 +104,7 @@ class Battle:
         player_two_obj = {'name': player_two.name,
                           'level': player_two.level,
                           'hit_points': player_two.hitPoints,
-                          'skill_points': player_two.skill,
+                          'skill_points': player_two.fightSkill,
                           'strength': player_two.strength,
                           'stamina': player_two.stamina
                           }
@@ -127,7 +129,7 @@ class Battle:
         player_obj = {'name': player.name,
                       'level': player.level,
                       'hit_points': player.hitPoints,
-                      'skill_points': player.skill,
+                      'skill_points': player.fightSkill,
                       'strength': player.strength,
                       'stamina': player.stamina,
                       'experience': player.experience,
@@ -176,6 +178,8 @@ class Battle:
         swing = 1
 
         while True:
+            self.skill_modifier = CombatCalculations.calc_modifier(self.player_one.typeStat, self.player_two.typeStat, 0.2)
+
             method_frame, header_frame, body = self.channel.basic_get(self.room)
 
             if method_frame:
@@ -194,8 +198,6 @@ class Battle:
             else:
                 print('No message returned')
 
-            skill_modifier = CombatCalculations.calc_modifier(self.player_one.typeStat, self.player_two.typeStat, 0.2)
-
             result = CombatCalculations.get_highest(int(self.player_one.accuracy()), int(self.player_two.accuracy()))
             if result == 1:
 
@@ -203,10 +205,10 @@ class Battle:
                 if damage < 1:
                     damage = 0
 
-                self.player_one.empower(skill_modifier)
-                self.player_two.weaken(damage, skill_modifier)
+                self.player_one.empower(self.skill_modifier)
+                self.player_two.weaken(damage, self.skill_modifier)
 
-                self.fight.scroll(self.player_one, self.player_two, damage, skill_modifier,
+                self.fight.scroll(self.player_one, self.player_two, damage, self.skill_modifier,
                                   {0: self.room, 1: self.opponent_room})
 
             elif result == 2:
@@ -215,10 +217,10 @@ class Battle:
                 if damage < 1:
                     damage = 0
 
-                self.player_two.empower(skill_modifier)
-                self.player_one.weaken(damage, skill_modifier)
+                self.player_two.empower(self.skill_modifier)
+                self.player_one.weaken(damage, self.skill_modifier)
 
-                self.fight.scroll(self.player_two, self.player_one, damage, skill_modifier,
+                self.fight.scroll(self.player_two, self.player_one, damage, self.skill_modifier,
                                   {0: self.room, 1: self.opponent_room})
 
             else:
@@ -262,6 +264,8 @@ class Battle:
         swing = 1
 
         while True:
+            self.skill_modifier = CombatCalculations.calc_modifier(self.player_one.typeStat, mob.typeStat, 0.2)
+
             method_frame, header_frame, body = self.channel.basic_get(self.room)
 
             if method_frame:
@@ -271,8 +275,6 @@ class Battle:
             else:
                 print('No message returned')
 
-            skill_modifier = CombatCalculations.calc_modifier(self.player_one.typeStat, mob.typeStat, 0.2)
-
             result = CombatCalculations.get_highest(int(self.player_one.accuracy()), int(mob.accuracy()))
             if result == 1:
 
@@ -280,10 +282,10 @@ class Battle:
                 if damage < 1:
                     damage = 0
 
-                self.player_one.empower(skill_modifier)
-                mob.weaken(damage, skill_modifier)
+                self.player_one.empower(self.skill_modifier)
+                mob.weaken(damage, self.skill_modifier)
 
-                self.fight.scroll(self.player_one, mob, damage, skill_modifier, self.room)
+                self.fight.scroll(self.player_one, mob, damage, self.skill_modifier, self.room)
 
             elif result == 2:
 
@@ -291,10 +293,10 @@ class Battle:
                 if damage < 1:
                     damage = 0
 
-                mob.empower(skill_modifier)
-                hero.weaken(damage, skill_modifier)
+                mob.empower(self.skill_modifier)
+                hero.weaken(damage, self.skill_modifier)
 
-                self.fight.scroll(mob, self.player_one, damage, skill_modifier, self.room)
+                self.fight.scroll(mob, self.player_one, damage, self.skill_modifier, self.room)
 
             else:
                 self.fight.scroll(mob, self.player_one, 0, 0, self.room)

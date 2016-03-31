@@ -26,11 +26,11 @@ class CombatLogs:
         if not self.enabledScroll:
             return
 
-        event = {}
-        event['winner'] = {'name': winner.name, 'hit_points': winner.hitPoints, 'skill_points': winner.fightSkill}
-        event['loser'] = {'name': loser.name, 'hit_points': loser.hitPoints, 'skill_points': loser.fightSkill}
-        event['damage'] = damage
-        event['gain'] = gain
+        event = {'winner': {'name': winner.name, 'hit_points': winner.hitPoints, 'skill_points': winner.fightSkill,
+                            'skill': winner.skill},
+                 'loser': {'name': loser.name, 'hit_points': loser.hitPoints, 'skill_points': loser.fightSkill,
+                           'skill': loser.skill},
+                 'damage': damage, 'gain': gain}
 
         self.publish_event(json.dumps(event), 0, 'fight scroll', '/fight', room)
 
