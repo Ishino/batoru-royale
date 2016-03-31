@@ -56,9 +56,6 @@ class Battle:
             self.kill_player(name, opponent)
 
     def command(self, message):
-
-        print(message)
-
         player = None
 
         if message['player'] == self.player_one.name:
@@ -186,8 +183,6 @@ class Battle:
                 message = json.loads(body.decode('utf-8'))
                 self.command(message)
                 self.channel.basic_ack(method_frame.delivery_tag)
-            else:
-                print('No message returned')
 
             method_frame, header_frame, body = self.channel.basic_get(self.opponent_room)
 
@@ -195,8 +190,6 @@ class Battle:
                 message = json.loads(body.decode('utf-8'))
                 self.command(message)
                 self.channel.basic_ack(method_frame.delivery_tag)
-            else:
-                print('No message returned')
 
             result = CombatCalculations.get_highest(int(self.player_one.accuracy()), int(self.player_two.accuracy()))
             if result == 1:
@@ -272,8 +265,6 @@ class Battle:
                 message = json.loads(body.decode('utf-8'))
                 self.command(message)
                 self.channel.basic_ack(method_frame.delivery_tag)
-            else:
-                print('No message returned')
 
             result = CombatCalculations.get_highest(int(self.player_one.accuracy()), int(mob.accuracy()))
             if result == 1:
@@ -281,6 +272,9 @@ class Battle:
                 damage = self.player_one.offence() - mob.defence()
                 if damage < 1:
                     damage = 0
+
+                if self.player_one.fightSkill < mob.fightSkill:
+                    self.player_one.empower(self.skill_modifier)
 
                 self.player_one.empower(self.skill_modifier)
                 mob.weaken(damage, self.skill_modifier)
@@ -292,6 +286,9 @@ class Battle:
                 damage = mob.offence() - self.player_one.defence()
                 if damage < 1:
                     damage = 0
+
+                if mob.fightSkill < self.player_one.fightSkill:
+                    mob.empower(self.skill_modifier)
 
                 mob.empower(self.skill_modifier)
                 hero.weaken(damage, self.skill_modifier)

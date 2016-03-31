@@ -130,9 +130,13 @@ socket.on('fight scroll', function(json) {
     $('#player_window #skill_points span').empty().prepend($('<div/>').text(player.skill_points).html());
 
     if (fight_scroll.winner.name == $( "#player" ).val()) {
-        $('#opponent_window img.'+images[count]).show();
+        $('#opponent_window div.progress-bar').empty().prepend(fight_scroll.damage);
+        $('#opponent_window img.' + images[count]).show();
+        $('#player_window div.progress-bar').empty();
     } else {
-        $('#player_window img.'+images[count]).show();
+        $('#player_window div.progress-bar').empty().prepend(fight_scroll.damage);
+        $('#player_window img.' + images[count]).show();
+        $('#opponent_window div.progress-bar').empty();
     }
 });
 

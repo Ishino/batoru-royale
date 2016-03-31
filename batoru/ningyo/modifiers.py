@@ -30,7 +30,7 @@ class Power:
 
     def get_power(self, power, energy):
         power_modifier = (power * self.powerModifier) / self.powerReduction
-        power = math.floor(math.fabs(energy * power_modifier))
+        power = math.floor(math.fabs(energy + power_modifier))
         return power
 
 
