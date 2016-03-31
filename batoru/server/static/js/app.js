@@ -93,17 +93,16 @@ socket.on('fight scroll', function(json) {
         opponent_percent = Math.round(opponent.hit_points / opponent_divider);
     }
     if ( opponent_percent > 60 ) {
-        opponent_old_class = 'progress-bar-warning';
+        opponent_bar_class = 'progress-bar-default';
     }
     if ( opponent_percent < 60 ) {
         opponent_bar_class = 'progress-bar-warning';
     }
     if ( opponent_percent < 30 ) {
         opponent_bar_class = 'progress-bar-danger';
-        opponent_old_class = 'progress-bar-warning';
     }
 
-    $('#opponent_window .progress-bar').addClass(opponent_bar_class).removeClass(opponent_old_class);
+    $('#opponent_window .progress-bar').attr('class', "progress-bar progress-bar-striped active " + player_bar_class );
     $('#opponent_window .progress-bar').attr('aria-valuenow', opponent.hit_points);
     $('#opponent_window .progress-bar').width(opponent_percent + '%');
 
@@ -113,17 +112,16 @@ socket.on('fight scroll', function(json) {
         player_percent = Math.round(player.hit_points / player_divider);
     }
     if ( player_percent > 60 ) {
-        player_old_class = 'progress-bar-warning';
+        player_bar_class = 'progress-bar-default';
     }
     if ( player_percent < 60 ) {
         player_bar_class = 'progress-bar-warning';
     }
     if ( player_percent < 30 ) {
         player_bar_class = 'progress-bar-danger';
-        player_old_class = 'progress-bar-warning';
     }
 
-    $('#player_window .progress-bar').addClass(player_bar_class).removeClass(player_old_class);
+    $('#player_window .progress-bar').attr('class', "progress-bar progress-bar-striped active " + player_bar_class );
     $('#player_window .progress-bar').attr('aria-valuenow', player.hit_points);
     $('#player_window .progress-bar').width(player_percent + '%');
 

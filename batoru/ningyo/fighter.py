@@ -11,7 +11,7 @@ class Fighter(Ningyo):
         self.stamina = 1
 
         self.strengthMultiplier = 10
-        self.staminaMultiplier = 100
+        self.staminaMultiplier = 1000
         self.chanceMultiplier = 1
 
         self.experience = 0

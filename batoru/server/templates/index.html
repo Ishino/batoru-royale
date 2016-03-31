@@ -20,69 +20,71 @@
 <body>
     <div class="container">
         <div class="row">
-            <h1>Batoru Royale</h1>
+            <div class="col-lg-12">
+                <h1>Batoru Royale</h1>
+            </div>
         </div>
         <div class="row">
-            <div id="joinbox" class="form-group form-inline col-lg-12">
-                <input type="text" id="player" placeholder="player name" class="form-control" />
-                <button type="button" class="btn btn-primary" id="join">Join!</button>
-            </div>
-            <div id="fightbox" class="form-group">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="form-inline">
-                           <select id="playerlist" class="form-control">
-                                <option value="">Random</option>
-                            </select>
-                            <button type="button" class="btn btn-danger" id="fight">Fight!</button>
+            <div class="col-lg-12">
+                <div id="joinbox" class="form-group form-inline">
+                    <input type="text" id="player" placeholder="player name" class="form-control" />
+                    <button type="button" class="btn btn-primary" id="join">Join!</button>
+                </div>
+                <div id="fightbox" class="container form-group">
+                    <div class="row margin-bottom">
+                        <div class="col-lg-12">
+                            <div class="form-inline">
+                               <select id="playerlist" class="form-control">
+                                    <option value="">Random</option>
+                                </select>
+                                <button type="button" class="btn btn-danger" id="fight">Fight!</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row"></div>
-                <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div id="player_window">
-                            <div class="container">
-                                <div class="row">
-                                    <button type="button" class="btn btn-success" id="heal">Heal me!</button>
-                                    <button type="button" class="btn btn-success" id="boost">Boost!</button>
+                    <div class="row margin-bottom">
+                        <div class="col-lg-12">
+                                <button type="button" class="btn btn-success" id="heal">Heal me!</button>
+                                <button type="button" class="btn btn-success" id="boost">Boost!</button>
+                        </div>
+                    </div>
+                    <div class="row margin-bottom">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div id="player_window">
+                                <div class="progress_holder"></div>
+                                <img class="bam" src="images/bam.png" style="display: none;"/>
+                                <img class="puff" src="images/puff.png" style="display: none;"/>
+                                <img class="splash" src="images/splash.png" style="display: none;"/>
+                                <img class="swooosh" src="images/swooosh.png" style="display: none;"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div id="opponent_window">
+                                <div class="progress_holder"></div>
+                                <img class="bam" src="images/bam.png" style="display: none;"/>
+                                <img class="puff" src="images/puff.png" style="display: none;"/>
+                                <img class="splash" src="images/splash.png" style="display: none;"/>
+                                <img class="swooosh" src="images/swooosh.png" style="display: none;"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row"></div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-8">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> Status</h3>
                                 </div>
+                                <div id="status" class="info panel-body"></div>
                             </div>
-                            <div class="progress_holder"></div>
-
-                            <img class="bam" src="images/bam.png" style="display: none;"/>
-                            <img class="puff" src="images/puff.png" style="display: none;"/>
-                            <img class="splash" src="images/splash.png" style="display: none;"/>
-                            <img class="swooosh" src="images/swooosh.png" style="display: none;"/>
                         </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div id="opponent_window">
-                            <div class="progress_holder"></div>
-                            <img class="bam" src="images/bam.png" style="display: none;"/>
-                            <img class="puff" src="images/puff.png" style="display: none;"/>
-                            <img class="splash" src="images/splash.png" style="display: none;"/>
-                            <img class="swooosh" src="images/swooosh.png" style="display: none;"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="row"></div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-8">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> Status</h3>
-                            </div>
-                            <div id="status" class="info panel-body"></div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Log</h3>
-                            </div>
-                            <div id="log" class="info panel-body">
-                                <small id="log_text"></small>
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Log</h3>
+                                </div>
+                                <div id="log" class="info panel-body">
+                                    <small id="log_text"></small>
+                                </div>
                             </div>
                         </div>
                     </div>

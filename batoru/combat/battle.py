@@ -171,7 +171,7 @@ class Battle:
         self.player_two = player_two
 
         self.fight.enabledScroll = scroll
-        self.fight.scrollSpeed = 2
+        self.fight.scrollSpeed = 0.75
 
         swing = 1
 
@@ -257,7 +257,7 @@ class Battle:
         self.player_two = mob
 
         self.fight.enabledScroll = scroll
-        self.fight.scrollSpeed = 2
+        self.fight.scrollSpeed = 0.5
 
         swing = 1
 
