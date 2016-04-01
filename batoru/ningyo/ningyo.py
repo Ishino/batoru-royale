@@ -56,7 +56,7 @@ class Ningyo:
     def weaken(self, damage, skill_modifier):
         self.hitPoints = int(self.hitPoints) - int(damage)
         self.fightSkill = int(self.fightSkill) - int(skill_modifier)
-        if int(self.fightSkill) < 0:
+        if int(self.fightSkill) <= 0:
             self.fightSkill = 1
 
     def is_dead(self):

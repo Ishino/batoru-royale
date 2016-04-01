@@ -37,11 +37,11 @@ class TestNingyo(unittest.TestCase):
         self.assertEqual(self.player.hitPoints, 1)
 
         self.player.weaken(1, 1)
-        self.assertEqual(self.player.fightSkill, 0)
+        self.assertEqual(self.player.fightSkill, 1)
         self.assertEqual(self.player.hitPoints, 0)
 
         self.player.weaken(1, 1)
-        self.assertEqual(self.player.fightSkill, 0)
+        self.assertEqual(self.player.fightSkill, 1)
         self.assertEqual(self.player.hitPoints, -1)
 
     def test_offence(self):
