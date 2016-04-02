@@ -16,8 +16,8 @@ def canvas():
 
 @app.route('/player/<name>')
 def player(name):
-    player = Player()
-    player.load_player(name)
+    player_service = Player()
+    player = player_service.load_player(name)
     return render_template('player.html', player=player)
 
 @app.route('/<path:filename>')
