@@ -138,6 +138,24 @@ socket.on('fight scroll', function(json) {
         $('#player_window img.' + images[count]).show();
         $('#opponent_window div.progress-bar').empty();
     }
+
+    if (player.hit_points <= 0) {
+        modal_result_title = 'Oooooooowwwww ...';
+        modal_result_text = 'You LOST! ... Use the $%^$^$%^ buttons!';
+        $('#resultModal .modal-title').text(modal_result_title);
+        $('#resultModal .modal-body').text(modal_result_text);
+
+        $('#resultModal').modal('show');
+    }
+
+    if (opponent.hit_points <= 0) {
+        modal_result_title = 'Oooooooowwwww ... YEAH!';
+        modal_result_text = 'You WON! ... Wasn\'t that hard, was it?!';
+        $('#resultModal .modal-title').text(modal_result_title);
+        $('#resultModal .modal-body').text(modal_result_text);
+
+        $('#resultModal').modal('show');
+    }
 });
 
 // Battle player list.
