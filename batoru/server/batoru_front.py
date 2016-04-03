@@ -14,11 +14,13 @@ def index():
 def canvas():
     return render_template('canvas.html')
 
+
 @app.route('/player/<name>')
 def player(name):
     player_service = Player()
     player = player_service.load_player(name)
     return render_template('player.html', player=player)
+
 
 @app.route('/<path:filename>')
 def send_static(filename):
