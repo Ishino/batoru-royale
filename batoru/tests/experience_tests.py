@@ -10,18 +10,18 @@ class TestExperience(unittest.TestCase):
     def test_calculate_experience_need(self):
         level = 1
         result = 1001
-        experience_modifier = 1000
-        self.assertEqual(self.experienceCalc.calculate_experience_need(level, experience_modifier), result)
+        self.experienceCalc.experience_modifier = 1000
+        self.assertEqual(self.experienceCalc.calculate_experience_need(level), result)
 
         level = 2
         result = 5009
-        experience_modifier = 1000
-        self.assertEqual(self.experienceCalc.calculate_experience_need(level, experience_modifier), result)
+        self.experienceCalc.experience_modifier = 1000
+        self.assertEqual(self.experienceCalc.calculate_experience_need(level), result)
 
         level = 3
         result = 1436
-        experience_modifier = 100
-        self.assertEqual(self.experienceCalc.calculate_experience_need(level, experience_modifier), result)
+        self.experienceCalc.experience_modifier = 100
+        self.assertEqual(self.experienceCalc.calculate_experience_need(level), result)
 
     def test_calculate_experience_gain(self):
         level = 1

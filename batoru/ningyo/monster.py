@@ -12,10 +12,6 @@ class Monster(Ningyo):
         self.strength = 1
         self.stamina = 1
 
-        self.strengthMultiplier = 10
-        self.staminaMultiplier = 100
-        self.chanceMultiplier = 1
-
         self.attributeCalc = attribute_calc
 
         self.ability = 0

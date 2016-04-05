@@ -5,18 +5,12 @@ from . import Ningyo
 class Fighter(Ningyo):
     def __init__(self, attribute_calc):
         Ningyo.__init__(self, attribute_calc)
-        self.type = 'D'
+        self.type = None
 
         self.strength = 1
         self.stamina = 1
 
-        self.strengthMultiplier = 10
-        self.staminaMultiplier = 1000
-        self.chanceMultiplier = 1
-
         self.experience = 0
-
-        self.experience_modifier = 1000
 
         self.attributeCalc = attribute_calc
 
