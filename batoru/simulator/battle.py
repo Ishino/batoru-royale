@@ -142,9 +142,7 @@ class Battle:
                              + str(player.skill) + " ap | " + str(player.strength) + " str | " \
                              + str(player.stamina) + " sta | " + str(player.hitPoints) + " hp | " \
                              + str(player.experience) + " XP | needed: " \
-                             + str(player.experienceCalc.calculate_experience_need(player.level,
-                                                                                   player.experience_modifier
-                                                                                   )) + " >"
+                             + str(player.experienceCalc.calculate_experience_need(player.level)) + " >"
         return player_status_text
 
     def tournament(self):
@@ -183,10 +181,9 @@ class Battle:
         for player in players:
             fighter = self.player_engine.load_player(player)
             self.fight.print_event(" [ " + str(fighter.name) + " ] level: " + str(fighter.level) + " exp: " +
-                                     str(fighter.experience) + "/" +
-                                     str(TournamentExperience().calculate_experience_need(
-                                         fighter.level, fighter.experience_modifier)) +
-                                     " type: " + str(fighter.type), 0)
+                                   str(fighter.experience) + "/" +
+                                   str(TournamentExperience().calculate_experience_need(fighter.level)) +
+                                   " type: " + str(fighter.type), 0)
 
     def compete(self, fight_id, player_one: Fighter, player_two: Fighter, scroll=False):
 
