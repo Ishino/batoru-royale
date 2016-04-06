@@ -22,10 +22,9 @@ class Battle:
         self.level_gain = 1
         self.tournament_rounds = 1
 
-        self.room = ''
+        self.room = None
 
-    def simulate(self, name='', battle_type='monster', room=''):
-        self.room = room
+    def simulate(self, name='', battle_type='monster'):
         pvp = True
         if battle_type == 'monster':
             pvp = False
@@ -77,7 +76,7 @@ class Battle:
             player_two.strength) + " str | " + str(player_two.stamina) + " sta | " + \
             str(player_two.hitPoints) + " hp >"
 
-        self.fight.publish_event(event_text, 0, 'fight status', '/fight', self.room)
+        self.fight.print_event(event_text, 0)
 
         player_fight_id = self.logger.load_sequence(name + '_fight_count')
         self.battle(player_one.name + "." + str(player_fight_id), player_one, player_two, False)
@@ -91,7 +90,7 @@ class Battle:
             action = 'created'
 
         event_text = ">> Player " + player.name + " " + action + ": " + self.get_player_status(player)
-        self.fight.publish_event(event_text, 0, 'fight status', '/fight', self.room)
+        self.fight.print_event(event_text, 0)
 
         self.stats.register_creation(player)
         return player
@@ -124,7 +123,7 @@ class Battle:
             self.battle(hero.name + "." + str(player_fight_id), hero, mob)
 
             if mob.is_dead():
-                self.fight.publish_event(self.get_player_status(hero), 0, 'fight log', '/fight', self.room)
+                self.fight.print_event(self.get_player_status(hero), 0)
 
             self.fight.print_newline = False
             self.fight.print_event(".", 1)
@@ -135,7 +134,7 @@ class Battle:
 
         self.fight.print_event("\n", 1)
         self.player_engine.save_player(hero)
-        self.fight.publish_event(self.get_player_status(hero), 0, 'fight status', '/fight', self.room)
+        self.fight.print_event(self.get_player_status(hero), 0)
 
     @staticmethod
     def get_player_status(player):
@@ -183,11 +182,11 @@ class Battle:
 
         for player in players:
             fighter = self.player_engine.load_player(player)
-            self.fight.publish_event(" [ " + str(fighter.name) + " ] level: " + str(fighter.level) + " exp: " +
+            self.fight.print_event(" [ " + str(fighter.name) + " ] level: " + str(fighter.level) + " exp: " +
                                      str(fighter.experience) + "/" +
                                      str(TournamentExperience().calculate_experience_need(
                                          fighter.level, fighter.experience_modifier)) +
-                                     " type: " + str(fighter.type), 0, 'fight log', '/fight', self.room)
+                                     " type: " + str(fighter.type), 0)
 
     def compete(self, fight_id, player_one: Fighter, player_two: Fighter, scroll=False):
 
@@ -295,7 +294,7 @@ class Battle:
 
             if mob.is_dead():
                 event_text = "After " + str(swing) + " swings, " + hero.name + " won!"
-                self.fight.publish_event(event_text, 1, 'fight log', '/fight', self.room)
+                self.fight.print_event(event_text, 1)
                 self.stats.register_fight(hero, mob, swing, fight_id, 'win')
                 hero.gain_experience(mob.level)
                 hero.calculate_stats()
@@ -303,7 +302,7 @@ class Battle:
 
             if hero.is_dead():
                 event_text = "After " + str(swing) + " swings, " + mob.name + " won!"
-                self.fight.publish_event(event_text, 1, 'fight log', '/fight', self.room)
+                self.fight.print_event(event_text, 1)
                 self.stats.register_fight(hero, mob, swing, fight_id, 'loss')
                 hero.calculate_stats()
                 return
