@@ -23,7 +23,7 @@ class Fighter(Ningyo):
     def gain_experience(self, opponent_level):
 
         self.experience += self.experienceCalc.calculate_experience_gain(self.level, opponent_level)
-        if self.level_up(self.experienceCalc.calculate_experience_need(self.level, self.experience_modifier)):
+        if self.level_up(self.experienceCalc.calculate_experience_need(self.level)):
             self.level_up_stats()
 
     def level_up(self, calculated_experience):
