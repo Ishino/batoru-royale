@@ -102,7 +102,7 @@ class Battle:
         return mob
 
     def leveling(self, name, level_gain):
-        self.fight.logLevel = 1
+        self.fight.logLevel = 2
 
         hero = self.create_player(name)
         level_goal = hero.level + level_gain
@@ -119,7 +119,7 @@ class Battle:
             event_text = "At level " + str(mob.level) + " " + mob.name + " has < " \
                          + str(mob.skill) + " ap | " + str(mob.strength) + " str | " \
                          + str(mob.stamina) + " sta | " + str(mob.hitPoints) + " hp >\n"
-            self.fight.print_event(event_text, 1)
+            self.fight.print_event(event_text, 2)
             self.battle(hero.name + "." + str(player_fight_id), hero, mob)
 
             if mob.is_dead():
@@ -284,7 +284,7 @@ class Battle:
 
             if mob.is_dead():
                 event_text = "After " + str(swing) + " swings, " + hero.name + " won!\n"
-                self.fight.print_event(event_text, 1)
+                self.fight.print_event(event_text, 2)
                 self.stats.register_fight(hero, mob, swing, fight_id, 'win')
                 hero.gain_experience(mob.level)
                 hero.calculate_stats()
@@ -292,7 +292,7 @@ class Battle:
 
             if hero.is_dead():
                 event_text = "After " + str(swing) + " swings, " + mob.name + " won!\n"
-                self.fight.print_event(event_text, 1)
+                self.fight.print_event(event_text, 2)
                 self.stats.register_fight(hero, mob, swing, fight_id, 'loss')
                 hero.calculate_stats()
                 return
