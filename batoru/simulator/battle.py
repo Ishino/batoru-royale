@@ -123,7 +123,7 @@ class Battle:
             self.battle(hero.name + "." + str(player_fight_id), hero, mob)
 
             if mob.is_dead():
-                self.fight.print_event(self.get_player_status(hero), 0)
+                self.fight.print_event(self.get_player_status(hero), 2)
 
             self.fight.print_newline = False
             self.fight.print_event(".", 1)
