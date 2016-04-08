@@ -130,9 +130,7 @@ class Battle:
                       'strength': player.strength,
                       'stamina': player.stamina,
                       'experience': player.experience,
-                      'experience_needed': player.experienceCalc.calculate_experience_need(player.level,
-                                                                                           player.experience_modifier
-                                                                                           )
+                      'experience_needed': player.experienceCalc.calculate_experience_need(player.level)
                       }
 
         self.fight.publish_event(json.dumps(player_obj), 0, 'fight front', '/fight', {0: self.room, 1: self.opponent_room})
@@ -159,9 +157,7 @@ class Battle:
                              + str(player.skill) + " ap | " + str(player.strength) + " str | " \
                              + str(player.stamina) + " sta | " + str(player.hitPoints) + " hp | " \
                              + str(player.experience) + " XP | needed: " \
-                             + str(player.experienceCalc.calculate_experience_need(player.level,
-                                                                                   player.experience_modifier
-                                                                                   )) + " >"
+                             + str(player.experienceCalc.calculate_experience_need(player.level)) + " >"
         return player_status_text
 
     def compete(self, fight_id, player_one: Fighter, player_two: Fighter, scroll=False):

@@ -20,7 +20,7 @@ class Power:
     def __init__(self):
         self.base = 10
         self.powerModifier = 1
-        self.powerReduction = 4
+        self.powerReduction = 1
 
     def set_power_modifier(self, value):
         self.powerModifier = value
@@ -29,8 +29,8 @@ class Power:
         self.powerReduction = value
 
     def get_power(self, power, energy):
-        power_modifier = (power * self.powerModifier) / self.powerReduction
-        power = math.floor(math.fabs(energy + power_modifier))
+        power_modifier = (energy * self.powerModifier) / self.powerReduction
+        power = math.floor(math.fabs(power + power_modifier))
         return power
 
 

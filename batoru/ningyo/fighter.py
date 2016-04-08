@@ -32,6 +32,15 @@ class Fighter(Ningyo):
             return True
         return False
 
+    def offence(self):
+        offence = self.powerCalc.get_power(self.strength, self.fightSkill)
+        return offence
+
+    def defence(self):
+        self.powerCalc.powerReduction = 0.4
+        defence = self.powerCalc.get_power(self.stamina, self.fightSkill)
+        return defence
+
     def level_up_stats(self):
         if self.type == 'A':
             self.strength += 6

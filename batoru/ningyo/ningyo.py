@@ -69,9 +69,9 @@ class Ningyo:
         return self.accuracyCalc.get_accuracy(chance)
 
     def offence(self):
-        offence = self.powerCalc.get_power(self.skill, self.fightSkill)
+        offence = self.powerCalc.get_power(self.typeStat, self.fightSkill)
         return offence
 
     def defence(self):
-        defence = self.powerCalc.get_power(self.skill, self.fightSkill)
+        defence = self.powerCalc.get_power(self.typeStat, self.fightSkill)
         return defence
