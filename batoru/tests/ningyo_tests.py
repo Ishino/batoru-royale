@@ -46,21 +46,21 @@ class TestNingyo(unittest.TestCase):
 
     def test_offence(self):
 
-        self.player.skill = 1
+        self.player.typeStat = 1
         self.player.strengthMultiplier = 1
         self.player.offenceReduction = 1
         self.player.fightSkill = 1
         self.player.ability = 0
-        self.assertEqual(self.player.offence(), 1)
+        self.assertEqual(self.player.offence(), 2)
 
     def test_defence(self):
 
-        self.player.skill = 1
+        self.player.typeStat = 1
         self.player.staminaMultiplier = 1
         self.player.defenceReduction = 1
         self.player.fightSkill = 1
         self.player.ability = 0
-        self.assertEqual(self.player.defence(), 1)
+        self.assertEqual(self.player.defence(), 2)
 
 if __name__ == '__main__':
     unittest.main()
