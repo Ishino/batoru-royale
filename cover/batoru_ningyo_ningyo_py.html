@@ -218,11 +218,11 @@
 <p id="t69" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">self</span><span class="op">.</span><span class="nam">accuracyCalc</span><span class="op">.</span><span class="nam">get_accuracy</span><span class="op">(</span><span class="nam">chance</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t70" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t71" class="stm run hide_run">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">offence</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t72" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">offence</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">powerCalc</span><span class="op">.</span><span class="nam">get_power</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">skill</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">fightSkill</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t72" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">offence</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">powerCalc</span><span class="op">.</span><span class="nam">get_power</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">typeStat</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">fightSkill</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t73" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">offence</span><span class="strut">&nbsp;</span></p>
 <p id="t74" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t75" class="stm run hide_run">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">defence</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t76" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">defence</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">powerCalc</span><span class="op">.</span><span class="nam">get_power</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">skill</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">fightSkill</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t76" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">defence</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">powerCalc</span><span class="op">.</span><span class="nam">get_power</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">typeStat</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">fightSkill</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t77" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">defence</span><span class="strut">&nbsp;</span></p>
                 
             </td>
@@ -234,7 +234,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.org">coverage.py v4.0.3</a>,
-            created at 2016-04-07 22:00
+            created at 2016-04-09 20:53
         </p>
     </div>
 </div>

@@ -145,7 +145,7 @@
 <p id="t20" class="stm run hide_run">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">__init__</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t21" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">base</span> <span class="op">=</span> <span class="num">10</span><span class="strut">&nbsp;</span></p>
 <p id="t22" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">powerModifier</span> <span class="op">=</span> <span class="num">1</span><span class="strut">&nbsp;</span></p>
-<p id="t23" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">powerReduction</span> <span class="op">=</span> <span class="num">4</span><span class="strut">&nbsp;</span></p>
+<p id="t23" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">powerReduction</span> <span class="op">=</span> <span class="num">1</span><span class="strut">&nbsp;</span></p>
 <p id="t24" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t25" class="stm run hide_run">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">set_power_modifier</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">value</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t26" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">powerModifier</span> <span class="op">=</span> <span class="nam">value</span><span class="strut">&nbsp;</span></p>
@@ -154,8 +154,8 @@
 <p id="t29" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">powerReduction</span> <span class="op">=</span> <span class="nam">value</span><span class="strut">&nbsp;</span></p>
 <p id="t30" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t31" class="stm run hide_run">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">get_power</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">power</span><span class="op">,</span> <span class="nam">energy</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t32" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">power_modifier</span> <span class="op">=</span> <span class="op">(</span><span class="nam">power</span> <span class="op">*</span> <span class="nam">self</span><span class="op">.</span><span class="nam">powerModifier</span><span class="op">)</span> <span class="op">/</span> <span class="nam">self</span><span class="op">.</span><span class="nam">powerReduction</span><span class="strut">&nbsp;</span></p>
-<p id="t33" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">power</span> <span class="op">=</span> <span class="nam">math</span><span class="op">.</span><span class="nam">floor</span><span class="op">(</span><span class="nam">math</span><span class="op">.</span><span class="nam">fabs</span><span class="op">(</span><span class="nam">energy</span> <span class="op">+</span> <span class="nam">power_modifier</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t32" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">power_modifier</span> <span class="op">=</span> <span class="op">(</span><span class="nam">energy</span> <span class="op">*</span> <span class="nam">self</span><span class="op">.</span><span class="nam">powerModifier</span><span class="op">)</span> <span class="op">/</span> <span class="nam">self</span><span class="op">.</span><span class="nam">powerReduction</span><span class="strut">&nbsp;</span></p>
+<p id="t33" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">power</span> <span class="op">=</span> <span class="nam">math</span><span class="op">.</span><span class="nam">floor</span><span class="op">(</span><span class="nam">math</span><span class="op">.</span><span class="nam">fabs</span><span class="op">(</span><span class="nam">power</span> <span class="op">+</span> <span class="nam">power_modifier</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t34" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">power</span><span class="strut">&nbsp;</span></p>
 <p id="t35" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t36" class="pln"><span class="strut">&nbsp;</span></p>
@@ -186,7 +186,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.org">coverage.py v4.0.3</a>,
-            created at 2016-04-07 22:00
+            created at 2016-04-09 20:53
         </p>
     </div>
 </div>
