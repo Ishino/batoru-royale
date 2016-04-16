@@ -6,6 +6,7 @@ from ningyo.fighter import Fighter
 from ningyo.monster import Monster
 from ningyo.modifiers import Accuracy, Power
 from ningyo.attributes import Attributes
+from ningyo.actions import Actions
 from combat.combat_logs import CombatLogs
 from combat.combat_stats import CombatStats
 from combat.combat_calculations import CombatCalculations
@@ -57,20 +58,19 @@ class Battle:
 
     def command(self, message):
         player = None
+        opponent = None
+        actions = Actions()
 
         if message['player'] == self.player_one.name:
             player = self.player_one
+            opponent = self.player_two
 
         if message['player'] == self.player_two.name:
             player = self.player_two
+            opponent = self.player_one
 
-        if message['command'] == 'heal':
-            if player is not None:
-                player.hitPoints = player.hitPointsBase * player.stamina
-
-        if message['command'] == 'boost':
-            if player is not None:
-                player.fightSkill += self.skill_modifier
+        if player is not None:
+            player = actions.run_action(player, opponent, message['command'])
 
         if message['player'] == self.player_one.name:
             self.player_one = player
