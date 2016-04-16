@@ -3,7 +3,7 @@ coverage==4.0.3
 elasticsearch==2.3.0
 Flask==0.10.1
 Flask-SocketIO==2.2
-gevent==1.1.0
+gevent==1.1.1
 greenlet==0.4.9
 gunicorn==19.4.5
 itsdangerous==0.24
@@ -18,5 +18,5 @@ redis==2.10.5
 selenium==2.53.1
 six==1.10.0
 SQLAlchemy==1.0.12
-urllib3==1.14
-Werkzeug==0.11.5
+urllib3==1.15.1
+Werkzeug==0.11.8
