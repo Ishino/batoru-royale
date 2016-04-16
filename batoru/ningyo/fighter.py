@@ -95,7 +95,7 @@ class Fighter(Ningyo):
         self.calculate_stats()
 
     def calculate_stats(self):
-        self.hitPoints = self.hitPointsBase * self.stamina
+        self.hitPoints = self.get_max_hitpoints
         self.fightSkill = self.skill
 
         primary_stat = self.skill
@@ -122,3 +122,6 @@ class Fighter(Ningyo):
         if secondary_stat > primary_stat:
             self.typeStat = secondary_stat
             self.type = secondary_type
+
+    def get_max_hitpoints(self):
+        return self.hitPointsBase * self.stamina
