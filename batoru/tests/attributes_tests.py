@@ -26,7 +26,6 @@ class TestAttributes(unittest.TestCase):
             while number_of_attributes < 20:
                 attributes_modifier = 0
                 while attributes_modifier < 3:
-                    print(attributes_modifier)
                     random_attributes_values = self.attributes_calc.generate_attribute_values(
                         level, number_of_attributes, attributes_modifier
                     )
