@@ -1,4 +1,4 @@
-from batoru.combat.combat_calculations import CombatCalculations
+from combat.combat_calculations import CombatCalculations
 
 
 class Actions:
