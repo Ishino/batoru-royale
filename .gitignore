@@ -2,8 +2,8 @@
 *battle_log*
 .idea
 *__pycache__*
-*cover*
-*.pyc
+*cover
+.coverage
 *.db
 *.pid
 batoru-ansible
