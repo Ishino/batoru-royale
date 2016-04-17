@@ -19,7 +19,7 @@ class TestAttributes(unittest.TestCase):
             i += 1
 
     def test_generate_attribute_values(self):
-        attributes_modifier = 1
+        attributes_modifier = 0
 
         y = 1
         while y < 100:
