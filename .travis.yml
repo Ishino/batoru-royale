@@ -9,8 +9,7 @@ branches:
   only:
   - master
 install:
-- pip install -r requirements.txt
-- pip install pep8
+- pip install -r requirements_dev.txt
 script:
 - nosetests -v --with-coverage --cover-html
 - pep8 batoru --ignore=E501
