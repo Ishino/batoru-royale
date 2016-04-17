@@ -59,7 +59,7 @@ class Battle:
     def command(self, message):
         player = None
         opponent = None
-        actions = Actions()
+        actions = Actions(CombatCalculations())
 
         if message['player'] == self.player_one.name:
             player = self.player_one

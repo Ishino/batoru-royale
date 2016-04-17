@@ -1,10 +1,8 @@
-from combat.combat_calculations import CombatCalculations
-
-
 class Actions:
 
-    def __init__(self):
+    def __init__(self, combat_calc):
         self.actionList = None
+        self.combat_calc = combat_calc
 
     def get_action(self, action_name):
         action_list = {'heal': self.heal_action,
@@ -33,9 +31,8 @@ class Actions:
         player_one.hitPoints = player_one.hitPointsBase * player_one.stamina
         return player_one
 
-    @staticmethod
-    def boost_action(player_one, player_two):
-        skill_modifier = CombatCalculations.calc_modifier(player_one.typeStat, player_two.typeStat, 0.2)
+    def boost_action(self, player_one, player_two):
+        skill_modifier = self.combat_calc.calc_modifier(player_one.typeStat, player_two.typeStat, 0.2)
         player_one.fightSkill += skill_modifier
         return player_one
 

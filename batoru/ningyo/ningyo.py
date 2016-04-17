@@ -1,6 +1,3 @@
-import math
-
-
 class Ningyo:
 
     def __init__(self, attribute_calc):
