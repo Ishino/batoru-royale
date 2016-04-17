@@ -10,7 +10,8 @@ class Accuracy:
     def set_accuracy_modifier(self, value):
         self.accuracyModifier = value
 
-    def get_accuracy(self, value):
+    def get_accuracy(self, power, energy):
+        value = power + energy
         accuracy = random.randint(0, value) * self.accuracyModifier
         return accuracy
 

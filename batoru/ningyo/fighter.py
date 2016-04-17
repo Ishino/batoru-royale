@@ -14,32 +14,22 @@ class Fighter(Ningyo):
 
         self.attributeCalc = attribute_calc
 
-    def set_experience_calculator(self, experience_calc):
-        self.experienceCalc = experience_calc
+    def advance(self, opponent_level):
+        experience_gain = self.experienceCalc.calculate_experience_gain(self.level, opponent_level)
+        experience_need = self.experienceCalc.calculate_experience_need(self.level)
 
-    def set_attribute_calculator(self, attribute_calc):
-        self.attributeCalc = attribute_calc
+        self.gain_experience(experience_gain)
 
-    def gain_experience(self, opponent_level):
-
-        self.experience += self.experienceCalc.calculate_experience_gain(self.level, opponent_level)
-        if self.level_up(self.experienceCalc.calculate_experience_need(self.level)):
+        if experience_need < self.experience:
+            self.level_up()
             self.level_up_stats()
+            self.calculate_stats()
 
-    def level_up(self, calculated_experience):
-        if calculated_experience <= self.experience:
-            self.level += 1
-            return True
-        return False
+    def gain_experience(self, experience):
+        self.experience += experience
 
-    def offence(self):
-        offence = self.powerCalc.get_power(self.strength, self.fightSkill)
-        return offence
-
-    def defence(self):
-        self.powerCalc.powerReduction = 0.4
-        defence = self.powerCalc.get_power(self.stamina, self.fightSkill)
-        return defence
+    def level_up(self):
+        self.level += 1
 
     def level_up_stats(self):
         if self.type == 'A':
@@ -68,8 +58,6 @@ class Fighter(Ningyo):
             self.skill += 3
             self.strength += 3
             self.stamina += 6
-
-        self.calculate_stats()
 
     def create(self, name, start_level, skill_bonus, strength_bonus, stamina_bonus):
 

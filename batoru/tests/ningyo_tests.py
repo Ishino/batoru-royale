@@ -72,33 +72,10 @@ class TestNingyo(unittest.TestCase):
         self.player.powerCalc.get_power.assert_called_with(self.player.typeStat, self.player.fightSkill)
 
     def test_accuracy(self):
-        self.player.typeStat = 10
-        self.player.fightSkill = 10
+        self.player.typeStat = 1
+        self.player.fightSkill = 1
         self.player.accuracy()
-        value = self.player.typeStat + self.player.fightSkill
-        self.player.accuracyCalc.get_accuracy.assert_called_with(value)
-
-    def test_gain_experience(self):
-        self.player.level = 10
-        self.player.experience = 10
-        opponent_level = 10
-        self.player.set_experience_calculator(self.test_experience_calc)
-        self.player.experienceCalc.calculate_experience_gain.return_value = self.player.level + opponent_level
-        self.player.gain_experience(opponent_level)
-        self.assertEqual(self.player.experience, 30)
-        self.player.experienceCalc.calculate_experience_gain.assert_called_with(self.player.level, opponent_level)
-
-    def test_level_up(self):
-        self.player.level = 1
-        calculated_experience = 100
-
-        self.player.experience = 50
-        self.player.level_up(calculated_experience)
-        self.assertEqual(self.player.level, 1)
-
-        self.player.experience = 101
-        self.player.level_up(calculated_experience)
-        self.assertEqual(self.player.level, 2)
+        self.player.accuracyCalc.get_accuracy.assert_called_with(self.player.typeStat, self.player.fightSkill)
 
 if __name__ == '__main__':
     unittest.main()

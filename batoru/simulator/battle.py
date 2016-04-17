@@ -8,7 +8,6 @@ from combat.combat_stats import CombatStats
 from combat.combat_calculations import CombatCalculations
 from simulator.tournament import Tournament, TournamentExperience
 from battlefront.player import Player
-from battlefront.battlefront import Battlefront
 
 
 class Battle:
@@ -237,7 +236,7 @@ class Battle:
         self.stats.register_fight(winner, loser, swings, fight_id, 'win')
         self.stats.register_fight(loser, winner, swings, fight_id, 'loss')
 
-        winner.gain_experience(loser.level)
+        winner.advance(loser.level)
 
         winner.calculate_stats()
         loser.calculate_stats()
@@ -286,7 +285,7 @@ class Battle:
                 event_text = "After " + str(swing) + " swings, " + hero.name + " won!\n"
                 self.fight.print_event(event_text, 2)
                 self.stats.register_fight(hero, mob, swing, fight_id, 'win')
-                hero.gain_experience(mob.level)
+                hero.advance(mob.level)
                 hero.calculate_stats()
                 return
 

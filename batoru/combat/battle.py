@@ -232,7 +232,7 @@ class Battle:
         self.stats.register_fight(winner, loser, swings, fight_id, 'win')
         self.stats.register_fight(loser, winner, swings, fight_id, 'loss')
 
-        winner.gain_experience(loser.level)
+        winner.advance(loser.level)
 
         winner.calculate_stats()
         loser.calculate_stats()
@@ -298,7 +298,7 @@ class Battle:
                 event_text = "After " + str(swing) + " swings, " + self.player_one.name + " won!"
                 self.fight.publish_event(event_text, 1, 'fight log', '/fight', self.room)
                 self.stats.register_fight(self.player_one, mob, swing, fight_id, 'win')
-                hero.gain_experience(mob.level)
+                hero.advance(mob.level)
                 hero.calculate_stats()
                 return
 

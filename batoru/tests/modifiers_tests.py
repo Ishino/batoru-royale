@@ -15,8 +15,8 @@ class TestExperience(unittest.TestCase):
         self.assertEqual(self.accuracy.accuracyModifier, value)
 
     def test_accuracy_get_accuracy(self):
-        self.assertLessEqual(self.accuracy.get_accuracy(10), 10)
-        self.assertGreaterEqual(self.accuracy.get_accuracy(10), 0)
+        self.assertLessEqual(self.accuracy.get_accuracy(1, 1), 2)
+        self.assertGreaterEqual(self.accuracy.get_accuracy(1, 1), 0)
 
     def test_power_set_power_modifier(self):
         value = 100

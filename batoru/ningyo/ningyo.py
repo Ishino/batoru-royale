@@ -24,10 +24,12 @@ class Ningyo:
 
         self.number_attributes = 1
 
-        self.attributeCalc = attribute_calc
+        self.attributeCalc = None
         self.experienceCalc = None
         self.powerCalc = None
         self.accuracyCalc = None
+
+        self.set_attribute_calculator(attribute_calc)
 
     def set_experience_calculator(self, experience_calc):
         self.experienceCalc = experience_calc
@@ -40,15 +42,6 @@ class Ningyo:
 
     def set_accuracy_calculator(self, accuracy_calc):
         self.accuracyCalc = accuracy_calc
-
-    def gain_experience(self, opponent_level):
-        self.experience += self.experienceCalc.calculate_experience_gain(self.level, opponent_level)
-
-    def level_up(self, calculated_experience):
-        if calculated_experience <= self.experience:
-            self.level += 1
-            return True
-        return False
 
     def empower(self, skill_modifier):
         self.fightSkill = int(self.fightSkill) + int(skill_modifier)
@@ -65,8 +58,8 @@ class Ningyo:
         return True
 
     def accuracy(self):
-        chance = math.floor(self.typeStat + self.fightSkill)
-        return self.accuracyCalc.get_accuracy(chance)
+        accuracy = self.accuracyCalc.get_accuracy(self.typeStat, self.fightSkill)
+        return accuracy
 
     def offence(self):
         offence = self.powerCalc.get_power(self.typeStat, self.fightSkill)
