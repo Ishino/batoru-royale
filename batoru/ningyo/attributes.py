@@ -18,12 +18,13 @@ class Attributes:
     @staticmethod
     def generate_attribute_values(level, number_of_attributes, attributes_modifier):
 
-        stat_lower = math.floor(attributes_modifier * level)
-        if stat_lower < 1:
-            stat_lower = 1
-        stat_upper = math.floor(attributes_modifier * number_of_attributes * level)
-        if stat_upper < 1:
-            stat_upper = 1
+        # the modifier needs to be a positive natural number
+        attributes_modifier = math.floor(attributes_modifier)
+        if attributes_modifier < 1:
+            attributes_modifier = 1
+
+        stat_lower = attributes_modifier * level
+        stat_upper = attributes_modifier * number_of_attributes * level
 
         attributes_random_values = []
 
@@ -45,8 +46,10 @@ class Attributes:
         last_attribute_value = int(stat_upper * (number_of_attributes + 1)) - attribute_value_total
 
         if number_of_attributes == 1:
-            last_attribute_value = math.floor(attributes_modifier * level) * 2
+            last_attribute_value = attributes_modifier * level * 2
 
         attributes_random_values.append(last_attribute_value)
+
+        print(attributes_random_values)
 
         return attributes_random_values

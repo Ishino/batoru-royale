@@ -26,33 +26,44 @@ class TestAttributes(unittest.TestCase):
             level = y
             z = 1
             while z < 20:
-                number_of_attributes = z
-                random_attributes_values = self.attributes_calc.generate_attribute_values(
-                    level, number_of_attributes, attributes_modifier
-                )
+                while attributes_modifier < 3:
+                    number_of_attributes = z
+                    random_attributes_values = self.attributes_calc.generate_attribute_values(
+                        level, number_of_attributes, attributes_modifier
+                    )
 
-                self.assertEqual(len(random_attributes_values), number_of_attributes)
+                    # the modifier needs to be a positive natural number
+                    calc_attributes_modifier = math.floor(attributes_modifier)
+                    if calc_attributes_modifier < 1:
+                        calc_attributes_modifier = 1
 
-                i = 0
-                while i < number_of_attributes:
-                    self.assertGreater(random_attributes_values[i], 0)
-                    self.assertGreaterEqual(random_attributes_values[i], math.floor(attributes_modifier * level))
-                    if i == 0:
-                        self.assertGreaterEqual(random_attributes_values[i],
-                                                math.floor(attributes_modifier * level) * 2)
-                    i += 1
+                    level_modifier = calc_attributes_modifier * level
 
-                total = attributes_modifier * level * number_of_attributes * (number_of_attributes + 1)
-                if number_of_attributes == 1:
-                    total = math.floor(attributes_modifier * level) * 2
-                total_values = 0
-                i = 0
+                    self.assertEqual(len(random_attributes_values), number_of_attributes)
 
-                while i < len(random_attributes_values):
-                    total_values += int(random_attributes_values[i])
-                    i += 1
+                    i = 0
+                    while i < number_of_attributes:
+                        self.assertGreater(random_attributes_values[i], 0)
+                        self.assertGreaterEqual(random_attributes_values[i], level_modifier)
+                        if i == 0:
+                            self.assertGreaterEqual(random_attributes_values[i], level_modifier * 2)
+                        i += 1
 
-                self.assertEqual(total, total_values)
+                    total = level_modifier * number_of_attributes * (number_of_attributes + 1)
+                    if number_of_attributes == 1:
+                        total = level_modifier * 2
+
+                    total_values = 0
+                    i = 0
+
+                    while i < len(random_attributes_values):
+                        total_values += int(random_attributes_values[i])
+                        i += 1
+
+                    self.assertEqual(total, total_values)
+
+                    attributes_modifier += 0.5
+
                 z += 1
 
             y += 1

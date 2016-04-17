@@ -50,4 +50,7 @@ class PowerAbility(Power):
 
         if self.ability > 0:
             power += power
+
+        self.ticker += 1
+
         return power
