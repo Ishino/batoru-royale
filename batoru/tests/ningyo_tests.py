@@ -1,17 +1,30 @@
 import unittest
+from unittest.mock import Mock
+
 from batoru.ningyo.ningyo import Ningyo
-from batoru.ningyo.attributes import Attributes
-from batoru.ningyo.modifiers import Accuracy, Power
 
 
 class TestNingyo(unittest.TestCase):
 
     def setUp(self):
-        attributes = Attributes()
-        self.player = Ningyo(attributes)
+        self.test_attributes = Mock()
+        self.test_accuracy = Mock()
+        self.test_power = Mock()
+        self.test_experience_calc = Mock()
+
+        self.player = Ningyo(self.test_attributes)
         self.player.name = 'name'
-        self.player.set_accuracy_calculator(Accuracy())
-        self.player.set_power_calculator(Power())
+        self.player.set_accuracy_calculator(self.test_accuracy)
+        self.player.set_power_calculator(self.test_power)
+
+    def test_set_experience_calculator(self):
+        self.player.set_experience_calculator(self.test_experience_calc)
+        self.assertTrue(self.player.experienceCalc.get_me())
+
+    def test_set_attribute_calculator(self):
+
+        self.player.set_attribute_calculator(self.test_attributes())
+        self.assertTrue(self.player.attributeCalc.get_me())
 
     def test_is_dead(self):
         self.player.hitPoints = 1
@@ -47,20 +60,45 @@ class TestNingyo(unittest.TestCase):
     def test_offence(self):
 
         self.player.typeStat = 1
-        self.player.strengthMultiplier = 1
-        self.player.offenceReduction = 1
         self.player.fightSkill = 1
-        self.player.ability = 0
-        self.assertEqual(self.player.offence(), 2)
+        self.player.offence()
+        self.player.powerCalc.get_power.assert_called_with(self.player.typeStat, self.player.fightSkill)
 
     def test_defence(self):
 
         self.player.typeStat = 1
-        self.player.staminaMultiplier = 1
-        self.player.defenceReduction = 1
         self.player.fightSkill = 1
-        self.player.ability = 0
-        self.assertEqual(self.player.defence(), 2)
+        self.player.defence()
+        self.player.powerCalc.get_power.assert_called_with(self.player.typeStat, self.player.fightSkill)
+
+    def test_accuracy(self):
+        self.player.typeStat = 10
+        self.player.fightSkill = 10
+        self.player.accuracy()
+        value = self.player.typeStat + self.player.fightSkill
+        self.player.accuracyCalc.get_accuracy.assert_called_with(value)
+
+    def test_gain_experience(self):
+        self.player.level = 10
+        self.player.experience = 10
+        opponent_level = 10
+        self.player.set_experience_calculator(self.test_experience_calc)
+        self.player.experienceCalc.calculate_experience_gain.return_value = self.player.level + opponent_level
+        self.player.gain_experience(opponent_level)
+        self.assertEqual(self.player.experience, 30)
+        self.player.experienceCalc.calculate_experience_gain.assert_called_with(self.player.level, opponent_level)
+
+    def test_level_up(self):
+        self.player.level = 1
+        calculated_experience = 100
+
+        self.player.experience = 50
+        self.player.level_up(calculated_experience)
+        self.assertEqual(self.player.level, 1)
+
+        self.player.experience = 101
+        self.player.level_up(calculated_experience)
+        self.assertEqual(self.player.level, 2)
 
 if __name__ == '__main__':
     unittest.main()
