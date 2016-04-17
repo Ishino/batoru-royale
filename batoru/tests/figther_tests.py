@@ -134,6 +134,7 @@ class TestFighter(unittest.TestCase):
         self.assertEqual(self.player.type, 'A')
         self.assertEqual(self.player.typeStat, 4)
         self.assertEqual(self.player.fightSkill, 4)
+        self.assertEqual(self.player.hitPoints, 100)
 
         self.reset_player_stats()
         self.player.skill = 3
@@ -144,6 +145,7 @@ class TestFighter(unittest.TestCase):
         self.assertEqual(self.player.type, 'D')
         self.assertEqual(self.player.typeStat, 4)
         self.assertEqual(self.player.fightSkill, 3)
+        self.assertEqual(self.player.hitPoints, 200)
 
         self.reset_player_stats()
         self.player.skill = 2
@@ -154,6 +156,7 @@ class TestFighter(unittest.TestCase):
         self.assertEqual(self.player.type, 'B')
         self.assertEqual(self.player.typeStat, 4)
         self.assertEqual(self.player.fightSkill, 4)
+        self.assertEqual(self.player.hitPoints, 100)
 
         self.reset_player_stats()
         self.player.skill = 2
@@ -164,6 +167,7 @@ class TestFighter(unittest.TestCase):
         self.assertEqual(self.player.type, 'E')
         self.assertEqual(self.player.typeStat, 4)
         self.assertEqual(self.player.fightSkill, 3)
+        self.assertEqual(self.player.hitPoints, 200)
 
         self.reset_player_stats()
         self.player.skill = 2
@@ -174,6 +178,7 @@ class TestFighter(unittest.TestCase):
         self.assertEqual(self.player.type, 'C')
         self.assertEqual(self.player.typeStat, 4)
         self.assertEqual(self.player.fightSkill, 4)
+        self.assertEqual(self.player.hitPoints, 400)
 
         self.reset_player_stats()
         self.player.skill = 2
@@ -184,6 +189,7 @@ class TestFighter(unittest.TestCase):
         self.assertEqual(self.player.type, 'F')
         self.assertEqual(self.player.typeStat, 4)
         self.assertEqual(self.player.fightSkill, 3)
+        self.assertEqual(self.player.hitPoints, 300)
 
 if __name__ == '__main__':
     unittest.main()
