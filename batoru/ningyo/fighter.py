@@ -5,14 +5,12 @@ from . import Ningyo
 class Fighter(Ningyo):
     def __init__(self, attribute_calc):
         Ningyo.__init__(self, attribute_calc)
-        self.type = None
 
+        self.number_attributes = 3
         self.strength = 1
         self.stamina = 1
 
         self.experience = 0
-
-        self.attributeCalc = attribute_calc
 
     def advance(self, opponent_level):
         experience_gain = self.experienceCalc.calculate_experience_gain(self.level, opponent_level)
@@ -83,7 +81,7 @@ class Fighter(Ningyo):
         self.calculate_stats()
 
     def calculate_stats(self):
-        self.hitPoints = self.get_max_hitpoints
+        self.hitPoints = self.get_max_hitpoints()
         self.fightSkill = self.skill
 
         primary_stat = self.skill

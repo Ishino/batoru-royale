@@ -4,8 +4,8 @@ import math
 class Ningyo:
 
     def __init__(self, attribute_calc):
-        self.name = ''
-        self.type = ''
+        self.name = 'Ningyo'
+        self.type = None
         self.typeStat = 1
         self.level = 1
 
