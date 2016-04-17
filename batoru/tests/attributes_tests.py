@@ -19,15 +19,14 @@ class TestAttributes(unittest.TestCase):
             i += 1
 
     def test_generate_attribute_values(self):
-        attributes_modifier = 0
-
         y = 1
         while y < 100:
             level = y
-            z = 1
-            while z < 20:
+            number_of_attributes = 1
+            while number_of_attributes < 20:
+                attributes_modifier = 0
                 while attributes_modifier < 3:
-                    number_of_attributes = z
+                    print(attributes_modifier)
                     random_attributes_values = self.attributes_calc.generate_attribute_values(
                         level, number_of_attributes, attributes_modifier
                     )
@@ -64,6 +63,6 @@ class TestAttributes(unittest.TestCase):
 
                     attributes_modifier += 0.5
 
-                z += 1
+                number_of_attributes += 1
 
             y += 1

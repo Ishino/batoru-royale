@@ -50,6 +50,4 @@ class Attributes:
 
         attributes_random_values.append(last_attribute_value)
 
-        print(attributes_random_values)
-
         return attributes_random_values
