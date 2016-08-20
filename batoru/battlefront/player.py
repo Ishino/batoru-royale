@@ -1,10 +1,11 @@
 import random
 
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy.sql import select
 from interfaces.db import Engine
 from ningyo.models.ningyo import Fighter as StoredFighter
+from ningyo.models.weaponry import Weaponry as StoredWeaponry
 from ningyo.fighter import Fighter
+from ningyo.weaponry import Weaponry
 from ningyo.modifiers import Accuracy, Power
 from ningyo.attributes import Attributes
 from ningyo.experience import Experience
@@ -16,10 +17,10 @@ class Player:
     def __init__(self):
         self.db_engine = Engine()
         self.session = sessionmaker(bind=self.db_engine.get_engine())
-        self.player_session = self.session()
+        self.db_session = self.session()
 
     def select_player(self, name):
-        player_details = self.player_session.query(StoredFighter).filter(StoredFighter.name == name).first()
+        player_details = self.db_session.query(StoredFighter).filter(StoredFighter.name == name).first()
         return player_details
 
     def load_player(self, name):
@@ -116,3 +117,35 @@ class Player:
                 self.player_session.add(player_details)
                 self.player_session.commit()
         return player_list
+
+    def save_weaponry(self, item_name, player_name):
+
+        weaponry = Weaponry()
+        item = weaponry.search_item(item_name)
+        player = self.select_player(player_name)
+
+        weaponry_list = None
+        weaponry_list.item_id = item.id
+        weaponry_list.fighter_id = player.id
+        self.db_session.add(weaponry_list)
+        self.db_session.commit()
+
+    @staticmethod
+    def generate_item_name():
+
+        pre = ['Mighty', 'Fiery', 'Super', 'Slamming', 'Dark', 'Golden']
+
+        middle = [
+            ['A', 'E', 'I', 'O', 'U', 'Y', 'Qa', 'Be', 'Xi', 'Mo', 'Zu'],
+            ['na', 'de', 'vi', 'co', 'su', 'ty'],
+            ['las', 'tef', 'vic', 'rot', 'pun', 'wyn'],
+            ['ca', 're', 'bi', 'no', 'lu', 'y']
+        ]
+
+        names_random = []
+        parts = random.randint(2, 4)
+        for i in range(int(parts)):
+            parts = middle[i]
+            names_random.append(random.choice(parts))
+
+        return random.choice(pre) + ' ' + ''.join(names_random)

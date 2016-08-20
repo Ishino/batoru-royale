@@ -1,6 +1,8 @@
 import pika
 import json
 
+import ruamel.yaml as yaml
+
 from interfaces.logger import RedisLogger
 from ningyo.fighter import Fighter
 from ningyo.monster import Monster
@@ -16,6 +18,9 @@ from battlefront.battlefront import Battlefront
 
 class Battle:
     def __init__(self):
+        with open("config/config.yml", 'r') as ymlfile:
+            cfg = yaml.load(ymlfile)
+
         self.attributes = Attributes()
         self.player_engine = Player()
         self.stats = CombatStats()
@@ -25,7 +30,8 @@ class Battle:
         self.opponent_room = None
         self.front = Battlefront()
 
-        self.connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+        self.connection = pika.BlockingConnection(pika.ConnectionParameters(host=cfg['rabbitmq']['host'],
+                                                                            port=cfg['rabbitmq']['port']))
         self.channel = self.connection.channel()
 
         self.player_one = None

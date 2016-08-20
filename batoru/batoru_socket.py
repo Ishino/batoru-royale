@@ -1,17 +1,21 @@
 import pika
 import json
+import ruamel.yaml as yaml
 
 from flask import session, request
 from flask_socketio import SocketIO, emit, join_room, rooms, leave_room
 from server.batoru_front import app
 from battlefront.battlefront import Battlefront
 
-socketio = SocketIO(app, message_queue='redis://localhost:6379/0')
+with open("config/config.yml", 'r') as ymlfile:
+    cfg = yaml.load(ymlfile)
+
+socketio = SocketIO(app, message_queue='redis://' + cfg['redis']['host'] + ':' + str(cfg['redis']['port']) + '/0')
 
 
 @socketio.on('fight', namespace='/fight')
 def start_fight(message):
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host=cfg['rabbitmq']['host']))
     channel = connection.channel()
 
     channel.queue_declare(queue='fight')
@@ -26,7 +30,7 @@ def start_fight(message):
 
 @socketio.on('command', namespace='/fight')
 def send_command(message):
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host=cfg['rabbitmq']['host']))
     channel = connection.channel()
 
     channel.queue_declare(queue=message['room'])

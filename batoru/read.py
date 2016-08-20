@@ -1,9 +1,16 @@
 import pika
 import json
+import ruamel.yaml as yaml
+
 from subprocess import Popen, PIPE
 
-connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+with open("config/config.yml", 'r') as ymlfile:
+    cfg = yaml.load(ymlfile)
+
+connection = pika.BlockingConnection(pika.ConnectionParameters(host=cfg['rabbitmq']['host'],
+                                                               port=cfg['rabbitmq']['port']))
 channel = connection.channel()
+print(' [*] Connected to Rabbit MQ')
 
 channel.queue_declare(queue='fight')
 
@@ -12,7 +19,7 @@ def callback(ch, method, properties, body):
     message = json.loads(body.decode('utf-8'))
     print(" [x] Received %r for player %r" % (message['data'], message['room']))
 
-    Popen(["python3", "batoru/run.py", message['player'], message['data'], message['room']], stdout=PIPE, stderr=PIPE)
+    Popen(["python", "run.py", message['player'], message['data'], message['room']], stdout=PIPE, stderr=PIPE)
 
     print(" [x] finished %r" % message['data'])
     ch.basic_ack(delivery_tag=method.delivery_tag)

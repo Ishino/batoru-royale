@@ -1,0 +1,11 @@
+redis:
+  host: redis
+  port: 6379
+
+rabbitmq:
+  host: rabbitmq
+  port: 5672
+
+elasticsearch:
+  host: elasticsearch
+  port: 9200

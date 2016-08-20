@@ -1,4 +1,5 @@
 import json
+import ruamel.yaml as yaml
 
 from interfaces.logger import RedisLogger
 from flask_socketio import SocketIO
@@ -7,9 +8,14 @@ from flask_socketio import SocketIO
 class Battlefront:
 
     def __init__(self):
+        with open("config/config.yml", 'r') as ymlfile:
+            cfg = yaml.load(ymlfile)
+
         self.redis_logger = RedisLogger()
         self.war = 'global'
-        self.socketio = SocketIO(message_queue='redis://localhost:6379/0')
+
+        redis_str = 'redis://' + cfg['redis']['host'] + ':' + str(cfg['redis']['port']) + '/0'
+        self.socketio = SocketIO(message_queue=redis_str)
 
         self.battlefront_key = 'battlefront_' + str(self.war)
 

@@ -2,6 +2,8 @@ import logging
 import redis
 import elasticsearch
 
+import ruamel.yaml as yaml
+
 
 class Logger:
     def __init__(self):
@@ -18,8 +20,11 @@ class Logger:
 
 class RedisLogger(Logger):
     def __init__(self):
+        with open("config/config.yml", 'r') as ymlfile:
+            cfg = yaml.load(ymlfile)
+
         Logger.__init__(self)
-        self.r = redis.StrictRedis(host='localhost', port=6379, db=0)
+        self.r = redis.StrictRedis(host=cfg['redis']['host'], port=str(cfg['redis']['port']), db=0)
 
     def write(self, key, value):
         self.r.set(key, value.encode('utf-8'))
@@ -40,7 +45,14 @@ class RedisLogger(Logger):
 class ElasticSearchLogger(Logger):
     def __init__(self, index, doc_type):
         Logger.__init__(self)
-        self.elasticsearch = elasticsearch.Elasticsearch()
+
+        with open("config/config.yml", 'r') as ymlfile:
+            cfg = yaml.load(ymlfile)
+
+        elasticsearch_host = cfg['elasticsearch']['host']
+        elasticsearch_port = cfg['elasticsearch']['port']
+
+        self.elasticsearch = elasticsearch.Elasticsearch([{'host': elasticsearch_host, 'port': elasticsearch_port}])
         self.index = index
         self.doc_type = doc_type
 

@@ -1,5 +1,6 @@
 import time
 import json
+import ruamel.yaml as yaml
 
 from interfaces.logger import Logger
 from flask_socketio import SocketIO
@@ -8,6 +9,9 @@ from flask_socketio import SocketIO
 class CombatLogs:
 
     def __init__(self):
+        with open("config/config.yml", 'r') as ymlfile:
+            cfg = yaml.load(ymlfile)
+
         self.enabledScroll = True
         self.verboseEvent = True
         self.scrollSpeed = 0.4
@@ -16,7 +20,9 @@ class CombatLogs:
         self.logLevel = 1
         self.logger = Logger()
 
-        self.socketio = SocketIO(message_queue='redis://localhost:6379/0')
+        redis_str = 'redis://' + cfg['redis']['host'] + ':' + str(cfg['redis']['port']) + '/0'
+
+        self.socketio = SocketIO(message_queue=redis_str)
 
     def set_logger(self, logger: Logger):
         self.logger = logger
