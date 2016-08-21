@@ -1,0 +1,38 @@
+version: '2'
+services:
+  batoru-redis:
+    image: redis
+    ports:
+     - "6379:6379"
+  batoru-rabbitmq:
+    image: rabbitmq
+    ports:
+     - "5672:5672"
+  batoru-elasticsearch:
+    image: elasticsearch
+    ports:
+     - "9200:9200"
+
+  batoru-royale-client:
+    image: ishino/batoru-royale
+    ports:
+     - "5000:5000"
+    links:
+     - batoru-redis:redis
+     - batoru-rabbitmq:rabbitmq
+     - batoru-elasticsearch:elasticsearch
+    depends_on:
+     - batoru-redis
+     - batoru-rabbitmq
+     - batoru-elasticsearch
+
+  batoru-royale-read:
+    image: ishino/batoru-royale
+    links:
+     - batoru-redis:redis
+     - batoru-rabbitmq:rabbitmq
+     - batoru-elasticsearch:elasticsearch
+    depends_on:
+     - batoru-redis
+     - batoru-rabbitmq
+     - batoru-elasticsearch
