@@ -8,7 +8,9 @@ with open("config/config.yml", 'r') as ymlfile:
     cfg = yaml.load(ymlfile)
 
 connection = pika.BlockingConnection(pika.ConnectionParameters(host=cfg['rabbitmq']['host'],
-                                                               port=cfg['rabbitmq']['port']))
+                                                               port=cfg['rabbitmq']['port'],
+                                                               connection_attempts=cfg['rabbitmq']['connection_attempts'],
+                                                               retry_delay=cfg['rabbitmq']['retry_delay']))
 channel = connection.channel()
 print(' [*] Connected to Rabbit MQ')
 

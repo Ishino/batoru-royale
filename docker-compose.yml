@@ -15,6 +15,7 @@ services:
 
   batoru-royale-client:
     image: ishino/batoru-royale
+    command: python client.py
     ports:
      - "5000:5000"
     links:
@@ -28,6 +29,7 @@ services:
 
   batoru-royale-read:
     image: ishino/batoru-royale
+    command: python read.py
     links:
      - batoru-redis:redis
      - batoru-rabbitmq:rabbitmq

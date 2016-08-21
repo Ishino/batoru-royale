@@ -5,6 +5,8 @@ redis:
 rabbitmq:
   host: rabbitmq
   port: 5672
+  connection_attempts: 10
+  retry_delay: 10
 
 elasticsearch:
   host: elasticsearch
