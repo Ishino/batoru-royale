@@ -72,8 +72,8 @@ class Player:
                 hitpoints=player.hitPoints,
                 experience=player.experience
             )
-        self.player_session.add(player_details)
-        self.player_session.commit()
+        self.db_session.add(player_details)
+        self.db_session.commit()
 
     @staticmethod
     def generate_player_name():
@@ -105,7 +105,7 @@ class Player:
     def use_player_list(self, list_id, x):
 
         player_list = []
-        for player in self.player_session.query(PlayerList).filter(PlayerList.list_id == list_id).all():
+        for player in self.db_session.query(PlayerList).filter(PlayerList.list_id == list_id).all():
             player_list.append(player.name)
         if len(player_list) == 0:
             player_list = self.generate_player_list(x)
@@ -114,8 +114,8 @@ class Player:
                     list_id=list_id,
                     name=player
                 )
-                self.player_session.add(player_details)
-                self.player_session.commit()
+                self.db_session.add(player_details)
+                self.db_session.commit()
         return player_list
 
     def save_weaponry(self, item_name, player_name):

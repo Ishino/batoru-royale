@@ -7,9 +7,3 @@
 *.db
 *.pid
 batoru-ansible
-batoru/.Python
-batoru/bin/
-batoru/include/
-batoru/lib/
-batoru/man/
-batoru/pip-selfcheck.json
