@@ -43,6 +43,10 @@ Build the images
 
 Run the services
 
+- docker-compose up -d
+
+Manually:
+
 - docker run --name batoru-redis -d -P -p 6379:6379 redis
 - docker run --name batoru-rabbitmq -d -P -p 5672:5672 rabbitmq
 - docker run --name batoru-elasticsearch -d -P -p 9200:9200 elasticsearch
