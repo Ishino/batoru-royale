@@ -42,22 +42,22 @@
 
 <div class="help_panel">
     <img id="panel_icon" src="keybd_open.png" alt="Hide keyboard shortcuts" />
-<p class="legend">Hot-keys on this page</p>
+    <p class="legend">Hot-keys on this page</p>
     <div>
-<p class="keyhelp">
+    <p class="keyhelp">
         <span class="key">r</span>
         <span class="key">m</span>
         <span class="key">x</span>
         <span class="key">p</span> &nbsp; toggle line displays
     </p>
-<p class="keyhelp">
+    <p class="keyhelp">
         <span class="key">j</span>
         <span class="key">k</span> &nbsp; next/prev highlighted chunk
     </p>
-<p class="keyhelp">
+    <p class="keyhelp">
         <span class="key">0</span> &nbsp; (zero) top of page
     </p>
-<p class="keyhelp">
+    <p class="keyhelp">
         <span class="key">1</span> &nbsp; (one) first highlighted chunk
     </p>
     </div>
@@ -109,52 +109,52 @@
 <p id="n40" class="pln"><a href="#n40">40</a></p>
 <p id="n41" class="stm mis"><a href="#n41">41</a></p>
 <p id="n42" class="stm mis"><a href="#n42">42</a></p>
-                
+
             </td>
             <td class="text">
 <p id="t1" class="stm run hide_run"><span class="key">class</span> <span class="nam">Actions</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t2" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t3" class="stm run hide_run">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">__init__</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">combat_calc</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t4" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">actionList</span> <span class="op">=</span> <span class="key">None</span><span class="strut">&nbsp;</span></p>
-<p id="t5" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">combat_calc</span> <span class="op">=</span> <span class="nam">combat_calc</span><span class="strut">&nbsp;</span></p>
+<p id="t3" class="stm run hide_run">    <span class="key">def</span> <span class="nam">__init__</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">combat_calc</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t4" class="stm mis">        <span class="nam">self</span><span class="op">.</span><span class="nam">actionList</span> <span class="op">=</span> <span class="key">None</span><span class="strut">&nbsp;</span></p>
+<p id="t5" class="stm mis">        <span class="nam">self</span><span class="op">.</span><span class="nam">combat_calc</span> <span class="op">=</span> <span class="nam">combat_calc</span><span class="strut">&nbsp;</span></p>
 <p id="t6" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t7" class="stm run hide_run">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">get_action</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">action_name</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t8" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">action_list</span> <span class="op">=</span> <span class="op">{</span><span class="str">&#39;heal&#39;</span><span class="op">:</span> <span class="nam">self</span><span class="op">.</span><span class="nam">heal_action</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
-<p id="t9" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <span class="str">&#39;boost&#39;</span><span class="op">:</span> <span class="nam">self</span><span class="op">.</span><span class="nam">boost_action</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
-<p id="t10" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <span class="str">&#39;bash&#39;</span><span class="op">:</span> <span class="nam">self</span><span class="op">.</span><span class="nam">bash_action</span><span class="op">}</span><span class="strut">&nbsp;</span></p>
-<p id="t11" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">callback</span> <span class="op">=</span> <span class="key">None</span><span class="strut">&nbsp;</span></p>
+<p id="t7" class="stm run hide_run">    <span class="key">def</span> <span class="nam">get_action</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">action_name</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t8" class="stm mis">        <span class="nam">action_list</span> <span class="op">=</span> <span class="op">{</span><span class="str">'heal'</span><span class="op">:</span> <span class="nam">self</span><span class="op">.</span><span class="nam">heal_action</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
+<p id="t9" class="pln">                       <span class="str">'boost'</span><span class="op">:</span> <span class="nam">self</span><span class="op">.</span><span class="nam">boost_action</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
+<p id="t10" class="pln">                       <span class="str">'bash'</span><span class="op">:</span> <span class="nam">self</span><span class="op">.</span><span class="nam">bash_action</span><span class="op">}</span><span class="strut">&nbsp;</span></p>
+<p id="t11" class="stm mis">        <span class="nam">callback</span> <span class="op">=</span> <span class="key">None</span><span class="strut">&nbsp;</span></p>
 <p id="t12" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t13" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">try</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t14" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">callback</span> <span class="op">=</span> <span class="nam">action_list</span><span class="op">[</span><span class="nam">action_name</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
-<p id="t15" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">except</span> <span class="nam">KeyError</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t16" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># if we get an unknown callback we just ignore it</span><span class="strut">&nbsp;</span></p>
-<p id="t17" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">print</span><span class="op">(</span><span class="str">&#39;action does not exist&#39;</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t13" class="stm mis">        <span class="key">try</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t14" class="stm mis">            <span class="nam">callback</span> <span class="op">=</span> <span class="nam">action_list</span><span class="op">[</span><span class="nam">action_name</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
+<p id="t15" class="stm mis">        <span class="key">except</span> <span class="nam">KeyError</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t16" class="pln">            <span class="com"># if we get an unknown callback we just ignore it</span><span class="strut">&nbsp;</span></p>
+<p id="t17" class="stm mis">            <span class="nam">print</span><span class="op">(</span><span class="str">'action does not exist'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t18" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t19" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">callback</span><span class="strut">&nbsp;</span></p>
+<p id="t19" class="stm mis">        <span class="key">return</span> <span class="nam">callback</span><span class="strut">&nbsp;</span></p>
 <p id="t20" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t21" class="stm run hide_run">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">run_action</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">player_one</span><span class="op">,</span> <span class="nam">player_two</span><span class="op">,</span> <span class="nam">action_name</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t22" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">action</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">get_action</span><span class="op">(</span><span class="nam">action_name</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t21" class="stm run hide_run">    <span class="key">def</span> <span class="nam">run_action</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">player_one</span><span class="op">,</span> <span class="nam">player_two</span><span class="op">,</span> <span class="nam">action_name</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t22" class="stm mis">        <span class="nam">action</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">get_action</span><span class="op">(</span><span class="nam">action_name</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t23" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t24" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">action</span> <span class="key">is</span> <span class="key">not</span> <span class="key">None</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t25" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">player_one</span> <span class="op">=</span> <span class="nam">action</span><span class="op">(</span><span class="nam">player_one</span><span class="op">,</span> <span class="nam">player_two</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t24" class="stm mis">        <span class="key">if</span> <span class="nam">action</span> <span class="key">is</span> <span class="key">not</span> <span class="key">None</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t25" class="stm mis">            <span class="nam">player_one</span> <span class="op">=</span> <span class="nam">action</span><span class="op">(</span><span class="nam">player_one</span><span class="op">,</span> <span class="nam">player_two</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t26" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t27" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">player_one</span><span class="strut">&nbsp;</span></p>
+<p id="t27" class="stm mis">        <span class="key">return</span> <span class="nam">player_one</span><span class="strut">&nbsp;</span></p>
 <p id="t28" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t29" class="stm run hide_run">&nbsp; &nbsp; <span class="op">@</span><span class="nam">staticmethod</span><span class="strut">&nbsp;</span></p>
-<p id="t30" class="pln">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">heal_action</span><span class="op">(</span><span class="nam">player_one</span><span class="op">,</span> <span class="nam">player_two</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t31" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">player_one</span><span class="op">.</span><span class="nam">hitPoints</span> <span class="op">=</span> <span class="nam">player_one</span><span class="op">.</span><span class="nam">hitPointsBase</span> <span class="op">*</span> <span class="nam">player_one</span><span class="op">.</span><span class="nam">stamina</span><span class="strut">&nbsp;</span></p>
-<p id="t32" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">player_one</span><span class="strut">&nbsp;</span></p>
+<p id="t29" class="stm run hide_run">    <span class="op">@</span><span class="nam">staticmethod</span><span class="strut">&nbsp;</span></p>
+<p id="t30" class="pln">    <span class="key">def</span> <span class="nam">heal_action</span><span class="op">(</span><span class="nam">player_one</span><span class="op">,</span> <span class="nam">player_two</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t31" class="stm mis">        <span class="nam">player_one</span><span class="op">.</span><span class="nam">hitPoints</span> <span class="op">=</span> <span class="nam">player_one</span><span class="op">.</span><span class="nam">hitPointsBase</span> <span class="op">*</span> <span class="nam">player_one</span><span class="op">.</span><span class="nam">stamina</span><span class="strut">&nbsp;</span></p>
+<p id="t32" class="stm mis">        <span class="key">return</span> <span class="nam">player_one</span><span class="strut">&nbsp;</span></p>
 <p id="t33" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t34" class="stm run hide_run">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">boost_action</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">player_one</span><span class="op">,</span> <span class="nam">player_two</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t35" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">skill_modifier</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">combat_calc</span><span class="op">.</span><span class="nam">calc_modifier</span><span class="op">(</span><span class="nam">player_one</span><span class="op">.</span><span class="nam">typeStat</span><span class="op">,</span> <span class="nam">player_two</span><span class="op">.</span><span class="nam">typeStat</span><span class="op">,</span> <span class="num">0.2</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t36" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">player_one</span><span class="op">.</span><span class="nam">fightSkill</span> <span class="op">+=</span> <span class="nam">skill_modifier</span><span class="strut">&nbsp;</span></p>
-<p id="t37" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">player_one</span><span class="strut">&nbsp;</span></p>
+<p id="t34" class="stm run hide_run">    <span class="key">def</span> <span class="nam">boost_action</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">player_one</span><span class="op">,</span> <span class="nam">player_two</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t35" class="stm mis">        <span class="nam">skill_modifier</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">combat_calc</span><span class="op">.</span><span class="nam">calc_modifier</span><span class="op">(</span><span class="nam">player_one</span><span class="op">.</span><span class="nam">typeStat</span><span class="op">,</span> <span class="nam">player_two</span><span class="op">.</span><span class="nam">typeStat</span><span class="op">,</span> <span class="num">0.2</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t36" class="stm mis">        <span class="nam">player_one</span><span class="op">.</span><span class="nam">fightSkill</span> <span class="op">+=</span> <span class="nam">skill_modifier</span><span class="strut">&nbsp;</span></p>
+<p id="t37" class="stm mis">        <span class="key">return</span> <span class="nam">player_one</span><span class="strut">&nbsp;</span></p>
 <p id="t38" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t39" class="stm run hide_run">&nbsp; &nbsp; <span class="op">@</span><span class="nam">staticmethod</span><span class="strut">&nbsp;</span></p>
-<p id="t40" class="pln">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">bash_action</span><span class="op">(</span><span class="nam">player_one</span><span class="op">,</span> <span class="nam">player_two</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t41" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">player_one</span><span class="op">.</span><span class="nam">hitPoints</span> <span class="op">=</span> <span class="nam">player_one</span><span class="op">.</span><span class="nam">hitPointsBase</span> <span class="op">*</span> <span class="nam">player_one</span><span class="op">.</span><span class="nam">stamina</span><span class="strut">&nbsp;</span></p>
-<p id="t42" class="stm mis">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">player_one</span><span class="strut">&nbsp;</span></p>
-                
+<p id="t39" class="stm run hide_run">    <span class="op">@</span><span class="nam">staticmethod</span><span class="strut">&nbsp;</span></p>
+<p id="t40" class="pln">    <span class="key">def</span> <span class="nam">bash_action</span><span class="op">(</span><span class="nam">player_one</span><span class="op">,</span> <span class="nam">player_two</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t41" class="stm mis">        <span class="nam">player_one</span><span class="op">.</span><span class="nam">hitPoints</span> <span class="op">=</span> <span class="nam">player_one</span><span class="op">.</span><span class="nam">hitPointsBase</span> <span class="op">*</span> <span class="nam">player_one</span><span class="op">.</span><span class="nam">stamina</span><span class="strut">&nbsp;</span></p>
+<p id="t42" class="stm mis">        <span class="key">return</span> <span class="nam">player_one</span><span class="strut">&nbsp;</span></p>
+
             </td>
         </tr>
     </table>
@@ -163,8 +163,8 @@
 <div id="footer">
     <div class="content">
         <p>
-            <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.org">coverage.py v4.0.3</a>,
-            created at 2016-09-01 20:57
+            <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.2</a>,
+            created at 2016-09-05 15:04
         </p>
     </div>
 </div>

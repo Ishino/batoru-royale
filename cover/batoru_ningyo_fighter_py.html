@@ -42,22 +42,22 @@
 
 <div class="help_panel">
     <img id="panel_icon" src="keybd_open.png" alt="Hide keyboard shortcuts" />
-<p class="legend">Hot-keys on this page</p>
+    <p class="legend">Hot-keys on this page</p>
     <div>
-<p class="keyhelp">
+    <p class="keyhelp">
         <span class="key">r</span>
         <span class="key">m</span>
         <span class="key">x</span>
         <span class="key">p</span> &nbsp; toggle line displays
     </p>
-<p class="keyhelp">
+    <p class="keyhelp">
         <span class="key">j</span>
         <span class="key">k</span> &nbsp; next/prev highlighted chunk
     </p>
-<p class="keyhelp">
+    <p class="keyhelp">
         <span class="key">0</span> &nbsp; (zero) top of page
     </p>
-<p class="keyhelp">
+    <p class="keyhelp">
         <span class="key">1</span> &nbsp; (one) first highlighted chunk
     </p>
     </div>
@@ -180,7 +180,7 @@
 <p id="n111" class="pln"><a href="#n111">111</a></p>
 <p id="n112" class="stm run hide_run"><a href="#n112">112</a></p>
 <p id="n113" class="stm run hide_run"><a href="#n113">113</a></p>
-                
+
             </td>
             <td class="text">
 <p id="t1" class="stm run hide_run"><span class="key">import</span> <span class="nam">random</span><span class="strut">&nbsp;</span></p>
@@ -188,115 +188,115 @@
 <p id="t3" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t4" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t5" class="stm run hide_run"><span class="key">class</span> <span class="nam">Fighter</span><span class="op">(</span><span class="nam">Ningyo</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t6" class="stm run hide_run">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">__init__</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">attribute_calc</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t7" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">Ningyo</span><span class="op">.</span><span class="nam">__init__</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">attribute_calc</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t6" class="stm run hide_run">    <span class="key">def</span> <span class="nam">__init__</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">attribute_calc</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t7" class="stm run hide_run">        <span class="nam">Ningyo</span><span class="op">.</span><span class="nam">__init__</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">attribute_calc</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t8" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t9" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">number_attributes</span> <span class="op">=</span> <span class="num">3</span><span class="strut">&nbsp;</span></p>
-<p id="t10" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">strength</span> <span class="op">=</span> <span class="num">1</span><span class="strut">&nbsp;</span></p>
-<p id="t11" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span> <span class="op">=</span> <span class="num">1</span><span class="strut">&nbsp;</span></p>
+<p id="t9" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">number_attributes</span> <span class="op">=</span> <span class="num">3</span><span class="strut">&nbsp;</span></p>
+<p id="t10" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">strength</span> <span class="op">=</span> <span class="num">1</span><span class="strut">&nbsp;</span></p>
+<p id="t11" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span> <span class="op">=</span> <span class="num">1</span><span class="strut">&nbsp;</span></p>
 <p id="t12" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t13" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">experience</span> <span class="op">=</span> <span class="num">0</span><span class="strut">&nbsp;</span></p>
+<p id="t13" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">experience</span> <span class="op">=</span> <span class="num">0</span><span class="strut">&nbsp;</span></p>
 <p id="t14" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t15" class="stm run hide_run">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">advance</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">opponent_level</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t16" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">experience_gain</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">experienceCalc</span><span class="op">.</span><span class="nam">calculate_experience_gain</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">level</span><span class="op">,</span> <span class="nam">opponent_level</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t17" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">experience_need</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">experienceCalc</span><span class="op">.</span><span class="nam">calculate_experience_need</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">level</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t15" class="stm run hide_run">    <span class="key">def</span> <span class="nam">advance</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">opponent_level</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t16" class="stm run hide_run">        <span class="nam">experience_gain</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">experienceCalc</span><span class="op">.</span><span class="nam">calculate_experience_gain</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">level</span><span class="op">,</span> <span class="nam">opponent_level</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t17" class="stm run hide_run">        <span class="nam">experience_need</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">experienceCalc</span><span class="op">.</span><span class="nam">calculate_experience_need</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">level</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t18" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t19" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">gain_experience</span><span class="op">(</span><span class="nam">experience_gain</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t19" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">gain_experience</span><span class="op">(</span><span class="nam">experience_gain</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t20" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t21" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">experience_need</span> <span class="op">&lt;</span> <span class="nam">self</span><span class="op">.</span><span class="nam">experience</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t22" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">level_up</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t23" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">level_up_stats</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t24" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">calculate_stats</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t21" class="stm run hide_run">        <span class="key">if</span> <span class="nam">experience_need</span> <span class="op">&lt;</span> <span class="nam">self</span><span class="op">.</span><span class="nam">experience</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t22" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">level_up</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t23" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">level_up_stats</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t24" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">calculate_stats</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t25" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t26" class="stm run hide_run">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">gain_experience</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">experience</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t27" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">experience</span> <span class="op">+=</span> <span class="nam">experience</span><span class="strut">&nbsp;</span></p>
+<p id="t26" class="stm run hide_run">    <span class="key">def</span> <span class="nam">gain_experience</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">experience</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t27" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">experience</span> <span class="op">+=</span> <span class="nam">experience</span><span class="strut">&nbsp;</span></p>
 <p id="t28" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t29" class="stm run hide_run">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">level_up</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t30" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">level</span> <span class="op">+=</span> <span class="num">1</span><span class="strut">&nbsp;</span></p>
+<p id="t29" class="stm run hide_run">    <span class="key">def</span> <span class="nam">level_up</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t30" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">level</span> <span class="op">+=</span> <span class="num">1</span><span class="strut">&nbsp;</span></p>
 <p id="t31" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t32" class="stm run hide_run">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">level_up_stats</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t33" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">type</span> <span class="op">==</span> <span class="str">&#39;A&#39;</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t34" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">strength</span> <span class="op">+=</span> <span class="num">6</span><span class="strut">&nbsp;</span></p>
-<p id="t35" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span> <span class="op">+=</span> <span class="num">6</span><span class="strut">&nbsp;</span></p>
+<p id="t32" class="stm run hide_run">    <span class="key">def</span> <span class="nam">level_up_stats</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t33" class="stm run hide_run">        <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">type</span> <span class="op">==</span> <span class="str">'A'</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t34" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">strength</span> <span class="op">+=</span> <span class="num">6</span><span class="strut">&nbsp;</span></p>
+<p id="t35" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span> <span class="op">+=</span> <span class="num">6</span><span class="strut">&nbsp;</span></p>
 <p id="t36" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t37" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">type</span> <span class="op">==</span> <span class="str">&#39;B&#39;</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t38" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span> <span class="op">+=</span> <span class="num">6</span><span class="strut">&nbsp;</span></p>
-<p id="t39" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">skill</span> <span class="op">+=</span> <span class="num">6</span><span class="strut">&nbsp;</span></p>
+<p id="t37" class="stm run hide_run">        <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">type</span> <span class="op">==</span> <span class="str">'B'</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t38" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span> <span class="op">+=</span> <span class="num">6</span><span class="strut">&nbsp;</span></p>
+<p id="t39" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">skill</span> <span class="op">+=</span> <span class="num">6</span><span class="strut">&nbsp;</span></p>
 <p id="t40" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t41" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">type</span> <span class="op">==</span> <span class="str">&#39;C&#39;</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t42" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">skill</span> <span class="op">+=</span> <span class="num">6</span><span class="strut">&nbsp;</span></p>
-<p id="t43" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">strength</span> <span class="op">+=</span> <span class="num">6</span><span class="strut">&nbsp;</span></p>
+<p id="t41" class="stm run hide_run">        <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">type</span> <span class="op">==</span> <span class="str">'C'</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t42" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">skill</span> <span class="op">+=</span> <span class="num">6</span><span class="strut">&nbsp;</span></p>
+<p id="t43" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">strength</span> <span class="op">+=</span> <span class="num">6</span><span class="strut">&nbsp;</span></p>
 <p id="t44" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t45" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">type</span> <span class="op">==</span> <span class="str">&#39;D&#39;</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t46" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">skill</span> <span class="op">+=</span> <span class="num">6</span><span class="strut">&nbsp;</span></p>
-<p id="t47" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">strength</span> <span class="op">+=</span> <span class="num">3</span><span class="strut">&nbsp;</span></p>
-<p id="t48" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span> <span class="op">+=</span> <span class="num">3</span><span class="strut">&nbsp;</span></p>
+<p id="t45" class="stm run hide_run">        <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">type</span> <span class="op">==</span> <span class="str">'D'</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t46" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">skill</span> <span class="op">+=</span> <span class="num">6</span><span class="strut">&nbsp;</span></p>
+<p id="t47" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">strength</span> <span class="op">+=</span> <span class="num">3</span><span class="strut">&nbsp;</span></p>
+<p id="t48" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span> <span class="op">+=</span> <span class="num">3</span><span class="strut">&nbsp;</span></p>
 <p id="t49" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t50" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">type</span> <span class="op">==</span> <span class="str">&#39;E&#39;</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t51" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">skill</span> <span class="op">+=</span> <span class="num">3</span><span class="strut">&nbsp;</span></p>
-<p id="t52" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">strength</span> <span class="op">+=</span> <span class="num">6</span><span class="strut">&nbsp;</span></p>
-<p id="t53" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span> <span class="op">+=</span> <span class="num">3</span><span class="strut">&nbsp;</span></p>
+<p id="t50" class="stm run hide_run">        <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">type</span> <span class="op">==</span> <span class="str">'E'</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t51" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">skill</span> <span class="op">+=</span> <span class="num">3</span><span class="strut">&nbsp;</span></p>
+<p id="t52" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">strength</span> <span class="op">+=</span> <span class="num">6</span><span class="strut">&nbsp;</span></p>
+<p id="t53" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span> <span class="op">+=</span> <span class="num">3</span><span class="strut">&nbsp;</span></p>
 <p id="t54" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t55" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">type</span> <span class="op">==</span> <span class="str">&#39;F&#39;</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t56" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">skill</span> <span class="op">+=</span> <span class="num">3</span><span class="strut">&nbsp;</span></p>
-<p id="t57" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">strength</span> <span class="op">+=</span> <span class="num">3</span><span class="strut">&nbsp;</span></p>
-<p id="t58" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span> <span class="op">+=</span> <span class="num">6</span><span class="strut">&nbsp;</span></p>
+<p id="t55" class="stm run hide_run">        <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">type</span> <span class="op">==</span> <span class="str">'F'</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t56" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">skill</span> <span class="op">+=</span> <span class="num">3</span><span class="strut">&nbsp;</span></p>
+<p id="t57" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">strength</span> <span class="op">+=</span> <span class="num">3</span><span class="strut">&nbsp;</span></p>
+<p id="t58" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span> <span class="op">+=</span> <span class="num">6</span><span class="strut">&nbsp;</span></p>
 <p id="t59" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t60" class="stm run hide_run">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">create</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">name</span><span class="op">,</span> <span class="nam">start_level</span><span class="op">,</span> <span class="nam">skill_bonus</span><span class="op">,</span> <span class="nam">strength_bonus</span><span class="op">,</span> <span class="nam">stamina_bonus</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t60" class="stm run hide_run">    <span class="key">def</span> <span class="nam">create</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">name</span><span class="op">,</span> <span class="nam">start_level</span><span class="op">,</span> <span class="nam">skill_bonus</span><span class="op">,</span> <span class="nam">strength_bonus</span><span class="op">,</span> <span class="nam">stamina_bonus</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t61" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t62" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">name</span> <span class="op">=</span> <span class="nam">str</span><span class="op">(</span><span class="nam">name</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t62" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">name</span> <span class="op">=</span> <span class="nam">str</span><span class="op">(</span><span class="nam">name</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t63" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t64" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">level</span> <span class="op">=</span> <span class="nam">start_level</span><span class="strut">&nbsp;</span></p>
+<p id="t64" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">level</span> <span class="op">=</span> <span class="nam">start_level</span><span class="strut">&nbsp;</span></p>
 <p id="t65" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t66" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">number_attributes</span> <span class="op">=</span> <span class="num">3</span><span class="strut">&nbsp;</span></p>
-<p id="t67" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">attributes_modifier</span> <span class="op">=</span> <span class="num">1</span><span class="strut">&nbsp;</span></p>
+<p id="t66" class="stm run hide_run">        <span class="nam">number_attributes</span> <span class="op">=</span> <span class="num">3</span><span class="strut">&nbsp;</span></p>
+<p id="t67" class="stm run hide_run">        <span class="nam">attributes_modifier</span> <span class="op">=</span> <span class="num">1</span><span class="strut">&nbsp;</span></p>
 <p id="t68" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t69" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">random_attribute_values</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">attributeCalc</span><span class="op">.</span><span class="nam">generate_attribute_values</span><span class="op">(</span><span class="strut">&nbsp;</span></p>
-<p id="t70" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">level</span><span class="op">,</span> <span class="nam">number_attributes</span><span class="op">,</span> <span class="nam">attributes_modifier</span><span class="strut">&nbsp;</span></p>
-<p id="t71" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; <span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t69" class="stm run hide_run">        <span class="nam">random_attribute_values</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">attributeCalc</span><span class="op">.</span><span class="nam">generate_attribute_values</span><span class="op">(</span><span class="strut">&nbsp;</span></p>
+<p id="t70" class="pln">            <span class="nam">self</span><span class="op">.</span><span class="nam">level</span><span class="op">,</span> <span class="nam">number_attributes</span><span class="op">,</span> <span class="nam">attributes_modifier</span><span class="strut">&nbsp;</span></p>
+<p id="t71" class="pln">        <span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t72" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t73" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">random</span><span class="op">.</span><span class="nam">shuffle</span><span class="op">(</span><span class="nam">random_attribute_values</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t73" class="stm run hide_run">        <span class="nam">random</span><span class="op">.</span><span class="nam">shuffle</span><span class="op">(</span><span class="nam">random_attribute_values</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t74" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t75" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">skill</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">strength</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span><span class="op">)</span> <span class="op">=</span> <span class="nam">random_attribute_values</span><span class="strut">&nbsp;</span></p>
+<p id="t75" class="stm run hide_run">        <span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">skill</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">strength</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span><span class="op">)</span> <span class="op">=</span> <span class="nam">random_attribute_values</span><span class="strut">&nbsp;</span></p>
 <p id="t76" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t77" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">skill</span> <span class="op">+=</span> <span class="nam">skill_bonus</span><span class="strut">&nbsp;</span></p>
-<p id="t78" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">strength</span> <span class="op">+=</span> <span class="nam">strength_bonus</span><span class="strut">&nbsp;</span></p>
-<p id="t79" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span> <span class="op">+=</span> <span class="nam">stamina_bonus</span><span class="strut">&nbsp;</span></p>
+<p id="t77" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">skill</span> <span class="op">+=</span> <span class="nam">skill_bonus</span><span class="strut">&nbsp;</span></p>
+<p id="t78" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">strength</span> <span class="op">+=</span> <span class="nam">strength_bonus</span><span class="strut">&nbsp;</span></p>
+<p id="t79" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span> <span class="op">+=</span> <span class="nam">stamina_bonus</span><span class="strut">&nbsp;</span></p>
 <p id="t80" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t81" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">calculate_stats</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t81" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">calculate_stats</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t82" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t83" class="stm run hide_run">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">calculate_stats</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t84" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">hitPoints</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">get_max_hitpoints</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t85" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">fightSkill</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">skill</span><span class="strut">&nbsp;</span></p>
+<p id="t83" class="stm run hide_run">    <span class="key">def</span> <span class="nam">calculate_stats</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t84" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">hitPoints</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">get_max_hitpoints</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t85" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">fightSkill</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">skill</span><span class="strut">&nbsp;</span></p>
 <p id="t86" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t87" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">primary_stat</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">skill</span><span class="strut">&nbsp;</span></p>
-<p id="t88" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">secondary_stat</span> <span class="op">=</span> <span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">strength</span> <span class="op">+</span> <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t89" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">primary_type</span> <span class="op">=</span> <span class="str">&#39;A&#39;</span><span class="strut">&nbsp;</span></p>
-<p id="t90" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">secondary_type</span> <span class="op">=</span> <span class="str">&#39;D&#39;</span><span class="strut">&nbsp;</span></p>
+<p id="t87" class="stm run hide_run">        <span class="nam">primary_stat</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">skill</span><span class="strut">&nbsp;</span></p>
+<p id="t88" class="stm run hide_run">        <span class="nam">secondary_stat</span> <span class="op">=</span> <span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">strength</span> <span class="op">+</span> <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t89" class="stm run hide_run">        <span class="nam">primary_type</span> <span class="op">=</span> <span class="str">'A'</span><span class="strut">&nbsp;</span></p>
+<p id="t90" class="stm run hide_run">        <span class="nam">secondary_type</span> <span class="op">=</span> <span class="str">'D'</span><span class="strut">&nbsp;</span></p>
 <p id="t91" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t92" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">strength</span> <span class="op">&gt;</span> <span class="nam">primary_stat</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t93" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">primary_stat</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">strength</span><span class="strut">&nbsp;</span></p>
-<p id="t94" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">secondary_stat</span> <span class="op">=</span> <span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">skill</span> <span class="op">+</span> <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t95" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">primary_type</span> <span class="op">=</span> <span class="str">&#39;B&#39;</span><span class="strut">&nbsp;</span></p>
-<p id="t96" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">secondary_type</span> <span class="op">=</span> <span class="str">&#39;E&#39;</span><span class="strut">&nbsp;</span></p>
+<p id="t92" class="stm run hide_run">        <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">strength</span> <span class="op">></span> <span class="nam">primary_stat</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t93" class="stm run hide_run">            <span class="nam">primary_stat</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">strength</span><span class="strut">&nbsp;</span></p>
+<p id="t94" class="stm run hide_run">            <span class="nam">secondary_stat</span> <span class="op">=</span> <span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">skill</span> <span class="op">+</span> <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t95" class="stm run hide_run">            <span class="nam">primary_type</span> <span class="op">=</span> <span class="str">'B'</span><span class="strut">&nbsp;</span></p>
+<p id="t96" class="stm run hide_run">            <span class="nam">secondary_type</span> <span class="op">=</span> <span class="str">'E'</span><span class="strut">&nbsp;</span></p>
 <p id="t97" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t98" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span> <span class="op">&gt;</span> <span class="nam">primary_stat</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t99" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">primary_stat</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span><span class="strut">&nbsp;</span></p>
-<p id="t100" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">secondary_stat</span> <span class="op">=</span> <span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">strength</span> <span class="op">+</span> <span class="nam">self</span><span class="op">.</span><span class="nam">skill</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t101" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">primary_type</span> <span class="op">=</span> <span class="str">&#39;C&#39;</span><span class="strut">&nbsp;</span></p>
-<p id="t102" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">secondary_type</span> <span class="op">=</span> <span class="str">&#39;F&#39;</span><span class="strut">&nbsp;</span></p>
+<p id="t98" class="stm run hide_run">        <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span> <span class="op">></span> <span class="nam">primary_stat</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t99" class="stm run hide_run">            <span class="nam">primary_stat</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span><span class="strut">&nbsp;</span></p>
+<p id="t100" class="stm run hide_run">            <span class="nam">secondary_stat</span> <span class="op">=</span> <span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">strength</span> <span class="op">+</span> <span class="nam">self</span><span class="op">.</span><span class="nam">skill</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t101" class="stm run hide_run">            <span class="nam">primary_type</span> <span class="op">=</span> <span class="str">'C'</span><span class="strut">&nbsp;</span></p>
+<p id="t102" class="stm run hide_run">            <span class="nam">secondary_type</span> <span class="op">=</span> <span class="str">'F'</span><span class="strut">&nbsp;</span></p>
 <p id="t103" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t104" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">type</span> <span class="op">=</span> <span class="nam">primary_type</span><span class="strut">&nbsp;</span></p>
-<p id="t105" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">typeStat</span> <span class="op">=</span> <span class="nam">primary_stat</span><span class="strut">&nbsp;</span></p>
-<p id="t106" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">fightSkill</span> <span class="op">=</span> <span class="nam">primary_stat</span><span class="strut">&nbsp;</span></p>
+<p id="t104" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">type</span> <span class="op">=</span> <span class="nam">primary_type</span><span class="strut">&nbsp;</span></p>
+<p id="t105" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">typeStat</span> <span class="op">=</span> <span class="nam">primary_stat</span><span class="strut">&nbsp;</span></p>
+<p id="t106" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">fightSkill</span> <span class="op">=</span> <span class="nam">primary_stat</span><span class="strut">&nbsp;</span></p>
 <p id="t107" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t108" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">secondary_stat</span> <span class="op">&gt;</span> <span class="nam">primary_stat</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t109" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">typeStat</span> <span class="op">=</span> <span class="nam">secondary_stat</span><span class="strut">&nbsp;</span></p>
-<p id="t110" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">type</span> <span class="op">=</span> <span class="nam">secondary_type</span><span class="strut">&nbsp;</span></p>
+<p id="t108" class="stm run hide_run">        <span class="key">if</span> <span class="nam">secondary_stat</span> <span class="op">></span> <span class="nam">primary_stat</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t109" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">typeStat</span> <span class="op">=</span> <span class="nam">secondary_stat</span><span class="strut">&nbsp;</span></p>
+<p id="t110" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">type</span> <span class="op">=</span> <span class="nam">secondary_type</span><span class="strut">&nbsp;</span></p>
 <p id="t111" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t112" class="stm run hide_run">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">get_max_hitpoints</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t113" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">self</span><span class="op">.</span><span class="nam">hitPointsBase</span> <span class="op">*</span> <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span><span class="strut">&nbsp;</span></p>
-                
+<p id="t112" class="stm run hide_run">    <span class="key">def</span> <span class="nam">get_max_hitpoints</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t113" class="stm run hide_run">        <span class="key">return</span> <span class="nam">self</span><span class="op">.</span><span class="nam">hitPointsBase</span> <span class="op">*</span> <span class="nam">self</span><span class="op">.</span><span class="nam">stamina</span><span class="strut">&nbsp;</span></p>
+
             </td>
         </tr>
     </table>
@@ -305,8 +305,8 @@
 <div id="footer">
     <div class="content">
         <p>
-            <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.org">coverage.py v4.0.3</a>,
-            created at 2016-09-01 20:57
+            <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.2</a>,
+            created at 2016-09-05 15:04
         </p>
     </div>
 </div>

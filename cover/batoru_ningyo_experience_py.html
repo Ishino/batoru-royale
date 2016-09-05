@@ -42,22 +42,22 @@
 
 <div class="help_panel">
     <img id="panel_icon" src="keybd_open.png" alt="Hide keyboard shortcuts" />
-<p class="legend">Hot-keys on this page</p>
+    <p class="legend">Hot-keys on this page</p>
     <div>
-<p class="keyhelp">
+    <p class="keyhelp">
         <span class="key">r</span>
         <span class="key">m</span>
         <span class="key">x</span>
         <span class="key">p</span> &nbsp; toggle line displays
     </p>
-<p class="keyhelp">
+    <p class="keyhelp">
         <span class="key">j</span>
         <span class="key">k</span> &nbsp; next/prev highlighted chunk
     </p>
-<p class="keyhelp">
+    <p class="keyhelp">
         <span class="key">0</span> &nbsp; (zero) top of page
     </p>
-<p class="keyhelp">
+    <p class="keyhelp">
         <span class="key">1</span> &nbsp; (one) first highlighted chunk
     </p>
     </div>
@@ -89,32 +89,32 @@
 <p id="n20" class="stm run hide_run"><a href="#n20">20</a></p>
 <p id="n21" class="pln"><a href="#n21">21</a></p>
 <p id="n22" class="stm run hide_run"><a href="#n22">22</a></p>
-                
+
             </td>
             <td class="text">
 <p id="t1" class="stm run hide_run"><span class="key">class</span> <span class="nam">Experience</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t2" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t3" class="stm run hide_run">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">__init__</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t4" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">self</span><span class="op">.</span><span class="nam">experience_modifier</span> <span class="op">=</span> <span class="num">100</span><span class="strut">&nbsp;</span></p>
+<p id="t3" class="stm run hide_run">    <span class="key">def</span> <span class="nam">__init__</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t4" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">experience_modifier</span> <span class="op">=</span> <span class="num">100</span><span class="strut">&nbsp;</span></p>
 <p id="t5" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t6" class="stm run hide_run">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">calculate_experience_need</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">level</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t6" class="stm run hide_run">    <span class="key">def</span> <span class="nam">calculate_experience_need</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">level</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t7" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t8" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">calculate_experience_need</span> <span class="op">=</span> <span class="num">0</span><span class="strut">&nbsp;</span></p>
+<p id="t8" class="stm run hide_run">        <span class="nam">calculate_experience_need</span> <span class="op">=</span> <span class="num">0</span><span class="strut">&nbsp;</span></p>
 <p id="t9" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t10" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">for</span> <span class="nam">i</span> <span class="key">in</span> <span class="nam">range</span><span class="op">(</span><span class="nam">int</span><span class="op">(</span><span class="nam">level</span><span class="op">)</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t11" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">calculate_experience_need</span> <span class="op">+=</span> <span class="op">(</span><span class="op">(</span><span class="nam">int</span><span class="op">(</span><span class="nam">i</span> <span class="op">+</span> <span class="num">1</span><span class="op">)</span> <span class="op">+</span> <span class="nam">int</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">experience_modifier</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="nam">int</span><span class="op">(</span><span class="nam">i</span> <span class="op">+</span> <span class="num">1</span><span class="op">)</span> <span class="op">**</span> <span class="num">2</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t10" class="stm run hide_run">        <span class="key">for</span> <span class="nam">i</span> <span class="key">in</span> <span class="nam">range</span><span class="op">(</span><span class="nam">int</span><span class="op">(</span><span class="nam">level</span><span class="op">)</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t11" class="stm run hide_run">            <span class="nam">calculate_experience_need</span> <span class="op">+=</span> <span class="op">(</span><span class="op">(</span><span class="nam">int</span><span class="op">(</span><span class="nam">i</span> <span class="op">+</span> <span class="num">1</span><span class="op">)</span> <span class="op">+</span> <span class="nam">int</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">experience_modifier</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="nam">int</span><span class="op">(</span><span class="nam">i</span> <span class="op">+</span> <span class="num">1</span><span class="op">)</span> <span class="op">**</span> <span class="num">2</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t12" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t13" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">calculate_experience_need</span><span class="strut">&nbsp;</span></p>
+<p id="t13" class="stm run hide_run">        <span class="key">return</span> <span class="nam">calculate_experience_need</span><span class="strut">&nbsp;</span></p>
 <p id="t14" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t15" class="stm run hide_run">&nbsp; &nbsp; <span class="op">@</span><span class="nam">staticmethod</span><span class="strut">&nbsp;</span></p>
-<p id="t16" class="pln">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">calculate_experience_gain</span><span class="op">(</span><span class="nam">level</span><span class="op">,</span> <span class="nam">opponent_level</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t17" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">experience_gain</span> <span class="op">=</span> <span class="nam">opponent_level</span> <span class="op">*</span> <span class="nam">opponent_level</span> <span class="op">+</span> <span class="nam">opponent_level</span> <span class="op">*</span> <span class="nam">opponent_level</span> <span class="op">-</span> <span class="nam">level</span> <span class="op">*</span> <span class="nam">level</span><span class="strut">&nbsp;</span></p>
+<p id="t15" class="stm run hide_run">    <span class="op">@</span><span class="nam">staticmethod</span><span class="strut">&nbsp;</span></p>
+<p id="t16" class="pln">    <span class="key">def</span> <span class="nam">calculate_experience_gain</span><span class="op">(</span><span class="nam">level</span><span class="op">,</span> <span class="nam">opponent_level</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t17" class="stm run hide_run">        <span class="nam">experience_gain</span> <span class="op">=</span> <span class="nam">opponent_level</span> <span class="op">*</span> <span class="nam">opponent_level</span> <span class="op">+</span> <span class="nam">opponent_level</span> <span class="op">*</span> <span class="nam">opponent_level</span> <span class="op">-</span> <span class="nam">level</span> <span class="op">*</span> <span class="nam">level</span><span class="strut">&nbsp;</span></p>
 <p id="t18" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t19" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">experience_gain</span> <span class="op">&lt;</span> <span class="num">0</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t20" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">experience_gain</span> <span class="op">=</span> <span class="num">0</span><span class="strut">&nbsp;</span></p>
+<p id="t19" class="stm run hide_run">        <span class="key">if</span> <span class="nam">experience_gain</span> <span class="op">&lt;</span> <span class="num">0</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t20" class="stm run hide_run">            <span class="nam">experience_gain</span> <span class="op">=</span> <span class="num">0</span><span class="strut">&nbsp;</span></p>
 <p id="t21" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t22" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">experience_gain</span><span class="strut">&nbsp;</span></p>
-                
+<p id="t22" class="stm run hide_run">        <span class="key">return</span> <span class="nam">experience_gain</span><span class="strut">&nbsp;</span></p>
+
             </td>
         </tr>
     </table>
@@ -123,8 +123,8 @@
 <div id="footer">
     <div class="content">
         <p>
-            <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.org">coverage.py v4.0.3</a>,
-            created at 2016-09-01 20:57
+            <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.2</a>,
+            created at 2016-09-05 15:04
         </p>
     </div>
 </div>

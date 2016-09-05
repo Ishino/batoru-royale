@@ -42,22 +42,22 @@
 
 <div class="help_panel">
     <img id="panel_icon" src="keybd_open.png" alt="Hide keyboard shortcuts" />
-<p class="legend">Hot-keys on this page</p>
+    <p class="legend">Hot-keys on this page</p>
     <div>
-<p class="keyhelp">
+    <p class="keyhelp">
         <span class="key">r</span>
         <span class="key">m</span>
         <span class="key">x</span>
         <span class="key">p</span> &nbsp; toggle line displays
     </p>
-<p class="keyhelp">
+    <p class="keyhelp">
         <span class="key">j</span>
         <span class="key">k</span> &nbsp; next/prev highlighted chunk
     </p>
-<p class="keyhelp">
+    <p class="keyhelp">
         <span class="key">0</span> &nbsp; (zero) top of page
     </p>
-<p class="keyhelp">
+    <p class="keyhelp">
         <span class="key">1</span> &nbsp; (one) first highlighted chunk
     </p>
     </div>
@@ -120,7 +120,7 @@
 <p id="n51" class="stm run hide_run"><a href="#n51">51</a></p>
 <p id="n52" class="pln"><a href="#n52">52</a></p>
 <p id="n53" class="stm run hide_run"><a href="#n53">53</a></p>
-                
+
             </td>
             <td class="text">
 <p id="t1" class="stm run hide_run"><span class="key">import</span> <span class="nam">random</span><span class="strut">&nbsp;</span></p>
@@ -129,54 +129,54 @@
 <p id="t4" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t5" class="stm run hide_run"><span class="key">class</span> <span class="nam">Attributes</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t6" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t7" class="stm run hide_run">&nbsp; &nbsp; <span class="op">@</span><span class="nam">staticmethod</span><span class="strut">&nbsp;</span></p>
-<p id="t8" class="pln">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">choose_attribute_order</span><span class="op">(</span><span class="nam">number_of_attributes</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t7" class="stm run hide_run">    <span class="op">@</span><span class="nam">staticmethod</span><span class="strut">&nbsp;</span></p>
+<p id="t8" class="pln">    <span class="key">def</span> <span class="nam">choose_attribute_order</span><span class="op">(</span><span class="nam">number_of_attributes</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t9" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t10" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">attributes_random</span> <span class="op">=</span> <span class="op">[</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
-<p id="t11" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">for</span> <span class="nam">i</span> <span class="key">in</span> <span class="nam">range</span><span class="op">(</span><span class="nam">int</span><span class="op">(</span><span class="nam">number_of_attributes</span><span class="op">)</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t12" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">attributes_random</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="nam">i</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t10" class="stm run hide_run">        <span class="nam">attributes_random</span> <span class="op">=</span> <span class="op">[</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
+<p id="t11" class="stm run hide_run">        <span class="key">for</span> <span class="nam">i</span> <span class="key">in</span> <span class="nam">range</span><span class="op">(</span><span class="nam">int</span><span class="op">(</span><span class="nam">number_of_attributes</span><span class="op">)</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t12" class="stm run hide_run">            <span class="nam">attributes_random</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="nam">i</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t13" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t14" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">random</span><span class="op">.</span><span class="nam">shuffle</span><span class="op">(</span><span class="nam">attributes_random</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t14" class="stm run hide_run">        <span class="nam">random</span><span class="op">.</span><span class="nam">shuffle</span><span class="op">(</span><span class="nam">attributes_random</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t15" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t16" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">attributes_random</span><span class="strut">&nbsp;</span></p>
+<p id="t16" class="stm run hide_run">        <span class="key">return</span> <span class="nam">attributes_random</span><span class="strut">&nbsp;</span></p>
 <p id="t17" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t18" class="stm run hide_run">&nbsp; &nbsp; <span class="op">@</span><span class="nam">staticmethod</span><span class="strut">&nbsp;</span></p>
-<p id="t19" class="pln">&nbsp; &nbsp; <span class="key">def</span> <span class="nam">generate_attribute_values</span><span class="op">(</span><span class="nam">level</span><span class="op">,</span> <span class="nam">number_of_attributes</span><span class="op">,</span> <span class="nam">attributes_modifier</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t18" class="stm run hide_run">    <span class="op">@</span><span class="nam">staticmethod</span><span class="strut">&nbsp;</span></p>
+<p id="t19" class="pln">    <span class="key">def</span> <span class="nam">generate_attribute_values</span><span class="op">(</span><span class="nam">level</span><span class="op">,</span> <span class="nam">number_of_attributes</span><span class="op">,</span> <span class="nam">attributes_modifier</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t20" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t21" class="pln">&nbsp; &nbsp; &nbsp; &nbsp; <span class="com"># the modifier needs to be a positive natural number</span><span class="strut">&nbsp;</span></p>
-<p id="t22" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">attributes_modifier</span> <span class="op">=</span> <span class="nam">math</span><span class="op">.</span><span class="nam">floor</span><span class="op">(</span><span class="nam">attributes_modifier</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t23" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">attributes_modifier</span> <span class="op">&lt;</span> <span class="num">1</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t24" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">attributes_modifier</span> <span class="op">=</span> <span class="num">1</span><span class="strut">&nbsp;</span></p>
+<p id="t21" class="pln">        <span class="com"># the modifier needs to be a positive natural number</span><span class="strut">&nbsp;</span></p>
+<p id="t22" class="stm run hide_run">        <span class="nam">attributes_modifier</span> <span class="op">=</span> <span class="nam">math</span><span class="op">.</span><span class="nam">floor</span><span class="op">(</span><span class="nam">attributes_modifier</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t23" class="stm run hide_run">        <span class="key">if</span> <span class="nam">attributes_modifier</span> <span class="op">&lt;</span> <span class="num">1</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t24" class="stm run hide_run">            <span class="nam">attributes_modifier</span> <span class="op">=</span> <span class="num">1</span><span class="strut">&nbsp;</span></p>
 <p id="t25" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t26" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">stat_lower</span> <span class="op">=</span> <span class="nam">attributes_modifier</span> <span class="op">*</span> <span class="nam">level</span><span class="strut">&nbsp;</span></p>
-<p id="t27" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">stat_upper</span> <span class="op">=</span> <span class="nam">attributes_modifier</span> <span class="op">*</span> <span class="nam">number_of_attributes</span> <span class="op">*</span> <span class="nam">level</span><span class="strut">&nbsp;</span></p>
+<p id="t26" class="stm run hide_run">        <span class="nam">stat_lower</span> <span class="op">=</span> <span class="nam">attributes_modifier</span> <span class="op">*</span> <span class="nam">level</span><span class="strut">&nbsp;</span></p>
+<p id="t27" class="stm run hide_run">        <span class="nam">stat_upper</span> <span class="op">=</span> <span class="nam">attributes_modifier</span> <span class="op">*</span> <span class="nam">number_of_attributes</span> <span class="op">*</span> <span class="nam">level</span><span class="strut">&nbsp;</span></p>
 <p id="t28" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t29" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">attributes_random_values</span> <span class="op">=</span> <span class="op">[</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
+<p id="t29" class="stm run hide_run">        <span class="nam">attributes_random_values</span> <span class="op">=</span> <span class="op">[</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
 <p id="t30" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t31" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">rest_value</span> <span class="op">=</span> <span class="num">0</span><span class="strut">&nbsp;</span></p>
-<p id="t32" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">attribute_value_total</span> <span class="op">=</span> <span class="num">0</span><span class="strut">&nbsp;</span></p>
+<p id="t31" class="stm run hide_run">        <span class="nam">rest_value</span> <span class="op">=</span> <span class="num">0</span><span class="strut">&nbsp;</span></p>
+<p id="t32" class="stm run hide_run">        <span class="nam">attribute_value_total</span> <span class="op">=</span> <span class="num">0</span><span class="strut">&nbsp;</span></p>
 <p id="t33" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t34" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">for</span> <span class="nam">i</span> <span class="key">in</span> <span class="nam">range</span><span class="op">(</span><span class="num">1</span><span class="op">,</span> <span class="nam">int</span><span class="op">(</span><span class="nam">number_of_attributes</span><span class="op">)</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t35" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">value</span> <span class="op">=</span> <span class="nam">random</span><span class="op">.</span><span class="nam">randint</span><span class="op">(</span><span class="nam">rest_value</span><span class="op">,</span> <span class="nam">stat_upper</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t34" class="stm run hide_run">        <span class="key">for</span> <span class="nam">i</span> <span class="key">in</span> <span class="nam">range</span><span class="op">(</span><span class="num">1</span><span class="op">,</span> <span class="nam">int</span><span class="op">(</span><span class="nam">number_of_attributes</span><span class="op">)</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t35" class="stm run hide_run">            <span class="nam">value</span> <span class="op">=</span> <span class="nam">random</span><span class="op">.</span><span class="nam">randint</span><span class="op">(</span><span class="nam">rest_value</span><span class="op">,</span> <span class="nam">stat_upper</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t36" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t37" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">rest_value</span> <span class="op">=</span> <span class="nam">stat_upper</span> <span class="op">-</span> <span class="nam">value</span><span class="strut">&nbsp;</span></p>
+<p id="t37" class="stm run hide_run">            <span class="nam">rest_value</span> <span class="op">=</span> <span class="nam">stat_upper</span> <span class="op">-</span> <span class="nam">value</span><span class="strut">&nbsp;</span></p>
 <p id="t38" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t39" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">value</span> <span class="op">+=</span> <span class="nam">stat_lower</span><span class="strut">&nbsp;</span></p>
-<p id="t40" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">i</span> <span class="op">==</span> <span class="num">1</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t41" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">value</span> <span class="op">+=</span> <span class="nam">stat_lower</span><span class="strut">&nbsp;</span></p>
+<p id="t39" class="stm run hide_run">            <span class="nam">value</span> <span class="op">+=</span> <span class="nam">stat_lower</span><span class="strut">&nbsp;</span></p>
+<p id="t40" class="stm run hide_run">            <span class="key">if</span> <span class="nam">i</span> <span class="op">==</span> <span class="num">1</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t41" class="stm run hide_run">                <span class="nam">value</span> <span class="op">+=</span> <span class="nam">stat_lower</span><span class="strut">&nbsp;</span></p>
 <p id="t42" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t43" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">attribute_value_total</span> <span class="op">+=</span> <span class="nam">value</span><span class="strut">&nbsp;</span></p>
-<p id="t44" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">attributes_random_values</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="nam">value</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t43" class="stm run hide_run">            <span class="nam">attribute_value_total</span> <span class="op">+=</span> <span class="nam">value</span><span class="strut">&nbsp;</span></p>
+<p id="t44" class="stm run hide_run">            <span class="nam">attributes_random_values</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="nam">value</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t45" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t46" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">last_attribute_value</span> <span class="op">=</span> <span class="nam">int</span><span class="op">(</span><span class="nam">stat_upper</span> <span class="op">*</span> <span class="op">(</span><span class="nam">number_of_attributes</span> <span class="op">+</span> <span class="num">1</span><span class="op">)</span><span class="op">)</span> <span class="op">-</span> <span class="nam">attribute_value_total</span><span class="strut">&nbsp;</span></p>
+<p id="t46" class="stm run hide_run">        <span class="nam">last_attribute_value</span> <span class="op">=</span> <span class="nam">int</span><span class="op">(</span><span class="nam">stat_upper</span> <span class="op">*</span> <span class="op">(</span><span class="nam">number_of_attributes</span> <span class="op">+</span> <span class="num">1</span><span class="op">)</span><span class="op">)</span> <span class="op">-</span> <span class="nam">attribute_value_total</span><span class="strut">&nbsp;</span></p>
 <p id="t47" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t48" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">if</span> <span class="nam">number_of_attributes</span> <span class="op">==</span> <span class="num">1</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t49" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">last_attribute_value</span> <span class="op">=</span> <span class="nam">attributes_modifier</span> <span class="op">*</span> <span class="nam">level</span> <span class="op">*</span> <span class="num">2</span><span class="strut">&nbsp;</span></p>
+<p id="t48" class="stm run hide_run">        <span class="key">if</span> <span class="nam">number_of_attributes</span> <span class="op">==</span> <span class="num">1</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t49" class="stm run hide_run">            <span class="nam">last_attribute_value</span> <span class="op">=</span> <span class="nam">attributes_modifier</span> <span class="op">*</span> <span class="nam">level</span> <span class="op">*</span> <span class="num">2</span><span class="strut">&nbsp;</span></p>
 <p id="t50" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t51" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="nam">attributes_random_values</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="nam">last_attribute_value</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t51" class="stm run hide_run">        <span class="nam">attributes_random_values</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="nam">last_attribute_value</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t52" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t53" class="stm run hide_run">&nbsp; &nbsp; &nbsp; &nbsp; <span class="key">return</span> <span class="nam">attributes_random_values</span><span class="strut">&nbsp;</span></p>
-                
+<p id="t53" class="stm run hide_run">        <span class="key">return</span> <span class="nam">attributes_random_values</span><span class="strut">&nbsp;</span></p>
+
             </td>
         </tr>
     </table>
@@ -185,8 +185,8 @@
 <div id="footer">
     <div class="content">
         <p>
-            <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.org">coverage.py v4.0.3</a>,
-            created at 2016-09-01 20:57
+            <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.2</a>,
+            created at 2016-09-05 15:04
         </p>
     </div>
 </div>
