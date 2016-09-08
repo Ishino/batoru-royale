@@ -1,4 +1,4 @@
-amqp==2.0.3
+amqp==2.1.0
 click==6.6
 coverage==4.2
 elasticsearch==2.4.0
@@ -16,11 +16,11 @@ pika==0.10.0
 python-engineio==1.0.3
 python-socketio==1.5.1
 redis==2.10.5
-ruamel.yaml==0.12.10
+ruamel.yaml==0.12.12
 selenium==2.53.6
 six==1.10.0
 SQLAlchemy==1.0.15
 typing==3.5.2.2
-urllib3==1.16
-vine==1.1.1
+urllib3==1.17
+vine==1.1.2
 Werkzeug==0.11.11
