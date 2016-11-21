@@ -16,7 +16,7 @@ pika==0.10.0
 python-engineio==1.0.3
 python-socketio==1.6.0
 redis==2.10.5
-ruamel.yaml==0.12.17
+ruamel.yaml==0.13.0
 selenium==3.0.1
 six==1.10.0
 SQLAlchemy==1.1.4
