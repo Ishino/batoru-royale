@@ -1,10 +1,10 @@
 amqp==2.1.4
 click==6.7
-coverage==4.3.1
+coverage==4.3.4
 elasticsearch==5.1.0
 Flask==0.12
 Flask-SocketIO==2.8.2
-gevent==1.2.0
+gevent==1.2.1
 greenlet==0.4.11
 gunicorn==19.6.0
 itsdangerous==0.24
@@ -16,10 +16,10 @@ pika==0.10.0
 python-engineio==1.1.0
 python-socketio==1.6.2
 redis==2.10.5
-ruamel.yaml==0.13.7
+ruamel.yaml==0.13.8
 selenium==3.0.2
 six==1.10.0
-SQLAlchemy==1.1.4
+SQLAlchemy==1.1.5
 typing==3.5.3.0
 urllib3==1.19.1
 vine==1.1.3
