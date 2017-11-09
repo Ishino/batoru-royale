@@ -191,5 +191,6 @@ class TestFighter(unittest.TestCase):
         self.assertEqual(self.player.fightSkill, 3)
         self.assertEqual(self.player.hitPoints, 300)
 
+
 if __name__ == '__main__':
     unittest.main()

@@ -16,5 +16,6 @@ class TestCombatCalculations(unittest.TestCase):
         self.assertEqual(CombatCalculations.calc_modifier(8, 2, 0.5), 3)
         self.assertEqual(CombatCalculations.calc_modifier(2, 8, 0.5), 3)
 
+
 if __name__ == '__main__':
     unittest.main()

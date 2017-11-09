@@ -19,5 +19,6 @@ def hello():
 def run_battle():
     Battle()
 
+
 if __name__ == "__main__":
     app.run()

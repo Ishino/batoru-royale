@@ -77,5 +77,6 @@ class TestNingyo(unittest.TestCase):
         self.player.accuracy()
         self.player.accuracyCalc.get_accuracy.assert_called_with(self.player.typeStat, self.player.fightSkill)
 
+
 if __name__ == '__main__':
     unittest.main()

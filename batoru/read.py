@@ -26,6 +26,7 @@ def callback(ch, method, properties, body):
     print(" [x] finished %r" % message['data'])
     ch.basic_ack(delivery_tag=method.delivery_tag)
 
+
 channel.basic_qos(prefetch_count=1)
 channel.basic_consume(callback,
                       queue='fight')

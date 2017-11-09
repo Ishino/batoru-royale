@@ -49,5 +49,6 @@ class TestExperience(unittest.TestCase):
         self.assertEqual(self.experienceCalc.calculate_experience_gain(level, 4), 7)
         self.assertEqual(self.experienceCalc.calculate_experience_gain(level, 5), 25)
 
+
 if __name__ == '__main__':
     unittest.main()

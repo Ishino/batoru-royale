@@ -45,5 +45,6 @@ class TestExperience(unittest.TestCase):
         self.power_ability.ticker = self.power_ability.abilityPointRefresh
         self.assertEqual(self.power_ability.get_power(power, energy), 400)
 
+
 if __name__ == '__main__':
     unittest.main()
