@@ -14,9 +14,6 @@ install:
 script:
 - nosetests -v --with-coverage --cover-html
 - pycodestyle batoru --ignore=E501
-env:
-  global:
-    secure: W05bj3VlxXHFohmo7G9z968MDO66uvITlbxFsDoajAWp8xstxnt3aGMDn2GUUB+nNwY4qkuE/mg0ixd8n1xi3/7Q9+Z4zFk69yMqbrQ5GlAzigNS59nPahJ+pclMgjMoTbdkh4MAQ/eG+VqbFBq1cgUlt+TdJnPAwNtanBPe+1CNVC2AfH45wuHvmipYR5hDW2MySidUFW4T1225rfjJo2lyu+MJhNJLA/7k3idRQlOsUFi34T58MtfV2+r8PKr8q8vZl3wDt3elqdq29M3lVgV24of/1FEOd4AtpTO3Oc6MDzEsYwmtbQJM++P9/NSOlpDlhFbKuoHIfdGqT/ITMwhmdixadpu/FkV5CdEKxZPPkv8J+2OTnk5D3idM3mF/y4MP/OuxWtjarOUVjiXw15zrV2HEfxYY/HE4Fth6wSog2BASEbZXSgkxhahbRzC1vHanC4y26amXChW/JmXFXGLuHenLLKkXiuWTM6vU6k3/ofjTY4issqWgiLg98egFVhudaWkrKcNtyj1rPcoMBPU3M16Cdt38r409LWhO9HpNsEQz19PI0U+m2sxEnwQ0sU2EASU1k4JcCB63V1rEYJhEFHBRoZWaVyARp8/YcIUTeGzqLiDWSM5CNkbYY8Vq5oZnOk6HBhjffEDHjto0dNcER6HruREIHYpx+vYrfYE=
 deploy:
   - provider: heroku
     api_key:
