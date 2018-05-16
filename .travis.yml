@@ -20,6 +20,7 @@ deploy:
       secure: d3BSdxJpwJ96ZVZh+g4m7GFr6kL5YXjofNuOd1OFLKEntpIQ/UR4+qiNVwisJ50pygzYeWei/mSmdsNbCU9A9Dr8GSER5+haDVgcdatELVRhln/rLCuJTzOmhtsTqjWIOTlMUMX8n/46GjXm2QMMmXOFxWPKu77F7iFNg7ViZfUGj2C/kihs8fSqyeavw5Gdhg2bFA1vX4UUpl+3/6IzChaO1wIJCHwSkJAdhJk9YbhoVtNQHypB9arUulm2DTqeng59nxvXofnaOq0T04mDxTw8+ZElH2mAkLqlVh788H5WBK/qDjdg2kfTnVLoP1GeLzCiDC2MB0Cu5saNkOeZmOelYGyI1XTWsCU/U8QW7z6hnEw2amsF5nr2ADiodmZU2WXGoYKFHzM07Nw3zQoaXh7FIfSoS/ETiqOBuTU4V1RCgb5SoKmotlZdBfS6M/N7jB3Gr3ish0XVFXu+KUz3SIiONdT9z6HIHrbDlCX2caQpCni4v3AQoAoLVy5AVhWJNEJV2pnUSoMrbpQJRPALIQHnfjHjilTIdymyEGOGZk5AihPZlV3ocptQ3T/y7BmudUUWSfCpD6KCkybglojJbjAznYZBtm2q7m+pBIkoRTVOcAzKyi2ZWfIbYkz1MJyWZnMMLn8pp7ixoRhQZsBseOEL9yCL5MPkqdl1M6cKdVU=
     app: intense-anchorage-9323
   - provider: pages
+    local-dir: cover
     skip-cleanup: true
     github-token: $GITHUB_TOKEN
     keep-history: true

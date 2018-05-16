@@ -7,7 +7,7 @@ batoru-royale
 
 Heroku URL: https://intense-anchorage-9323.herokuapp.com
 
-Code coverage report: http://ishino.github.io/batoru-royale/cover/index.html
+Code coverage report: http://ishino.github.io/batoru-royale/index.html
 
 Learning Python the fun way.
 
