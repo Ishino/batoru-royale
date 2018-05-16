@@ -1,69 +1,266 @@
+
+
+
 <!DOCTYPE html>
 <html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Coverage report</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.ba-throttle-debounce.min.js"></script>
+    <script type="text/javascript" src="jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="coverage_html.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(coverage.index_ready);
+    </script>
+</head>
+<body class="indexfile">
 
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Batoru-royale : ">
+<div id="header">
+    <div class="content">
+        <h1>Coverage report:
+            <span class="pc_cov">15%</span>
+        </h1>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+        <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
 
-    <title>Batoru-royale</title>
-  </head>
-
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/Ishino/batoru-royale">View on GitHub</a>
-
-          <h1 id="project_title">Batoru-royale</h1>
-          <h2 id="project_tagline"></h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/Ishino/batoru-royale/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/Ishino/batoru-royale/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
+        <form id="filter_container">
+            <input id="filter" type="text" value="" placeholder="filter..." />
+        </form>
     </div>
+</div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
-<a id="batoru-royale" class="anchor" href="#batoru-royale" aria-hidden="true"><span class="octicon octicon-link"></span></a>batoru-royale</h1>
-
-<p><a href="https://travis-ci.org/Ishino/batoru-royale"><img src="https://travis-ci.org/Ishino/batoru-royale.svg?branch=master" alt="Build Status"></a></p>
-<p><a href="cover/index.html">Code Coverage</a></p>
-
-<p>Learning Python the fun way.</p>
-
-<h2>
-<a id="prerequisites" class="anchor" href="#prerequisites" aria-hidden="true"><span class="octicon octicon-link"></span></a>prerequisites</h2>
-
-<ul>
-<li>Python 3.x</li>
-</ul>
-
-<h2>
-<a id="notes" class="anchor" href="#notes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes</h2>
-
-<p>Use Evolus Pencil to read the diagrams.</p>
-
-<p><a href="http://pencil.evolus.vn/">http://pencil.evolus.vn/</a></p>
-      </section>
+<div class="help_panel">
+    <img id="panel_icon" src="keybd_open.png" alt="Hide keyboard shortcuts" />
+    <p class="legend">Hot-keys on this page</p>
+    <div>
+    <p class="keyhelp">
+        <span class="key">n</span>
+        <span class="key">s</span>
+        <span class="key">m</span>
+        <span class="key">x</span>
+        
+        <span class="key">c</span> &nbsp; change column sorting
+    </p>
     </div>
+</div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Batoru-royale maintained by <a href="https://github.com/Ishino">Ishino</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
-      </footer>
+<div id="index">
+    <table class="index">
+        <thead>
+            
+            <tr class="tablehead" title="Click to sort">
+                <th class="name left headerSortDown shortkey_n">Module</th>
+                <th class="shortkey_s">statements</th>
+                <th class="shortkey_m">missing</th>
+                <th class="shortkey_x">excluded</th>
+                
+                <th class="right shortkey_c">coverage</th>
+            </tr>
+        </thead>
+        
+        <tfoot>
+            <tr class="total">
+                <td class="name left">Total</td>
+                <td>1560</td>
+                <td>1324</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="236 1560">15%</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            
+            <tr class="file">
+                <td class="name left"><a href="batoru___init___py.html">batoru/__init__.py</a></td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="1 1">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="batoru_battlefront___init___py.html">batoru/battlefront/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="batoru_battlefront_models___init___py.html">batoru/battlefront/models/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="batoru_combat___init___py.html">batoru/combat/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="batoru_combat_combat_calculations_py.html">batoru/combat/combat_calculations.py</a></td>
+                <td>14</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="14 14">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="batoru_interfaces___init___py.html">batoru/interfaces/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="batoru_interfaces_models___init___py.html">batoru/interfaces/models/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="batoru_ningyo___init___py.html">batoru/ningyo/__init__.py</a></td>
+                <td>4</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="4 4">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="batoru_ningyo_actions_py.html">batoru/ningyo/actions.py</a></td>
+                <td>27</td>
+                <td>20</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="7 27">26%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="batoru_ningyo_attributes_py.html">batoru/ningyo/attributes.py</a></td>
+                <td>31</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="31 31">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="batoru_ningyo_experience_py.html">batoru/ningyo/experience.py</a></td>
+                <td>13</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="13 13">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="batoru_ningyo_fighter_py.html">batoru/ningyo/fighter.py</a></td>
+                <td>80</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="80 80">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="batoru_ningyo_models___init___py.html">batoru/ningyo/models/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="batoru_ningyo_modifiers_py.html">batoru/ningyo/modifiers.py</a></td>
+                <td>38</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="38 38">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="batoru_ningyo_ningyo_py.html">batoru/ningyo/ningyo.py</a></td>
+                <td>48</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="48 48">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="batoru_server___init___py.html">batoru/server/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="batoru_simulator___init___py.html">batoru/simulator/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="batoru_simulator_models___init___py.html">batoru/simulator/models/__init__.py</a></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 0">100%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="unittest_mock_py.html">unittest/mock.py</a></td>
+                <td>1304</td>
+                <td>1304</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="0 1304">0%</td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <p id="no_rows">
+        No items found using the specified filter.
+    </p>
+</div>
+
+<div id="footer">
+    <div class="content">
+        <p>
+            <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.1</a>,
+            created at 2018-05-16 22:10
+        </p>
     </div>
+</div>
 
-
-
-  </body>
+</body>
 </html>
