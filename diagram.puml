@@ -1,0 +1,22 @@
+@startuml
+actor User
+actor ALL
+group connect
+    User -> SocketIO: connect to personal room
+    SocketIO -> User: Send user list
+    SocketIO -> ALL: Announce user login
+    ALL -> ALL: Update user list
+    |||
+    group fight
+        User -> SocketIO: Send fight to personal room
+        activate SocketIO
+        SocketIO -> RabbitMQ: Queue fight
+        Batoru <- RabbitMQ: Pick fight
+        Batoru <- Redis: Get User data
+        Batoru -> SocketIO: Push data to room
+        Batoru -> elasticsearch: Log data
+        SocketIO -> User: Push data to user
+        deactivate SocketIO
+    end
+end
+@enduml
