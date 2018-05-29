@@ -21,7 +21,7 @@ class Logger:
 class RedisLogger(Logger):
     def __init__(self):
         with open("config/config.yml", 'r') as ymlfile:
-            cfg = yaml.load(ymlfile)
+            cfg = yaml.load(ymlfile, Loader=yaml.Loader)
 
         Logger.__init__(self)
         self.r = redis.StrictRedis(host=cfg['redis']['host'], port=str(cfg['redis']['port']), db=0)
@@ -47,7 +47,7 @@ class ElasticSearchLogger(Logger):
         Logger.__init__(self)
 
         with open("config/config.yml", 'r') as ymlfile:
-            cfg = yaml.load(ymlfile)
+            cfg = yaml.load(ymlfile, Loader=yaml.Loader)
 
         elasticsearch_host = cfg['elasticsearch']['host']
         elasticsearch_port = cfg['elasticsearch']['port']

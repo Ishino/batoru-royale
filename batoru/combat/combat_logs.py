@@ -10,7 +10,7 @@ class CombatLogs:
 
     def __init__(self):
         with open("config/config.yml", 'r') as ymlfile:
-            cfg = yaml.load(ymlfile)
+            cfg = yaml.load(ymlfile, Loader=yaml.Loader)
 
         self.enabledScroll = True
         self.verboseEvent = True

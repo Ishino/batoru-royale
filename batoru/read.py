@@ -5,7 +5,7 @@ import ruamel.yaml as yaml
 from subprocess import Popen, PIPE
 
 with open("config/config.yml", 'r') as ymlfile:
-    cfg = yaml.load(ymlfile)
+    cfg = yaml.load(ymlfile, Loader=yaml.Loader)
 
 connection = pika.BlockingConnection(pika.ConnectionParameters(host=cfg['rabbitmq']['host'],
                                                                port=cfg['rabbitmq']['port'],

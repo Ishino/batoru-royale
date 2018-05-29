@@ -8,7 +8,7 @@ from server.batoru_front import app
 from battlefront.battlefront import Battlefront
 
 with open("config/config.yml", 'r') as ymlfile:
-    cfg = yaml.load(ymlfile)
+    cfg = yaml.load(ymlfile, Loader=yaml.Loader)
 
 socketio = SocketIO(app, message_queue='redis://' + cfg['redis']['host'] + ':' + str(cfg['redis']['port']) + '/0')
 

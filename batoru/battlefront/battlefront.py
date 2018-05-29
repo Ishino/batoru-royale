@@ -9,7 +9,7 @@ class Battlefront:
 
     def __init__(self):
         with open("config/config.yml", 'r') as ymlfile:
-            cfg = yaml.load(ymlfile)
+            cfg = yaml.load(ymlfile, Loader=yaml.Loader)
 
         self.redis_logger = RedisLogger()
         self.war = 'global'

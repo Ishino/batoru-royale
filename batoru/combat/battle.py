@@ -19,7 +19,7 @@ from battlefront.battlefront import Battlefront
 class Battle:
     def __init__(self):
         with open("config/config.yml", 'r') as ymlfile:
-            cfg = yaml.load(ymlfile)
+            cfg = yaml.load(ymlfile, Loader=yaml.Loader)
 
         self.attributes = Attributes()
         self.player_engine = Player()
