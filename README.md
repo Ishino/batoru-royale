@@ -3,7 +3,6 @@ batoru-royale
 
 [![Build Status](https://travis-ci.org/Ishino/batoru-royale.svg?branch=master)](https://travis-ci.org/Ishino/batoru-royale)
 [![Gitter](https://badges.gitter.im/Ishino/batoru-royale.svg)](https://gitter.im/Ishino/batoru-royale)
-[![Dependency Status](https://www.versioneye.com/user/projects/56a653c51b78fd0035000171/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/56a653c51b78fd0035000171)
 
 Heroku URL: https://intense-anchorage-9323.herokuapp.com
 
